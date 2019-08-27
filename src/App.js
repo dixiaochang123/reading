@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Reader from './view/Reader'
 
 function App() {
   return (
@@ -17,11 +18,16 @@ function App() {
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          >Learn React</a>
+          <Link to="/reader">Reader</Link>
         </header>
-        <Route exact path="/" component={App} />
+        <br />
+        <br />
+        <br />
+        <br />
+        <main>
+          <Route path="/reader" exact component={Reader} />
+        </main>
       </div>
     </Router>
   );
