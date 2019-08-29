@@ -1,73 +1,129 @@
-# antd-mobile 使用create-react-app
+### React UI组件antd-mobile应用心得
+###### and-mobile在create-react-app中的使用
+- create-react-app初始化与安装
+  ```
+   npm install -g create-react-app
+   create-react-app my-app
+   cd my-app
+   npm start
+  ```
 
-## 一款阅读app的h5
+- 说明在Create-react-app中使用Antd需要修改配置的的方式：
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+一、方案一
+1、安装react-app-rewired（一个对 create-react-app 进行自定义配置的社区解决方案）
 
-## Available Scripts
+```
+npm install --save-dev react-app-rewired
+```
 
-In the project directory, you can run:
+2、安装customize-cra（必不可少，eact-app-rewired删除所有方法的新版本injectBabelPlugin。
+这些方法被移动到一个名为'customize-cra'的新包中，这取决于react-app-rewired@2.x。）
+```
+ npm install --save-dev customize-cra
+```
+3、修改package.json启动项
 
-### `npm start`
+```
+/* package.json */
+'scripts': {
+  'start': 'react-app-rewired start',
+  'build': 'react-app-rewired build',
+  'test': 'react-app-rewired test --env=jsdom',
+}
+```
+4、在项目根目录创建一个 config-overrides.js 用于修改默认配置。
+```
+  module.exports = function override(config, env) {
+    return config
+  }
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5、使用babel-plugin-import实现antd or antd-mobile按需加载，修改config-overrides.js
+```
+npm install --save-dev babel-plugin-import
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+6、使用react-app-rewire-less配置Less
 
-### `npm test`
+```
+npm install --save-dev react-app-rewire-less
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+/* config-overrides.js */
+module.exports = override( 
+    fixBabelImports("babel-plugin-import", {
+        libraryName: "antd-mobile",
+        style: true
+    }),
+    addLessLoader({
+        ident: 'postcss'
+    })
+);
+```
+二、方案二
 
-### `npm run build`
+npm run eject 暴露所有内建的配置
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1、使用babel-plugin-import实现Antd按需加载，修改package.json，或者在项目根目录新建文件.babelrc写配置，注意是二选一。
+```
+npm install --save-dev babel-plugin-import
+```
+**   修改package.json
+```
+"babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "style": true
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.11.0"
+  }
+  ```
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+***   .babelrc
+```
+{
+   "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "style": true
+        }
+      ]
+    ]
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+注意： 不要认为package.json里已有presets配置这里就不用写，这里的.babelrc会覆盖package.json里带有的babel配置，如果删除presets配置，会报错。
 
-### `npm run eject`
+### 能开项目中antd-mobile的使用总结
 
-**npm run eject之后安装 npm install --save react-scripts**
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1、首先安装依赖
+      $ npm install antd-mobile —save
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2、配置文件按需加载用到的组件（注：官方推荐两种方法，能开项目中目前没搞清楚用的什么）
+    
+        libraryName: 'antd-mobile’,      // 注入依赖的名字
+        style: true,                                 // 会加载less文件（style：css会加载css文件）
+  注：在项目里设置的是加载less文件，所以项目中需要安装less和less-loader
+ 安装：npm install --save-dev less-loader less
+ 配置：
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3、具体应用
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+注意：在用到相关antd-mobile的组件时，一定要在对应组件外套一个具有唯一性class名的div,当组件样式不满足需求时，修改相应组件样式需在该类名之类，根据less的编译方法以及套用，不能直接以该组件的class名直接开始修改，这样会导致该样式污染全局
