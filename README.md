@@ -7,9 +7,8 @@
    npm start
   ```
 
-- and-mobile需要修改配置的的方式：
+- and-mobile需要修改配置：
 
-一、方案一
 1、安装react-app-rewired（一个对 create-react-app 进行自定义配置的社区解决方案）
 
 ```
