@@ -1,5 +1,4 @@
-### React UI组件antd-mobile应用心得
-###### and-mobile在create-react-app中的使用
+## and-mobile在create-react-app中的使用
 - create-react-app初始化与安装
   ```
    npm install -g create-react-app
