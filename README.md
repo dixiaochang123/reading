@@ -77,27 +77,48 @@ npm install --save-dev less-loader less
 
 9、less不生效解决办法，找到node_modules里react-script/config/webpack.config.js
 
--- 添加
+找到
 ```
-const lessRegex =/\.less$/;
-const lessModuleRegex=/\.module\.less$/;
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+```
+修改为
+```
+const cssRegex = /\.(css|less)$/;
+const cssModuleRegex = /\.module\.(css|less)$/;
+```
+找到
+```
+{
+test: cssRegex,
+exclude: cssModuleRegex,
+use: getStyleLoaders({
+  importLoaders: 1,
+  sourceMap: isEnvProduction && shouldUseSourceMap,
+}),
+// Don't consider CSS imports dead code even if the
+// containing package claims to have no side effects.
+// Remove this when webpack adds a warning or an error for this.
+// See https://github.com/webpack/webpack/issues/6571
+sideEffects: true,
+},
+```
+修改为
+```
 
 {
-  test: lessRegex,
-  exclude: lessModuleRegex,
+  test: cssRegex,
+  exclude: cssModuleRegex,
   use: getStyleLoaders({
     importLoaders: 2,
     sourceMap: isEnvProduction && shouldUseSourceMap,
-  }),
-  sideEffects: true
-},
-{
-  test: lessModuleRegex,
-  use: getStyleLoaders({
-    importLoaders: 2,
-    modules: true,
-    getLocalIdent: getCSSModuleLocalIdent,
-    sourceMap: isEnvProduction && shouldUseSourceMap,
-  })
+  },
+    'less-loader'
+  ),
+  // Don't consider CSS imports dead code even if the
+  // containing package claims to have no side effects.
+  // Remove this when webpack adds a warning or an error for this.
+  // See https://github.com/webpack/webpack/issues/6571
+  sideEffects: true,
 },
 ```
