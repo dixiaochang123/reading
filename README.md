@@ -74,3 +74,30 @@ npm install antd-mobile —save
 ```
 npm install --save-dev less-loader less
 ```
+
+9、less不生效解决办法，找到node_modules里react-script/config/webpack.config.js
+
+-- 添加
+```
+const lessRegex =/\.less$/;
+const lessModuleRegex=/\.module\.less$/;
+
+{
+  test: lessRegex,
+  exclude: lessModuleRegex,
+  use: getStyleLoaders({
+    importLoaders: 2,
+    sourceMap: isEnvProduction && shouldUseSourceMap,
+  }),
+  sideEffects: true
+},
+{
+  test: lessModuleRegex,
+  use: getStyleLoaders({
+    importLoaders: 2,
+    modules: true,
+    getLocalIdent: getCSSModuleLocalIdent,
+    sourceMap: isEnvProduction && shouldUseSourceMap,
+  })
+},
+```

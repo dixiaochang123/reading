@@ -1,16 +1,35 @@
 import React,{Component} from 'react';
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar, Icon  } from 'antd-mobile';
+import style from './index.less'
+
+import IconFan2 from './../../images/fenx.svg'
+
+console.log(IconFan2)
 
 export default class Reader extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        
+      };
+    }
+
+
     render() {
-        return (<div><NavBar
+        return (<div className={style.content}>
+          <NavBar
             mode="light"
             icon={<Icon type="left" />}
             onLeftClick={() => console.log('onLeftClick')}
             rightContent={[
-              <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
-              <Icon key="1" type="ellipsis" />,
+              <img id='fx' alt="" src={IconFan2} key='1'  />
             ]}
-          >NavBar</NavBar></div>)
+          ></NavBar>
+          <div className={style.footer}>
+              wwwwwwwwwwwwww
+          </div>
+
+
+          </div>)
     }
 }
