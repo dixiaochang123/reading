@@ -4,7 +4,7 @@ import style from './index.less'
 
 import IconFan2 from './../../images/fenx.svg'
 
-console.log(IconFan2)
+console.log(style)
 
 export default class Reader extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ export default class Reader extends Component {
 
 
     render() {
-        return (<div className={style.content}>
+        return (<div>
           <NavBar
             mode="light"
             icon={<Icon type="left" />}
