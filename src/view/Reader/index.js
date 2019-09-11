@@ -1,6 +1,13 @@
 import React,{Component} from 'react';
+import LiteraryNews from '../LiteraryNews/index';
 import { NavBar, Icon  } from 'antd-mobile';
-import style from './index.less'
+import {
+  Route,
+  Link
+} from 'react-router-dom';
+import './index.less'
+// import style from './index.less'
+// const style = require('./index.less')
 
 import IconFan2 from './../../images/fenx.svg'
 
@@ -16,7 +23,7 @@ export default class Reader extends Component {
 
 
     render() {
-        return (<div className={style.content}>
+        return (<div className='content'>
           <NavBar
             mode="light"
             icon={<Icon type="left" />}
@@ -25,8 +32,9 @@ export default class Reader extends Component {
               <img id='fx' alt="" src={IconFan2} key='1'  />
             ]}
           ></NavBar>
-          <div className={style.footer}>
-              wwwwwwwwwwwwww
+          <div className='footer'>
+              <Link to={'/literarynews'}>ceshi</Link>
+              <Route path='/literarynews' component={LiteraryNews}/>
           </div>
 
 

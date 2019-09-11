@@ -6,13 +6,17 @@ import {
   Redirect
 } from 'react-router-dom';
 import App from '../App';
-import reader from '../view/Reader/index';
+import Reader from '../view/Reader/index';
+import OlympicSpirit from '../view/OlympicSpirit/index';
+import LiteraryNews from '../view/LiteraryNews/index';
 
 
 const RouteConfig = () => (
   <Router>
     <Switch>
-      <Route path="/reader" component={reader} />
+      <Route path="/reader" component={Reader} />
+      <Route path="/olympicspirit" component={OlympicSpirit} />
+      <Route path="/literarynews" component={LiteraryNews} />
       <Route path="/" exact component={App} />
       <Redirect from={"*"} to={'/'} />
     </Switch>
