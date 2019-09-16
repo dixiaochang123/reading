@@ -1,11 +1,13 @@
 import React from 'react';
 import { routerRedux, Route, Switch } from 'dva/router';
-import IndexPage from './routes/IndexPage';
-import Products from './routes/Products';
+import IndexPage from './routes/IndexPage';//首页
+import Products from './routes/Products';//新建页
 
-import Reader from './routes/Reader/index';
-import OlympicSpirit from './routes/OlympicSpirit/index';
-import LiteraryNews from './routes/LiteraryNews/index';
+import Reader from './routes/Reader/index';//阅读器
+import OlympicSpirit from './routes/OlympicSpirit/index';//奥运
+import LiteraryNews from './routes/LiteraryNews/index';//文学
+import SignIn from './routes/SignIn/index';//签到
+import SignRule from './routes/SignRule/index';//签到规则
 
 const { ConnectedRouter } = routerRedux;
 
@@ -19,6 +21,8 @@ function RouterConfig({ history }) {
         <Route path="/olympicspirit" exact component={OlympicSpirit} />
         <Route path="/literarynews" exact component={LiteraryNews} />
         <Route path="/products" exact component={Products} />
+        <Route path="/signin" exact component={SignIn} />
+        <Route path="/signrule" exact component={SignRule} />
       </Switch>
     </ConnectedRouter>
   );

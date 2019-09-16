@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import LiteraryNews from '../LiteraryNews/index';
-// import { NavBar, Icon  } from 'antd-mobile';
 import {
   Route,
   Link
