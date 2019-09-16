@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, Flex } from 'antd-mobile';
-import './index.less'
+import style from './index.less'
 import creatHistory from 'history/createHashHistory'
 const history = creatHistory();
+console.log(style)
 
 export default class Reader extends Component {
     constructor(props) {
@@ -59,6 +60,7 @@ export default class Reader extends Component {
                         )
                     })
                 }
+                <p className={style.hh}>jjjjjjjjjjjjjjj</p>
           </div>
 
 
