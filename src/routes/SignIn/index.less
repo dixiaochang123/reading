@@ -9,8 +9,56 @@
 .onRightClick {
     width: 1rem;
     height: .45rem;
-    border: solid 1px red;
+    // border: solid 1px red;
     position: absolute;
     top: 0;
     right: 0;
+}
+.continuity {
+    width:6.74rem;
+    height:3.43rem;
+    background:linear-gradient(180deg,rgba(255,101,20,1),rgba(255,169,3,1));
+    border-radius:.19rem;
+    position: relative;
+    margin:.36rem auto .5rem;
+    text-align: center;
+    display: flex;
+    flex-direction:column;
+
+    p {
+        color: #fff;
+        &:nth-of-type(2) {
+            height: 1.08rem;
+            line-height: 1.08rem;
+        }
+        span {
+           display: inline-block;
+        //    height: 100%;
+        //    width: 0.78rem;
+           padding:.10rem .22rem;
+           background-color: #fff;
+           color: #FF6514;
+           font-size:.72rem;
+           box-shadow:0px 2px 5px 0px rgba(182,78,11,0.86);
+           border-radius:.1rem;
+           margin:0 .16rem;
+        }
+    }
+
+    .radius {
+        width: .84rem;
+        height: .84rem;
+        border-radius: 50%;
+        background:linear-gradient(180deg,rgba(255,101,20,1),rgba(255,169,3,1));
+        position: absolute;
+        bottom: .64rem;
+        left: 0;
+    }
+}
+.tody {
+    text-align: center;
+    font-size:28px;
+    font-family:"PingFang SC";
+    font-weight:bold;
+    color:rgba(25,25,25,1);
 }
