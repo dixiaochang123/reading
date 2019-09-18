@@ -12,10 +12,7 @@ export default class SignIn extends Component {
             seventh_days:7
 
         };
-        // this.onRightClick = this.onRightClick.bind(this)
     }
-
-    
 
     render() {
         return (<div className='content'>
@@ -28,16 +25,22 @@ export default class SignIn extends Component {
             >签到有礼</NavBar>
             {/* 签到规则跳转覆盖 */}
             <div className={style.onRightClick} onClick={()=>this.props.history.push('/signrule') }></div>
+            <div style={{height:".36rem"}}></div>
             {/* 已连续签到 */}
             <div className={style.continuity}>
                 <p>已连续签到</p>
                 <p><span>0</span><span>0</span><span>{this.state.seventh_days}</span>天</p>
                 <p>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
-                <span className={style.radius}></span>
-                <span className={style.radius}></span>
-                <span className={style.radius}></span>
             </div>
+            {/* 弹框 */}
+            <div className={style.dialog}>
+                <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
+                <p className={style.dialog_nth2_p}><span>20</span>积分</p>
+                <button>赚取更多积分</button>
+            </div>
+            <div className={style.mode}></div>
             <p className={style.tody}>2019年9月</p>
+            {/* <Calendar /> */}
 
         </div>)
     }
