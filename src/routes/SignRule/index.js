@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, Flex } from 'antd-mobile';
 import style from './index.less'
-import creatHistory from 'history/createHashHistory'
+// import creatHistory from 'history/createHashHistory'
+const creatHistory = require("history").createHashHistory;
 const history = creatHistory();
 console.log(style)
 
