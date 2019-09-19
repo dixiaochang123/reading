@@ -1,10 +1,33 @@
-.content {
-    background-color: red;
+
+:global(.content) {
+    height: 100vh;
 }
-#fx {
-    width: 16px;
+:global(.content_text) {
+    height: calc(100% - (45px));
+    padding:0 15px;
+}
+:global(.catalog) {
+    height: 100%;
+    padding:0 15px;
+    width: 3.19rem;
+    border:solid 1px red;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 .footer {
+    box-sizing: border-box;
     border: solid 1px red;
-    height: 50px;
+    height: .64rem;
+    width: 100%;
+    position: fixed;
+    bottom: -0.64rem;
+    display: flex;
+    justify-content: space-around;
+    .ml,.yd,.sz {
+        display: flex;
+        flex-direction:column;
+        justify-content: space-around;
+        text-align:center;
+    }
 }

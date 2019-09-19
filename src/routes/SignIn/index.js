@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, Flex } from 'antd-mobile';
 import style from './index.less'
-import creatHistory from 'history/createHashHistory'
-const history = creatHistory();
 
 export default class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
             gold_coin:20,
-            seventh_days:7
+            seventh_days:7,
+            dialogIsShow:true
 
         };
     }
 
     render() {
+        let { dialogIsShow } = this.state;
         return (<div className='content'>
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
                 rightContent={"签到规则"}
                 className='navbar'
             >签到有礼</NavBar>
@@ -33,12 +32,12 @@ export default class SignIn extends Component {
                 <p>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
             </div>
             {/* 弹框 */}
-            <div className={style.dialog}>
+            <div className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
                 <p className={style.dialog_nth2_p}><span>20</span>积分</p>
-                <button>赚取更多积分</button>
+                <button onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button>
             </div>
-            <div className={style.mode}></div>
+            <div className={dialogIsShow ? style.mode : style.hide}></div>
             <p className={style.tody}>2019年9月</p>
             {/* <Calendar /> */}
 

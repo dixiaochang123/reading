@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import ProductList from '../components/ProductList';
 import { NavBar, Icon } from 'antd-mobile';
-import style from './Products.less'
+// import style from './Products.less'
 
 const Products = ({ dispatch, products }) => {
   console.log(products)
