@@ -10,21 +10,22 @@ import style from './index.less'
 
 import IconMl from '../../images/read/ml2.png';
 import IconYd from '../../images/read/yd2.png';
+import IconBt from '../../images/read/bt2.png';
 import IconSz from '../../images/read/sz2.png';
-console.log(IconMl)
 
-console.log(style)
+import { query, chapter_list, chapter_text } from '../../services/example';
+console.log(chapter_text)
 
 export default class Reader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content_text:'你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，',
+      content_text:'1你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，',
       footer_show: false,
       catalog_show: false,
       catalog:{
         name:'从仙侠世界开始的转生',
-        list:[{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'},{text:'第1章 大梦一场十二载1'}]
+        list:[]
       },
       active:0,
       dayAndNight:'夜读',
@@ -34,7 +35,8 @@ export default class Reader extends Component {
       },
       sitting_show:false,
       content_textFontSize:14,
-      bgActive:"1"
+      bgActive:"1",
+      FyActive:"1"
 
     };
     this.handleClick = this.handleClick.bind(this);
@@ -45,6 +47,28 @@ export default class Reader extends Component {
     this.handleClickSitting = this.handleClickSitting.bind(this);//设置
     this.handleClickFontsize = this.handleClickFontsize.bind(this);//字体大小
     this.handleClickBg = this.handleClickBg.bind(this);//背景设置
+    this.handleClickFy = this.handleClickFy.bind(this);//背景设置
+  }
+
+  componentDidMount() {
+    // query().then(res=>{
+    //   console.log(res)
+    // })
+    let book_id = 1000002;
+    chapter_list(book_id).then(res=>{
+      let {code,data} = res.data;
+      console.log(code,data)
+      // content_url: "https://www.youkongkanshu.com/huagerr/chapter/1000002_387_48361.txt"
+      // id: 1000057
+      // title: "第1章 引子"
+      let catalog_list = data.map(item=>item.title)
+      this.setState({
+        catalog: {
+          list:data,
+          name:this.state.catalog.name
+        } 
+      })
+    })
   }
 
   handleClick(event) {
@@ -92,10 +116,18 @@ export default class Reader extends Component {
     // e.stopPropagation() // 能够阻止div.app的触发
     // e.nativeEvent.stopImmediatePropagation(); // 能够阻止document的触发
     // e.nativeEvent.stopPropagation(); // 什么都阻止不了
+    e.persist()
+    console.log(e)
     this.setState({
       active:e.target.id,
       catalog_show: !this.state.catalog_show
+    },function() {
+      chapter_text().then(res=>{
+        // let {code,data} = res.data;
+        console.log(res)
+      })
     })
+
   }
 
   handleClickDayAndNight() {
@@ -185,20 +217,36 @@ export default class Reader extends Component {
           bgActive:"5"
         })
       break;
-      // default:
-      //     this.setState({
-      //       dayAndNightStyle: {
-      //         backgroundColor: "#F8F8EC",
-      //         Color: "#222222"
-      //       }
-      //     })
+    }
+
+  }
+
+  handleClickFy(e) {
+    e.stopPropagation() // 能够阻止div.app的触发
+    e.persist()
+    switch(e.target.id) {
+      case "1":
+        this.setState({
+          FyActive:"1"
+        })
+      break;
+      case "2":
+        this.setState({
+          FyActive:"2"
+        })
+      break;
+      case "3":
+        this.setState({
+          FyActive:"3"
+        })
+      break;
     }
 
   }
 
 
   render() {
-    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive } = this.state;
+    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive } = this.state;
     return (<div className="content">
       <NavBar
         mode="light"
@@ -216,7 +264,7 @@ export default class Reader extends Component {
           {
             catalog.list.map((item,index)=>{
               return (
-                <p key={index} id={index} className={active==index ? style.active : ''}>{item.text}</p>
+                <p data-url={item.content_url} key={item.id} id={item.id} className={active==item.id ? style.active : ''}>{item.title}</p>
               )
             })
           }
@@ -233,7 +281,7 @@ export default class Reader extends Component {
           <span>目录</span>
         </div>
         <div className={style.yd} onClick={this.handleClickDayAndNight}>
-          <span><img src={IconYd} style={{width:"0.225rem",height:"0.2rem"}} alt=""/></span>
+          <span><img src={ dayAndNight =='白天' ? IconBt :IconYd} style={{width:"0.225rem",height:"0.2rem"}} alt=""/></span>
           <span>{dayAndNight}</span>
         </div>
         <div className={style.sz} onClick={this.handleClickSitting}>
@@ -263,10 +311,10 @@ export default class Reader extends Component {
         </div>
         <div>
           <span className={style.firstName}>翻页</span>
-          <div className={style.fy}>
-            <span>仿真</span>
-            <span>平移</span>
-            <span>上下</span>
+          <div className={style.fy} onClick={this.handleClickFy}>
+            <span className={FyActive == "1" ? style.FyActive : ''} id="1">仿真</span>
+            <span className={FyActive == "2" ? style.FyActive : ''} id="2">平移</span>
+            <span className={FyActive == "3" ? style.FyActive : ''} id="3">上下</span>
           </div>
         </div>
 
