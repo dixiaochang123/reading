@@ -1,0 +1,122 @@
+:global(h3),:global(p)  {
+    margin: 0;
+    padding:0;
+}
+:global(content) {
+    background:rgba(248,248,248,1);
+}
+.notOpen {
+    height: .8rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .headPort {
+        width: .4rem;
+        height: .4rem;
+        border:solid 1px red;
+        margin:0 .1rem 0 .15rem;
+        border-radius: 50%;
+    }
+    .tip {
+        font-size:12px;
+        font-weight:500;
+        color:rgba(59,50,50,1);
+        p {
+            font-size:14px;
+            font-weight:bold;
+            color:rgba(59,50,50,1);
+            padding-top: .05rem;
+        }
+    }
+}
+.monthVip {
+    height: 2.54rem;
+    background-color: #fff;
+    padding:0 .15rem;
+    h3 {
+        height: .56rem;
+        line-height: .56rem;
+        font-size:17px;
+        font-weight:bold;
+        color:rgba(59,50,50,1);
+    }
+    .months {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .monthList {
+            width:1.67rem;
+            height:.8rem;
+            background:rgba(248,248,248,1);
+            border:0.5px solid rgba(59, 50, 50, 1);
+            border-radius:4px;
+            margin-bottom:.1rem;
+            padding:.13rem .07rem .1rem .16rem;
+            p {
+                font-size:14px;
+                font-weight:500;
+                color:rgba(59,50,50,1);
+                display: flex;
+                justify-content: space-between;
+                &:nth-of-type(2) {
+                    font-size:14px;
+                    font-weight:bold;
+                    color:rgba(59,50,50,1);
+                    height:.3rem;
+                    line-height: .3rem;
+                }
+                &:nth-of-type(3) {
+                    font-size:9px;
+                    font-weight:500;
+                    text-decoration:line-through;
+                    color:rgba(59,50,50,1);
+                    opacity:0.49;
+                }
+                span {
+                    &:nth-of-type(2) {
+                        width:.16rem;
+                        height:.16rem;
+                        background:rgba(248,248,248,1);
+                        border:0.5px solid rgba(59,50,50,1);
+                        border-radius:50%;
+                    }
+                }
+            }
+        } 
+    }
+}
+.privilege {
+    height: 1.5rem;
+    background-color: #fff;
+    margin:0.08rem 0;
+    padding:0 .15rem;
+    .privilegeHead {
+        height: .64rem;
+        line-height: .64rem;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .lineBorder {
+            height:1px;
+            width: 100%;
+            background:linear-gradient(45deg,rgba(59,50,50,1),rgba(105,94,88,1));
+            
+        }
+        h3 {
+            font-size:17px;
+            font-weight:bold;
+            color:rgba(25,25,25,1);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            width: .95rem;
+            background-color: #fff;
+        }
+    }
+    .privilegeIcon {
+        display: flex;
+        
+    }
+}
