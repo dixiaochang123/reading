@@ -8,6 +8,7 @@ import OlympicSpirit from './routes/OlympicSpirit/index';//奥运
 import LiteraryNews from './routes/LiteraryNews/index';//文学
 import SignIn from './routes/SignIn/index';//签到
 import SignRule from './routes/SignRule/index';//签到规则
+import GoldCoin from './routes/GoldCoin/index';//签到规则
 
 const { ConnectedRouter } = routerRedux;
 
@@ -23,6 +24,7 @@ function RouterConfig({ history }) {
         <Route path="/products" exact component={Products} />
         <Route path="/signin" exact component={SignIn} />
         <Route path="/signrule" exact component={SignRule} />
+        <Route path="/goldcoin" exact component={GoldCoin} />
       </Switch>
     </ConnectedRouter>
   );

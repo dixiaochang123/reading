@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, Flex } from 'antd-mobile';
+import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 
 export default class SignIn extends Component {
