@@ -57,7 +57,7 @@ export default class Reader extends Component {
     let book_id = 1000002;
     chapter_list(book_id).then(res=>{
       let {code,data} = res.data;
-      console.log(code,data)
+      // console.log(code,data)
       // content_url: "https://www.youkongkanshu.com/huagerr/chapter/1000002_387_48361.txt"
       // id: 1000057
       // title: "第1章 引子"
@@ -100,6 +100,11 @@ export default class Reader extends Component {
   }
 
   handleClickCatalog() {
+    let ch = document.getElementById('chapter').clientHeight;
+    let oh= document.getElementById("chapter0").offsetHeight;
+    // console.log(ch,oh)
+    document.getElementById('chapter').scrollTop = (this.state.chapterIdex-10)*oh-10;
+    console.log(111111,document.getElementById('chapter').scrollTop)
     this.setState({
       footer_show: !this.state.footer_show,
       catalog_show: !this.state.catalog_show
@@ -119,13 +124,15 @@ export default class Reader extends Component {
     e.persist()
     console.log(e)
     this.setState({
-      active:e.target.id,
-      catalog_show: !this.state.catalog_show
+      active:e.target.dataset.id,
+      // catalog_show: !this.state.catalog_show,
+      catalog_show: true,
+      chapterIdex: parseInt(e.target.dataset.index)
     },function() {
-      chapter_text().then(res=>{
-        // let {code,data} = res.data;
-        console.log(res)
-      })
+      // chapter_text().then(res=>{
+      //   // let {code,data} = res.data;
+      //   console.log(res)
+      // })
     })
 
   }
@@ -155,7 +162,6 @@ export default class Reader extends Component {
   handleClickFontsize(e) {
     e.stopPropagation() // 能够阻止div.app的触发
     e.persist()
-    console.log(e,e.target.id)
     if(e.target.id=="2") {
       this.setState({
         content_textFontSize: this.state.content_textFontSize+1
@@ -248,11 +254,11 @@ export default class Reader extends Component {
   render() {
     let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive } = this.state;
     return (<div className="content">
-      <NavBar
+      {/* <NavBar
         mode="light"
         icon={<Icon type="left" />}
         className='navbar'
-      ></NavBar>
+      ></NavBar> */}
       <div className={style.content_text} style={dayAndNightStyle} onClick={this.handleClick}>
         <p style={{fontSize:content_textFontSize+'px'}}>{content_text}</p>
       </div>
@@ -260,11 +266,11 @@ export default class Reader extends Component {
       {/* 左侧目录 */}
       <div className={!catalog_show ? style.catalog : style.catalog_show}>
         <h2>{catalog.name}</h2>
-        <div className={style.chapter} onClick={this.handleClickChapter}>
+        <div id="chapter"  className={style.chapter} onClick={this.handleClickChapter}>
           {
             catalog.list.map((item,index)=>{
               return (
-                <p data-url={item.content_url} key={item.id} id={item.id} className={active==item.id ? style.active : ''}>{item.title}</p>
+                <p id={'chapter'+index} data-index={index} data-url={item.content_url} data-id={item.id} key={item.id} index={item.id} className={active==item.id ? style.active : ''}>{item.title}</p>
               )
             })
           }

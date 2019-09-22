@@ -6,9 +6,11 @@ export default class Recharge extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            monthListActive:1
+            monthListActive:1,
+            paymentType:1
         };
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
+        this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
     }
 
     handleClickMonthListActive(id) {
@@ -19,8 +21,14 @@ export default class Recharge extends Component {
 
     }
 
+    handleClickPaymentTypeActive(id) {
+        this.setState({
+            paymentType:id
+        })
+    }
+
     render() {
-        let { monthListActive } = this.state;
+        let { monthListActive,paymentType } = this.state;
         return (<div className='content'>
             <NavBar
                 mode="light"
@@ -59,6 +67,9 @@ export default class Recharge extends Component {
                         <p>原价￥208</p>
                     </div>
                 </div>
+                <h3>选择支付方式</h3>
+                <p className={style.p1} onClick={this.handleClickPaymentTypeActive.bind(this,1)}><span>微信支付</span><span className={paymentType==1 ? style.paymentType : ''}></span></p>
+                <p className={style.p2} onClick={this.handleClickPaymentTypeActive.bind(this,2)}><span>支付宝支付</span><span className={paymentType==2 ? style.paymentType : ''}></span></p>
             </div>
 
             <div className={style.privilege}>
@@ -93,9 +104,10 @@ export default class Recharge extends Component {
                 <p>2.支付完成后，服务在2小时内生效。</p>
                 <p>3.其他内容待完善。</p>
             </div>
+            <div style={{height:'0.7rem'}}></div>
             {/* 立即支付 */}
             <div className={style.payment}>
-                <div><span className={style.gj}>共计</span><span>￥{10}</span></div>
+                <div><span className={style.gj}>共计 </span><span> ￥{10}</span></div>
                 <Button className="btn" type="inline primary" size="large" inline>立即支付</Button>
             </div>
 
