@@ -6,8 +6,13 @@ export default class Recharge extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            monthListActive:1
         };
+        this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
+    }
+
+    handleClickMonthListActive(e) {
+
     }
 
     render() {
@@ -28,8 +33,8 @@ export default class Recharge extends Component {
             </div>
             <div className={style.monthVip}>
                 <h3>付费开通</h3>
-                <div className={style.months}>
-                    <div className={style.monthList}>
+                <div className={style.months} onClick={this.handleClickMonthListActive}>
+                    <div id="1" className={style.monthList +' '+ style.monthListActive}>
                         <p>
                             <span>1个月</span>
                             <span></span>
@@ -37,7 +42,7 @@ export default class Recharge extends Component {
                         <p>￥10</p>
                         <p>原价￥12.8</p>
                     </div>
-                    <div className={style.monthList}>
+                    <div id="2" className={style.monthList}>
                         <p>
                             <span>3个月</span>
                             <span></span>
@@ -45,7 +50,7 @@ export default class Recharge extends Component {
                         <p>￥28</p>
                         <p>原价￥58</p>
                     </div>
-                    <div className={style.monthList}>
+                    <div id="3" className={style.monthList}>
                         <p>
                             <span>6个月</span>
                             <span></span>
@@ -53,7 +58,7 @@ export default class Recharge extends Component {
                         <p>￥60</p>
                         <p>原价￥78</p>
                     </div>
-                    <div className={style.monthList}>
+                    <div id="4" className={style.monthList}>
                         <p>
                             <span>12个月</span>
                             <span></span>
