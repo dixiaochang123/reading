@@ -1,4 +1,4 @@
-:global(h3),:global(p)  {
+:global(h3),:global(h6),:global(p)  {
     margin: 0;
     padding:0;
 }
@@ -135,6 +135,62 @@
     }
     .privilegeIcon {
         display: flex;
-        
     }
+}
+
+.tips {
+    height: 1.04rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:0 .15rem 0.05rem;
+    h6 {
+        font-size:13px;
+        font-weight:500;
+        color:rgba(122,122,122,1);
+        height:.42rem;
+        line-height: .42rem;
+    }
+    p {
+        font-size:12px;
+        font-weight:500;
+        color:rgba(176,176,176,1);
+    }
+}
+
+.payment {
+    height: .7rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 .15rem;
+    position: absolute;
+    bottom: 0;
+    div {
+        font-size:18px;
+        font-weight:bold;
+        color:rgba(25,25,25,1);
+        .gj {
+            font-size:14px;
+            font-weight:500;
+            color:rgba(122,122,122,1);
+        }
+    }
+
+    :global{
+        .btn {
+            width:1.7rem;;
+            height:.42rem;
+            background:rgba(240,213,154,1);
+            opacity:0.84;
+            border-radius:42px;
+            font-size:16px;
+            font-weight:bold;
+            color:rgba(59,50,50,1);
+        }
+    }
+        
+
 }

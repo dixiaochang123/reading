@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar, Icon, Button } from 'antd-mobile';
 import style from './index.less'
 
 export default class Recharge extends Component {
@@ -11,12 +11,16 @@ export default class Recharge extends Component {
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
     }
 
-    handleClickMonthListActive(e) {
+    handleClickMonthListActive(id) {
+        console.log(id)
+        this.setState({
+            monthListActive:id
+        })
 
     }
 
     render() {
-        // let {  } = this.state;
+        let { monthListActive } = this.state;
         return (<div className='content'>
             <NavBar
                 mode="light"
@@ -33,36 +37,24 @@ export default class Recharge extends Component {
             </div>
             <div className={style.monthVip}>
                 <h3>付费开通</h3>
-                <div className={style.months} onClick={this.handleClickMonthListActive}>
-                    <div id="1" className={style.monthList +' '+ style.monthListActive}>
-                        <p>
-                            <span>1个月</span>
-                            <span></span>
-                        </p>
+                <div className={style.months}>
+                    <div className={style.monthList +' '+ (monthListActive==1 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,1)}>
+                        <p><span>1个月</span><span></span></p>
                         <p>￥10</p>
                         <p>原价￥12.8</p>
                     </div>
-                    <div id="2" className={style.monthList}>
-                        <p>
-                            <span>3个月</span>
-                            <span></span>
-                        </p>
+                    <div className={style.monthList +' '+ (monthListActive==2 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,2)}>
+                        <p><span>3个月</span><span></span></p>
                         <p>￥28</p>
                         <p>原价￥58</p>
                     </div>
-                    <div id="3" className={style.monthList}>
-                        <p>
-                            <span>6个月</span>
-                            <span></span>
-                        </p>
+                    <div className={style.monthList +' '+ (monthListActive==3 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,3)}>
+                        <p><span>6个月</span><span></span></p>
                         <p>￥60</p>
                         <p>原价￥78</p>
                     </div>
-                    <div id="4" className={style.monthList}>
-                        <p>
-                            <span>12个月</span>
-                            <span></span>
-                        </p>
+                    <div className={style.monthList +' '+ (monthListActive==4 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,4)}>
+                        <p><span>12个月</span><span></span></p>
                         <p>￥168</p>
                         <p>原价￥208</p>
                     </div>
@@ -93,6 +85,18 @@ export default class Recharge extends Component {
                     </div>
 
                 </div>
+            </div>
+            {/* 温馨提示 */}
+            <div className={style.tips}>
+                <h6>温馨提示</h6>
+                <p>1.购买即视为同意《有空看书会员服务协议》。</p>
+                <p>2.支付完成后，服务在2小时内生效。</p>
+                <p>3.其他内容待完善。</p>
+            </div>
+            {/* 立即支付 */}
+            <div className={style.payment}>
+                <div><span className={style.gj}>共计</span><span>￥{10}</span></div>
+                <Button className="btn" type="inline primary" size="large" inline>立即支付</Button>
             </div>
 
 
