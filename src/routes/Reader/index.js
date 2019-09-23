@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LiteraryNews from '../LiteraryNews/index';
-import { NavBar, Icon, Flex } from 'antd-mobile';
+import { NavBar, Icon, Picker,List } from 'antd-mobile';
 // import {
 //   Route,
 //   Link
@@ -47,7 +47,10 @@ export default class Reader extends Component {
     this.handleClickSitting = this.handleClickSitting.bind(this);//设置
     this.handleClickFontsize = this.handleClickFontsize.bind(this);//字体大小
     this.handleClickBg = this.handleClickBg.bind(this);//背景设置
-    this.handleClickFy = this.handleClickFy.bind(this);//背景设置
+    this.handleClickFy = this.handleClickFy.bind(this);//翻页效果切换
+    this.handleClickSigh = this.handleClickSigh.bind(this);//报错
+    this.onChangeSigh = this.onChangeSigh.bind(this);//报错
+
   }
 
   componentDidMount() {
@@ -250,9 +253,18 @@ export default class Reader extends Component {
 
   }
 
+  handleClickSigh() {
+
+  }
+  onChangeSigh(val) {
+    console.log(val)
+    
+  }
+
 
   render() {
     let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive } = this.state;
+
     return (<div className="content">
       {/* <NavBar
         mode="light"
@@ -262,6 +274,12 @@ export default class Reader extends Component {
       <div className={style.content_text} style={dayAndNightStyle} onClick={this.handleClick}>
         <p style={{fontSize:content_textFontSize+'px'}}>{content_text}</p>
       </div>
+
+      {/*  */}
+      {/* <div class={style.sigh} onClick={this.handleClickSigh}></div> */}
+      <Picker title="请选择错误类型" data={[{value:'错别字纠正',label:'错别字纠正'},{value:'段落错误',label:'段落错误'},{value:'章节报错',label:'章节报错'}]} onChange={this.onChangeSigh} cols={1} className="forss">
+        <List.Item arrow="horizontal"><div class={style.sigh} onClick={this.handleClickSigh}></div></List.Item>
+      </Picker>
 
       {/* 左侧目录 */}
       <div className={!catalog_show ? style.catalog : style.catalog_show}>

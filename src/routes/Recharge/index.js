@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { NavBar, Icon, Button } from 'antd-mobile';
 import style from './index.less'
 
+import IconZ62 from '../../images/recharge/z62.png'
+import IconSbjb2 from '../../images/recharge/sbjb2.png'
+import IconQdtq2 from '../../images/recharge/qdtq2.png'
+import IconZx2 from '../../images/recharge/zx2.png'
+
 export default class Recharge extends Component {
     constructor(props) {
         super(props);
@@ -79,19 +84,19 @@ export default class Recharge extends Component {
                 </div>
                 <div className={style.privilegeIcon}>
                     <div>
-                        <img src="" alt=""/>
+                        <img src={IconZ62} alt=""/>
                         <p>全场免广告</p>
                     </div>
                     <div>
-                        <img src="" alt=""/>
+                        <img src={IconSbjb2} alt=""/>
                         <p>双倍金币</p>
                     </div>
                     <div>
-                        <img src="" alt=""/>
+                        <img src={IconQdtq2} alt=""/>
                         <p>签到特权</p>
                     </div>
                     <div>
-                        <img src="" alt=""/>
+                        <img src={IconZx2} alt=""/>
                         <p>尊享图标</p>
                     </div>
 
