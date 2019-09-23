@@ -14,7 +14,8 @@ import IconBt from '../../images/read/bt2.png';
 import IconSz from '../../images/read/sz2.png';
 
 import { query, chapter_list, chapter_text } from '../../services/example';
-console.log(chapter_text)
+let fs = require("fs");
+console.log(fs)
 
 export default class Reader extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ export default class Reader extends Component {
     // query().then(res=>{
     //   console.log(res)
     // })
-    let book_id = 1000002;
+    let book_id = 1000001;
     chapter_list(book_id).then(res=>{
       let {code,data} = res.data;
       // console.log(code,data)
@@ -103,9 +104,9 @@ export default class Reader extends Component {
   }
 
   handleClickCatalog() {
-    let ch = document.getElementById('chapter').clientHeight;
-    let oh= document.getElementById("chapter0").offsetHeight;
-    // console.log(ch,oh)
+    // let ch = document.getElementById('chapter').clientHeight;
+    let chapter= document.getElementById("chapter");
+    let oh = chapter.getElementsByTagName("p")[0].offsetHeight;
     document.getElementById('chapter').scrollTop = (this.state.chapterIdex-10)*oh-10;
     console.log(111111,document.getElementById('chapter').scrollTop)
     this.setState({
@@ -128,10 +129,10 @@ export default class Reader extends Component {
     console.log(e)
     this.setState({
       active:e.target.dataset.id,
-      // catalog_show: !this.state.catalog_show,
-      catalog_show: true,
+      catalog_show: !this.state.catalog_show,
       chapterIdex: parseInt(e.target.dataset.index)
     },function() {
+
       // chapter_text().then(res=>{
       //   // let {code,data} = res.data;
       //   console.log(res)
