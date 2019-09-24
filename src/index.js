@@ -1,12 +1,12 @@
 import dva from 'dva';
 import './index.css';
 // import { createBrowserHistory as createHistory } from 'history';
-const createHistory  = require('history').createBrowserHistory;
+// const createHistory  = require('history').createBrowserHistory;
 
 // 1. Initialize
 // const app = dva();
 const app = dva({
-    history: createHistory(),
+    // history: createHistory(),
     initialState: {
         products: [
             { name: 'dva', id: 1,key:1},

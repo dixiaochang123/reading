@@ -132,11 +132,20 @@ export default class Reader extends Component {
       catalog_show: !this.state.catalog_show,
       chapterIdex: parseInt(e.target.dataset.index)
     },function() {
-
-      // chapter_text().then(res=>{
-      //   // let {code,data} = res.data;
-      //   console.log(res)
-      // })
+      // readFile(filename){
+      //   var fso = new ActiveXObject("Scripting.FileSystemObject");
+      //   var f = fso.OpenTextFile(filename,1);
+      //   var s = "";
+      //   while (!f.AtEndOfStream)
+      //   s += f.ReadLine()+"\n";
+      //   f.Close();
+      //   return s;
+      // }
+      console.log(e.target.dataset.url)
+      chapter_text(e.target.dataset.url).then(res=>{
+        // let {code,data} = res.data;
+        console.log(res)
+      })
     })
 
   }
@@ -302,15 +311,15 @@ export default class Reader extends Component {
         {/* <Link to={'/literarynews'}>ceshi</Link>
               <Route path='/literarynews' component={LiteraryNews}/> */}
         <div className={style.ml} onClick={this.handleClickCatalog}>
-          <span><img src={IconMl} style={{width:"0.2rem",height:"0.17rem"}} alt=""/></span>
+          <span><img src={IconMl} style={{width:"20px",height:"17px"}} alt=""/></span>
           <span>目录</span>
         </div>
         <div className={style.yd} onClick={this.handleClickDayAndNight}>
-          <span><img src={ dayAndNight =='白天' ? IconBt :IconYd} style={{width:"0.225rem",height:"0.2rem"}} alt=""/></span>
+          <span><img src={ dayAndNight =='白天' ? IconBt :IconYd} style={{width:"22.5px",height:"20px"}} alt=""/></span>
           <span>{dayAndNight}</span>
         </div>
         <div className={style.sz} onClick={this.handleClickSitting}>
-          <span><img src={IconSz} style={{width:"0.225rem",height:"0.2rem"}} alt=""/></span>
+          <span><img src={IconSz} style={{width:"22.5px",height:"20px"}} alt=""/></span>
           <span>设置</span>
         </div>
       </div>
