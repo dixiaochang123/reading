@@ -5,7 +5,6 @@ import { NavBar, Icon, Picker,List } from 'antd-mobile';
 //   Route,
 //   Link
 // } from 'react-router-dom';
-// import './index.less'
 import style from './index.less'
 
 import IconMl from '../../images/read/ml2.png';
@@ -14,14 +13,15 @@ import IconBt from '../../images/read/bt2.png';
 import IconSz from '../../images/read/sz2.png';
 
 import { query, chapter_list, chapter_text } from '../../services/example';
-let fs = require("fs");
-console.log(fs)
+import { node } from 'prop-types';
+let http = require("http");
+console.log(http)
 
 export default class Reader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content_text:'1你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，你好，',
+      content_text:'',
       footer_show: false,
       catalog_show: false,
       catalog:{
@@ -83,7 +83,7 @@ export default class Reader extends Component {
     if (e.clientX <= 125) {
       console.log("上一页")
       this.setState({
-        content_text: "呵呵，呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵呵"
+        content_text:''
       })
     }
     if (e.clientX > 125 && e.clientX < 250) {
@@ -95,7 +95,7 @@ export default class Reader extends Component {
     if (e.clientX >= 250) {
       console.log("下一页")
       this.setState({
-        content_text: "广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。广泛地是。"
+        content_text:''
       })
     }
     this.setState({
@@ -132,20 +132,41 @@ export default class Reader extends Component {
       catalog_show: !this.state.catalog_show,
       chapterIdex: parseInt(e.target.dataset.index)
     },function() {
-      // readFile(filename){
-      //   var fso = new ActiveXObject("Scripting.FileSystemObject");
-      //   var f = fso.OpenTextFile(filename,1);
-      //   var s = "";
-      //   while (!f.AtEndOfStream)
-      //   s += f.ReadLine()+"\n";
-      //   f.Close();
-      //   return s;
-      // }
-      console.log(e.target.dataset.url)
+      // fetch
       chapter_text(e.target.dataset.url).then(res=>{
-        // let {code,data} = res.data;
-        console.log(res)
+        let {code,data} = res.data;
+        // console.log(data)
+        // mainfunctiondescription.replace('     ', '\n'); style={{textIndent:'1em'}}
+        // let dataNew = data.split('↵').map((item,index )=> (<p key={index} style={{fontSize:this.state.content_textFontSize+'px'}}>{item}</p>));
+        // let dataNew = data.replace(/[\n\r]/g,'<br>')
+        let dataNew=data.replace(/\r/g,"<br>");
+        // dataNew = dataNew.replace(/<br><br>/, "<br>")
+        // dataNew = dataNew.replace(/\n/g,"<br>");
+        // let dataNew=data.replace(/\r/g,"<br>");
+        // let dataNew=dataNew.replace(/\n/g,"<br>");
+        console.log(dataNew)
+
+        this.setState({
+          content_text:dataNew
+        })
       })
+      let url = `http://develop-ykks-book.cn-bj.ufileos.com/${e.target.dataset.url}`;
+      // jQuery
+      // $.get(url,function(res){
+      //   console.log(res);
+      // });
+      // Node
+      // let a = 1;
+      // http.get(url, function (res) {
+      //   res.on('data', function (data) {
+      //     console.log(data)
+      //   });
+      //   res.on('end', function () {
+      //     // console.log(html);
+      //   });
+      // }).on('error', function () {
+      //   console.log('获取数据错误',this);
+      // });
     })
 
   }
@@ -282,14 +303,15 @@ export default class Reader extends Component {
         className='navbar'
       ></NavBar> */}
       <div className={style.content_text} style={dayAndNightStyle} onClick={this.handleClick}>
-        <p style={{fontSize:content_textFontSize+'px'}}>{content_text}</p>
+        <p style={{fontSize:content_textFontSize+'px',lineHeight: '25px',textIndent:'1em'}} dangerouslySetInnerHTML={{ __html: content_text}}></p>
+        {/* {content_text} */}
       </div>
 
       {/*  */}
       {/* <div class={style.sigh} onClick={this.handleClickSigh}></div> */}
-      <Picker title="请选择错误类型" data={[{value:'错别字纠正',label:'错别字纠正'},{value:'段落错误',label:'段落错误'},{value:'章节报错',label:'章节报错'}]} onChange={this.onChangeSigh} cols={1} className="forss">
+      {/* <Picker title="请选择错误类型" data={[{value:'错别字纠正',label:'错别字纠正'},{value:'段落错误',label:'段落错误'},{value:'章节报错',label:'章节报错'}]} onChange={this.onChangeSigh} cols={1} className="forss">
         <List.Item arrow="horizontal"><div class={style.sigh} onClick={this.handleClickSigh}></div></List.Item>
-      </Picker>
+      </Picker> */}
 
       {/* 左侧目录 */}
       <div className={!catalog_show ? style.catalog : style.catalog_show}>

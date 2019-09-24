@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { routerRedux, Route, Switch } from 'dva/router';
 import IndexPage from './routes/IndexPage';//首页
 import Products from './routes/Products';//新建页
 
@@ -11,11 +11,11 @@ import SignRule from './routes/SignRule/index';//签到规则
 import GoldCoin from './routes/GoldCoin/index';//我的金币
 import Recharge from './routes/Recharge/index';//会员充值
 
-// const { ConnectedRouter } = routerRedux;
+const { ConnectedRouter } = routerRedux;
 
 function RouterConfig({ history }) {
   return (
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <Switch>
         {/* <Route path="/" exact component={IndexPage} /> */}
         <Route path="/" exact component={Reader} />
@@ -28,7 +28,7 @@ function RouterConfig({ history }) {
         <Route path="/goldcoin" exact component={GoldCoin} />
         <Route path="/recharge" exact component={Recharge} />
       </Switch>
-    </Router>
+    </ConnectedRouter>
   );
 }
 
