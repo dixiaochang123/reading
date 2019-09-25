@@ -37,7 +37,8 @@ export default class Reader extends Component {
       sitting_show:false,
       content_textFontSize:14,
       bgActive:"1",
-      FyActive:"1"
+      FyActive:"1",
+      errtypeShow:false
 
     };
     this.handleClick = this.handleClick.bind(this);
@@ -51,6 +52,8 @@ export default class Reader extends Component {
     this.handleClickFy = this.handleClickFy.bind(this);//翻页效果切换
     this.handleClickSigh = this.handleClickSigh.bind(this);//报错
     this.onChangeSigh = this.onChangeSigh.bind(this);//报错
+    this.handleClickCloseErr = this.handleClickCloseErr.bind(this);//报错弹框取消
+    this.handleClickErrSelectd = this.handleClickErrSelectd.bind(this);//报错弹框取消
 
   }
 
@@ -285,16 +288,33 @@ export default class Reader extends Component {
   }
 
   handleClickSigh() {
+    this.setState({
+      footer_show:!this.state.footer_show,
+      errtypeShow:true
+    })
 
   }
   onChangeSigh(val) {
     console.log(val)
     
   }
+  handleClickCloseErr() {
+    this.setState({
+      errtypeShow:false
+    })
+
+
+  }
+  handleClickErrSelectd() {
+    this.setState({
+      errtypeShow:false
+    })
+
+  }
 
 
   render() {
-    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive } = this.state;
+    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive,errtypeShow } = this.state;
 
     return (<div className="content">
       {/* <NavBar
@@ -308,10 +328,20 @@ export default class Reader extends Component {
       </div>
 
       {/*  */}
-      {/* <div class={style.sigh} onClick={this.handleClickSigh}></div> */}
-      {/* <Picker title="请选择错误类型" data={[{value:'错别字纠正',label:'错别字纠正'},{value:'段落错误',label:'段落错误'},{value:'章节报错',label:'章节报错'}]} onChange={this.onChangeSigh} cols={1} className="forss">
-        <List.Item arrow="horizontal"><div class={style.sigh} onClick={this.handleClickSigh}></div></List.Item>
-      </Picker> */}
+      <div class={!footer_show ? style.sighHide : style.sighShow} onClick={this.handleClickSigh}></div>
+      {/* 报错类型选择框弹出 */}
+      <div className={errtypeShow ? style.errtypeShow : style.errtypeHide}>
+        <div className={style.erroption}>
+          <h3>请选择错误类型</h3>
+          <div className={style.option} onClick={this.handleClickErrSelectd}>
+            <p>错别字纠正</p>
+            <p>段落错误</p>
+            <p>章节报错</p>
+          </div>
+        </div>
+        <p onClick={this.handleClickCloseErr}>取消</p>
+      </div>
+      <div className={errtypeShow ? style.modal : style.hide} onClick={this.handleClickErrSelectd}></div>
 
       {/* 左侧目录 */}
       <div className={!catalog_show ? style.catalog : style.catalog_show}>
@@ -327,6 +357,8 @@ export default class Reader extends Component {
         </div>
 
       </div>
+
+      {/* 蒙层 */}
       <div className={catalog_show ? style.modal : style.hide} onClick={this.handleClickModal}></div>
 
       <div className={!footer_show ? style.footer : style.footer_show}>
