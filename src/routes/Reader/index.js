@@ -76,6 +76,9 @@ export default class Reader extends Component {
         } 
       })
     })
+    document.addEventListener("selectionchange", function(e) {
+      console.log(e); 
+    });
   }
 
   handleClick(event) {
@@ -305,7 +308,9 @@ export default class Reader extends Component {
 
 
   }
-  handleClickErrSelectd() {
+  handleClickErrSelectd(e) {
+    e.persist()
+    console.log(e.target.id)
     this.setState({
       errtypeShow:false
     })
@@ -334,14 +339,27 @@ export default class Reader extends Component {
         <div className={style.erroption}>
           <h3>请选择错误类型</h3>
           <div className={style.option} onClick={this.handleClickErrSelectd}>
-            <p>错别字纠正</p>
-            <p>段落错误</p>
-            <p>章节报错</p>
+            <p id="1">错别字纠正</p>
+            <p id="2">段落错误</p>
+            <p id="3">章节报错</p>
           </div>
         </div>
         <p onClick={this.handleClickCloseErr}>取消</p>
       </div>
       <div className={errtypeShow ? style.modal : style.hide} onClick={this.handleClickErrSelectd}></div>
+      {/* 错别字纠正 */}
+      <div className={style.wrongFont}>
+        <div>
+          <p className={style.wrongtip}>错别字为</p>
+          <div className={style.fontNew}></div>
+        </div>
+        <div>
+          <p className={style.wrongtip}>更正为</p>
+          <div className={style.fontNew}></div>
+
+        </div>
+
+      </div>
 
       {/* 左侧目录 */}
       <div className={!catalog_show ? style.catalog : style.catalog_show}>
