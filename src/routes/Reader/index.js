@@ -38,7 +38,8 @@ export default class Reader extends Component {
       content_textFontSize:14,
       bgActive:"1",
       FyActive:"1",
-      errtypeShow:false
+      errtypeShow:false,
+      wrongFont:false,//错别字纠正弹框
 
     };
     this.handleClick = this.handleClick.bind(this);
@@ -86,6 +87,9 @@ export default class Reader extends Component {
     e.persist();
     e.passive = false;
     // console.log(document.body.clientWidth,e.clientX)
+    this.setState({
+      wrongFont:false
+    })
     if (e.clientX <= 125) {
       console.log("上一页")
       this.setState({
@@ -96,6 +100,7 @@ export default class Reader extends Component {
       this.setState({
         footer_show: !this.state.footer_show,
         // catalog_show:!this.state.catalog_show
+        // wrongFont:false
       })
     }
     if (e.clientX >= 250) {
@@ -311,6 +316,13 @@ export default class Reader extends Component {
   handleClickErrSelectd(e) {
     e.persist()
     console.log(e.target.id)
+    switch(e.target.id) {
+      case "1":
+        this.setState({
+          wrongFont:true
+        })
+      break;
+    }
     this.setState({
       errtypeShow:false
     })
@@ -319,7 +331,7 @@ export default class Reader extends Component {
 
 
   render() {
-    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive,errtypeShow } = this.state;
+    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive,errtypeShow,wrongFont } = this.state;
 
     return (<div className="content">
       {/* <NavBar
@@ -348,7 +360,7 @@ export default class Reader extends Component {
       </div>
       <div className={errtypeShow ? style.modal : style.hide} onClick={this.handleClickErrSelectd}></div>
       {/* 错别字纠正 */}
-      <div className={style.wrongFont}>
+      <div className={ !wrongFont ? style.wrongFont_hide : style.wrongFont_show}>
         <div>
           <p className={style.wrongtip}>错别字为</p>
           <div className={style.fontNew}></div>

@@ -303,12 +303,15 @@
 }
 // 错别字纠正弹框
 .wrongFont {
+    position: fixed;
+    bottom: 0;
     width:100%;
     height:2.12rem;
     background:rgba(0,0,0,1);
     opacity:0.6;
     display: flex;
     text-align: center;
+    transition: bottom 0.5s;
     > div {
         width: 50%;
         p {
@@ -331,4 +334,14 @@
         }
     }
 
+}
+.wrongFont_hide {
+    .wrongFont();
+    bottom: -2.12rem;
+    
+}
+.wrongFont_show {
+    .wrongFont();
+    bottom: 0;
+    
 }
