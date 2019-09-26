@@ -88,13 +88,11 @@ export default class Reader extends Component {
     e.passive = false;
     // console.log(document.body.clientWidth,e.clientX)
     this.setState({
-      wrongFont:false
+      wrongFont:false,
+      footer_show: !this.state.footer_show,
     })
     if (e.clientX <= 125) {
       console.log("上一页")
-      this.setState({
-        content_text:''
-      })
     }
     if (e.clientX > 125 && e.clientX < 250) {
       this.setState({
@@ -105,9 +103,6 @@ export default class Reader extends Component {
     }
     if (e.clientX >= 250) {
       console.log("下一页")
-      this.setState({
-        content_text:''
-      })
     }
     this.setState({
       sitting_show: false
