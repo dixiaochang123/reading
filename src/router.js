@@ -10,6 +10,7 @@ import SignIn from './routes/SignIn/index';//签到
 import SignRule from './routes/SignRule/index';//签到规则
 import GoldCoin from './routes/GoldCoin/index';//我的金币
 import Recharge from './routes/Recharge/index';//会员充值
+import InviteFriends from './routes/InviteFriends/index';//邀请好友
 
 const { ConnectedRouter } = routerRedux;
 
@@ -27,6 +28,7 @@ function RouterConfig({ history }) {
         <Route path="/signrule" exact component={SignRule} />
         <Route path="/goldcoin" exact component={GoldCoin} />
         <Route path="/recharge" exact component={Recharge} />
+        <Route path="/invitefriends" exact component={InviteFriends} />
       </Switch>
     </ConnectedRouter>
   );
