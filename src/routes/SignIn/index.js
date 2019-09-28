@@ -49,7 +49,6 @@ export default class SignIn extends Component {
                 <Calendar
                     {...this.state.config }
                     visible={this.state.show}
-                    onCancel={()=>{this.setState({show:false})}}
                     defaultDate={new Date()}
                     initalMonths={1}
                     infiniteOpt={false}
