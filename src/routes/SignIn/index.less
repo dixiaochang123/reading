@@ -1,4 +1,6 @@
-
+:global(.content) {
+    background-color: #fff;
+}
 :global {
     .navbar {
         .am-navbar-right {
@@ -15,46 +17,47 @@
     right: 0;
 }
 .continuity {
-    width:6.74rem;
-    min-height:3.43rem;
+    width:3.37rem;
+    min-height:1.7rem;
     // border:solid 1px;
     // background:linear-gradient(180deg,rgba(255,101,20,1),rgba(255,169,3,1));
     background: url(../../images/sign_in_max.png) no-repeat center center;
     background-size: 100% 110%;
-    border-radius:.19rem;
+    border-radius:.09rem;
     position: relative;
     margin: 0 auto;
     text-align: center;
     display: flex;
     flex-direction:column;
+    justify-content: space-around;
 
     p {
         color: #fff;
         &:nth-of-type(2) {
-            height: 1.08rem;
-            line-height: 1.08rem;
+            height: 0.54rem;
+            line-height: 0.54rem;
         }
         span {
            display: inline-block;
         //    height: 100%;
         //    width: 0.78rem;
-           padding:.10rem .22rem;
+           padding:.05rem .11rem;
            background-color: #fff;
            color: #FF6514;
-           font-size:.72rem;
+           font-size:.36rem;
            box-shadow:0px 2px 5px 0px rgba(182,78,11,0.86);
-           border-radius:.1rem;
-           margin:0 .16rem;
+           border-radius:.05rem;
+           margin:0 .08rem;
         }
     }
 
     .radius {
-        width: .84rem;
-        height: .84rem;
+        width: .42rem;
+        height: .42rem;
         border-radius: 50%;
         background:linear-gradient(180deg,rgba(255,101,20,1),rgba(255,169,3,1));
         position: absolute;
-        bottom: .64rem;
+        bottom: .32rem;
         left: 0;
     }
 }
@@ -71,8 +74,8 @@
     display: none;
 }
 .dialog {
-    width:5.3rem;
-    height:4.4rem;
+    width:2.56rem;
+    height:2.2rem;
     text-align: center;
     background:rgba(255,255,255,1);
     border-radius:16px;
@@ -85,13 +88,13 @@
     z-index: 1;
     &::before {
         content: "";
-        width:4.49rem;
-        height:2.5rem;
+        width:2.25rem;
+        height:1.25rem;
         background:rgba(255,255,255,0.27);
         background: url(../../images/moar_max.png) no-repeat center center;
         background-size: 100% 100%;
         position: absolute;
-        top: -1.5rem;
+        top: -.75rem;
         left:0;
         right:0;
         margin:auto;
@@ -101,18 +104,18 @@
         font-size:16px;
         font-weight:bold;
         color:rgba(25,25,25,1);
-        line-height:.28rem;
-        padding-top: 1.02rem;
+        line-height:.14rem;
+        padding-top: 0.5rem;
         margin:0;
     }
     .dialog_nth2_p {
         font-size:16px;
         font-family:"PingFang SC";
-        line-height: 1.4rem;
+        line-height: .7rem;
         color:rgba(255,101,20,1);
         margin:0;
         span {
-            font-size:49px;
+            font-size:25px;
         }
     }
     button {
@@ -132,4 +135,29 @@
     font-family:"PingFang SC";
     font-weight:bold;
     color:rgba(25,25,25,1);
+}
+
+:global(.calendars) {
+    height: 3.5rem;
+    :global{
+        .am-calendar .content{
+            position: absolute !important;
+        }
+        .header,.confirm-panel,.mask,.month-title{
+            display: none !important;
+        }
+        .am-calendar .single-month .row .cell .date-wrapper .grey {
+            color: #111111;
+        }
+        .am-calendar .single-month .row .cell .date-wrapper .date {
+            font-weight: normal !important;
+        }
+        .wrapper {
+            overflow: hidden !important;
+        }
+        .am-calendar .week-panel {
+            padding:20px 2px;
+            border:none;
+        }
+    }
 }

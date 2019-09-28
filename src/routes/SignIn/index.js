@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar, Icon,Calendar } from 'antd-mobile';
 import style from './index.less'
+import { relative } from 'path';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -8,7 +9,12 @@ export default class SignIn extends Component {
         this.state = {
             gold_coin:20,
             seventh_days:7,
-            dialogIsShow:true
+            dialogIsShow:true,
+            show: true,
+            config:{
+                type: 'one',
+                // pickTime: false
+            }
 
         };
     }
@@ -32,14 +38,25 @@ export default class SignIn extends Component {
                 <p>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
             </div>
             {/* 弹框 */}
-            <div className={dialogIsShow ? style.dialog : style.hide}>
+            <div style={{display:'none'}} className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
                 <p className={style.dialog_nth2_p}><span>20</span>积分</p>
                 <button onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button>
             </div>
-            <div className={dialogIsShow ? style.mode : style.hide}></div>
+            <div style={{display:'none'}} className={dialogIsShow ? style.mode : style.hide}></div>
             <p className={style.tody}>2019年9月</p>
-            {/* <Calendar /> */}
+            <div className='calendars' style={{position:'relative'}}>
+                <Calendar
+                    {...this.state.config }
+                    visible={this.state.show}
+                    onCancel={()=>{this.setState({show:false})}}
+                    defaultDate={new Date()}
+                    initalMonths={1}
+                    infiniteOpt={false}
+                />
+
+            </div>
+            
 
         </div>)
     }
