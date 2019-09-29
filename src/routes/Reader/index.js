@@ -143,13 +143,10 @@ export default class Reader extends Component {
         let {code,data} = res.data;
         // console.log(data)
         // mainfunctiondescription.replace('     ', '\n'); style={{textIndent:'1em'}}
-        // let dataNew = data.split('↵').map((item,index )=> (<p key={index} style={{fontSize:this.state.content_textFontSize+'px'}}>{item}</p>));
+        // let dataNew = data.split('↵↵').map((item,index )=> (<p key={index} style={{fontSize:this.state.content_textFontSize+'px'}}>{item}</p>));
         // let dataNew = data.replace(/[\n\r]/g,'<br>')
-        let dataNew=data.replace(/\r/g,"<br>");
-        // dataNew = dataNew.replace(/<br><br>/, "<br>")
-        // dataNew = dataNew.replace(/\n/g,"<br>");
-        // let dataNew=data.replace(/\r/g,"<br>");
-        // let dataNew=dataNew.replace(/\n/g,"<br>");
+        let dataNew=data.replace(/\r\n+/g,"<br>");
+        // encodeURI(data),
         console.log(dataNew)
 
         this.setState({
@@ -340,7 +337,7 @@ export default class Reader extends Component {
       </div>
 
       {/*  */}
-      <div class={!footer_show ? style.sighHide : style.sighShow} onClick={this.handleClickSigh}></div>
+      <div className={!footer_show ? style.sighHide : style.sighShow} onClick={this.handleClickSigh}></div>
       {/* 报错类型选择框弹出 */}
       <div className={errtypeShow ? style.errtypeShow : style.errtypeHide}>
         <div className={style.erroption}>
