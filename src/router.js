@@ -12,6 +12,7 @@ import GoldCoin from './routes/GoldCoin/index';//我的金币
 import Recharge from './routes/Recharge/index';//会员充值
 import InviteFriends from './routes/InviteFriends/index';//邀请好友
 import InviteCode from './routes/InviteCode/index';//邀请好友二维码
+import CashOut from './routes/CashOut/index';//提现
 
 const { ConnectedRouter } = routerRedux;
 
@@ -31,6 +32,7 @@ function RouterConfig({ history }) {
         <Route path="/recharge" exact component={Recharge} />
         <Route path="/invitefriends" exact component={InviteFriends} />
         <Route path="/invitecode" exact component={InviteCode} />
+        <Route path="/cashout" exact component={CashOut} />
       </Switch>
     </ConnectedRouter>
   );

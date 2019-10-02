@@ -27,13 +27,16 @@ export default class Inviteode extends Component {
                 icon={<Icon type="left" />}
                 onLeftClick={()=>history.goBack()}
             >邀请好友</NavBar> */}
-            <div className={style.content_placeholder}></div>
-            <div className={style.content_text}>
-                <p className={style.p1}>邀请码</p>
-                <p className={style.p2}>YK1244566</p>
-                <p className={style.p3}>长按复制</p>
-                <div className={style.code}></div>
-                <p className={style.p4}>长按识别二维码</p>
+            <div className={style.content_all}>
+                <div className={style.content_placeholder}></div>
+                <div className={style.content_text}>
+                    <p className={style.p1}>邀请码</p>
+                    <p className={style.p2}>YK1244566</p>
+                    <p className={style.p3}>长按复制</p>
+                    <div className={style.code}></div>
+                    <p className={style.p4}>长按识别二维码</p>
+
+                </div>
 
             </div>
 
