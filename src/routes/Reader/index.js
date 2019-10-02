@@ -360,7 +360,7 @@ export default class Reader extends Component {
         <div>
           <p className={style.wrongtip}>更正为</p>
           <div className={style.fontNew}></div>
-
+          <input type="text" style="white-space:normal;word-wrap:break-word;word-break:break-all;"/>
         </div>
 
       </div>

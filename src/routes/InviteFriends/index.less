@@ -1,26 +1,39 @@
-:global(.content) {
-    height: 100vh;
+:global {
+    :global(.content) {
+
+        height: 100%;
+        width: 100%;
+        background-color: #4C38D8;
+    }
+    .am-wingblank.am-wingblank-lg,.am-wingblank {
+        margin:0;
+    }
+}
+.content_text_parent {
+    width: 100%;
+    padding:0 .16rem;
+    background-color: #4C38D8;
 }
 .content_text {
     // padding:0 32px;
     width:100%;
-    height: 100%;
-    background: url(../../images/invitefriends/图层3@2x.png) no-repeat center center;
-    background-size: 100% 100%;
+    height: 3.86rem;
+    background: url(../../images/invitefriends/图层5@2x.png) no-repeat center center;
     position: relative;
+    background-size: 100% 100%;
  
 }
 .noticeBar {
-    width:3.43rem;
+    width:100%;
     height:.45rem;
     background:rgba(89,0,214,1);
     border:2px solid rgba(179, 125, 255, 1);
     border-radius:4px;
-    position: absolute;
-    top: 4.2rem;
-    left: 0;
-    right: 0;
-    margin:auto;
+    // position: absolute;
+    // top: 4.2rem;
+    // left: 0;
+    // right: 0;
+    margin:0 auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -29,8 +42,179 @@
         height:10px;
     }
     span {
-        font-size:14px;
+        font-size: .12rem;
         font-weight:500;
         color:rgba(228,224,255,1);
+    }
+}
+.flow {
+    width:100%;
+    height:3.45rem;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 6px 23px 0px rgba(64,45,184,0.39);
+    border-radius:8px;
+    margin:.32rem auto;
+    position: relative;
+    text-align: center;
+    &::before {
+        content: "";
+        width:1.93rem;
+        height:.34rem;
+        position: absolute;
+        left: 0;
+        right:0;
+        top:-.08rem;
+        margin:auto;
+        background: url(../../images/invitefriends/邀请流程@2x.png) no-repeat center center;
+        background-size: contain;
+    }
+    .p1 {
+        font-size:15px;
+        font-family:'PingFang SC';
+        font-weight:500;
+        color:rgba(68,63,107,1); 
+        padding-top:58px; 
+    }
+    .p2 {
+        font-size:30px;
+        font-family:'DIN Alternate';
+        font-weight:bold;
+        color:rgba(255,65,51,1);
+        line-height:36px;
+    }
+    .p3 {
+        font-size:12px;
+        font-weight:500;
+        color:rgba(176,176,176,1);
+        line-height:19px;
+    }
+    .p4 {
+        height:1px;
+        background:rgba(225,232,243,1);
+        width: 82%;
+        margin:15px auto;
+    }
+    img {
+        width: 72%;
+    }
+    .flowText {
+        display: flex;
+        justify-content: space-around;
+        span {
+            width:100px;
+            height:25px;
+            font-size:11px;
+            font-weight:500;
+            color:rgba(139,134,175,1);
+            line-height:19px;
+            &:nth-of-type(2) {
+                width:106.5px;
+            }
+            &:nth-of-type(3) {
+                width:96px;
+            }
+        }
+    }
+    :global {
+
+        .am-button {
+            width:2.81rem;
+            height:.44rem;
+            background:linear-gradient(0deg,rgba(255,65,51,1) 0%,rgba(255,128,51,1) 100%);
+            border-radius:.22rem;
+            border:none;
+            font-size:18px;
+            font-family:'HYCuYuanJ';
+            font-weight:400;
+            color:rgba(255,255,255,1);
+            margin: .4rem auto 0;
+        }
+        .am-action-sheet-share-list {
+            justify-content: space-between;
+        }
+    }
+    
+}
+.my_invite {
+    width:100%;
+    height:1.43rem;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 6px 23px 0px rgba(64,45,184,0.39);
+    border-radius:8px;
+    margin:.32rem auto;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    padding-top: .5rem;
+    &::before {
+        content: "";
+        width:1.93rem;
+        height:.34rem;
+        position: absolute;
+        left: 0;
+        right:0;
+        top:-.08rem;
+        margin:auto;
+        background: url(../../images/invitefriends/我的邀请@2x.png) no-repeat center center;
+        background-size: contain;
+    }
+    .my_invite_content {
+        text-align:center;
+        height:.57rem;
+        p {
+            font-size:14px;
+            font-weight:500;
+            color:rgba(68,63,107,1);
+            line-height:19px;
+        }
+        span {
+            font-size:30px;
+            font-weight:bold;
+            color:rgba(255,65,51,1);
+            line-height:67px;
+        }
+    }
+    .my_invite_bor {
+        width:1px;
+        height:.57rem;
+        background:rgba(225,232,243,1);
+    }
+}
+.activity_rules {
+    width:100%;
+    // height:1.43rem;
+    background:rgba(89,0,214,1);
+    box-shadow:0px 6px 23px 0px rgba(64,45,184,0.39);
+    border-radius:8px;
+    margin:.32rem auto;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    padding: .1rem;
+    &::before {
+        content: "";
+        width:1.93rem;
+        height:.34rem;
+        position: absolute;
+        left: 0;
+        right:0;
+        top:-.08rem;
+        margin:auto;
+        background: url(../../images/invitefriends/活动规则@2x.png) no-repeat center center;
+        background-size: contain;
+    }
+    .activity_rules_content {
+        width:100%;
+        // height:100%;
+        background:rgba(67,0,160,1);
+        border-radius:8px;
+        padding:.33rem .1rem;
+        p {
+            font-size:12px;
+            font-weight:500;
+            color:rgba(228,224,255,1);
+            line-height: 18px;
+            margin:14px 0;
+        }
     }
 }

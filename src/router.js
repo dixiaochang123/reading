@@ -1,6 +1,6 @@
 import React from 'react';
 import { routerRedux, Route, Switch } from 'dva/router';
-import IndexPage from './routes/IndexPage';//首页
+// import IndexPage from './routes/IndexPage';//首页
 import Products from './routes/Products';//新建页
 
 import Reader from './routes/Reader/index';//阅读器
@@ -11,6 +11,7 @@ import SignRule from './routes/SignRule/index';//签到规则
 import GoldCoin from './routes/GoldCoin/index';//我的金币
 import Recharge from './routes/Recharge/index';//会员充值
 import InviteFriends from './routes/InviteFriends/index';//邀请好友
+import InviteCode from './routes/InviteCode/index';//邀请好友二维码
 
 const { ConnectedRouter } = routerRedux;
 
@@ -29,6 +30,7 @@ function RouterConfig({ history }) {
         <Route path="/goldcoin" exact component={GoldCoin} />
         <Route path="/recharge" exact component={Recharge} />
         <Route path="/invitefriends" exact component={InviteFriends} />
+        <Route path="/invitecode" exact component={InviteCode} />
       </Switch>
     </ConnectedRouter>
   );
