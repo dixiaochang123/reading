@@ -145,7 +145,8 @@ export default class Reader extends Component {
         // mainfunctiondescription.replace('     ', '\n'); style={{textIndent:'1em'}}
         // let dataNew = data.split('↵↵').map((item,index )=> (<p key={index} style={{fontSize:this.state.content_textFontSize+'px'}}>{item}</p>));
         // let dataNew = data.replace(/[\n\r]/g,'<br>')
-        let dataNew=data.replace(/\r\n+/g,"<br>");
+        let dataNew=data.replace(/\r+/g,"<br>");
+        dataNew = dataNew.replace(/<br><br>/g,"<br>")
         // encodeURI(data),
         console.log(dataNew)
 
@@ -355,12 +356,15 @@ export default class Reader extends Component {
       <div className={ !wrongFont ? style.wrongFont_hide : style.wrongFont_show}>
         <div>
           <p className={style.wrongtip}>错别字为</p>
-          <div className={style.fontNew}></div>
+          <div className={style.fontNew}>
+            <textarea name="" id="" ></textarea>
+          </div>
         </div>
         <div>
           <p className={style.wrongtip}>更正为</p>
-          <div className={style.fontNew}></div>
-          <input type="text" style="white-space:normal;word-wrap:break-word;word-break:break-all;"/>
+          <div className={style.fontNew}>
+            <textarea name="" id="" ></textarea>
+          </div>
         </div>
 
       </div>

@@ -1,0 +1,40 @@
+:global(h1),:global(p)  {
+    margin: 0;
+    padding:0;
+}
+:global(.content),:global(p)  {
+    position: relative;
+}
+:global(.content1)  {
+    background-color: #F8F8F8;
+    height: 100%;
+    width: 100%;
+}
+.content{
+     background-color: #ffffff;
+     padding:0 .15rem;
+     .list {
+        width:100%;
+        height:.65rem;
+        background:rgba(255,255,255,1);
+        // padding:0 .15rem;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px rgba(240,240,240,1);
+        .left,.right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+     }
+     p {
+        line-height:.3rem;
+        font-size: 15px;
+        color:rgba(25,25,25,1);
+     }
+     .p2 {
+        font-size:12px;
+        font-weight:500;
+        color:rgba(176,176,176,1);
+     }
+}

@@ -6,7 +6,8 @@ export default class CashOut extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active:1
+            active:1,
+            dialogShow:false
 
         };
     }
@@ -17,9 +18,27 @@ export default class CashOut extends Component {
         })
 
     }
+    
+    handleClickGotx= ()=> {
+        this.setState({
+            dialogShow:true
+        },function() {
+
+        })
+    }
+
+    handleClose = ()=>{
+        this.setState({
+            dialogShow:false
+        })
+    }
+
+    goTask = ()=> {
+
+    }
 
     render() {
-        let { active } = this.state;
+        let { active,dialogShow } = this.state;
         return (<div className='content1'>
             <NavBar
                 mode="light"
@@ -53,7 +72,7 @@ export default class CashOut extends Component {
                             <p>需100000金币</p>
                         </div>
                     </div>
-                    <p>提现记录<Icon type={'right'}/></p>
+                    <p onClick={()=>this.props.history.push('/cashoutrecord')}>提现记录<Icon type={'right'}/></p>
 
                 </div>
                 <div className={style.reminder}>
@@ -63,12 +82,25 @@ export default class CashOut extends Component {
                     <p className={style.p2}>3.可在”金币提现记录”中查看提现状态。</p>
                     <p className={style.p2}>4.本活动最终归属权归“有空看书”所有。</p>
                     <div className={style.btn}>
-                        <button>去提现</button>
+                        <button onClick={this.handleClickGotx}>去提现</button>
                     </div>
                 </div>
 
                    
             </div>
+            <div className={dialogShow ? style.dialog : style.hide}>
+                <div className={style.div1}>
+                    <p className={style.p1}>金币不足</p>
+                    <p className={style.p2}>提现1元，需要1000金币，</p>
+                    <p className={style.p2}>您的金币余额不足,快去做任务赚金币吧！</p>
+                </div>
+                <div className={style.div2}>
+                    <span onClick={this.handleClose}>取消</span>
+                    <span onClick={this.goTask}>去做任务</span>
+                </div>
+
+            </div>
+            <div className={dialogShow ? style.mode : style.hide}></div>
             
 
         </div>)

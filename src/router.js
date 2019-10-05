@@ -13,6 +13,7 @@ import Recharge from './routes/Recharge/index';//会员充值
 import InviteFriends from './routes/InviteFriends/index';//邀请好友
 import InviteCode from './routes/InviteCode/index';//邀请好友二维码
 import CashOut from './routes/CashOut/index';//提现
+import CashOutRecord from './routes/CashOutRecord/index';//提现记录
 
 const { ConnectedRouter } = routerRedux;
 
@@ -33,6 +34,7 @@ function RouterConfig({ history }) {
         <Route path="/invitefriends" exact component={InviteFriends} />
         <Route path="/invitecode" exact component={InviteCode} />
         <Route path="/cashout" exact component={CashOut} />
+        <Route path="/cashoutrecord" exact component={CashOutRecord} />
       </Switch>
     </ConnectedRouter>
   );
