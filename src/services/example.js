@@ -1,12 +1,13 @@
 import request from '../utils/request';
 
+const url = 'http://weizhiliang.top/ruilu'
 //
 export function query() {
-  return request('http://weizhiliang.top/ruilu/book?book_id=1000002');
+  return request(`${url}/book?book_id=1000002`);
 }
 //获取章节目录
 export function chapter_list(book_id) {
-  return request(`http://weizhiliang.top/ruilu/chapter?book_id=${book_id}`);
+  return request(`${url}/chapter?book_id=${book_id}`);
 }
 //获取章节内容
 export function chapter_text(text) {
