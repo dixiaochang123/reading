@@ -30,9 +30,9 @@ export default class SignIn extends Component {
         var myDay = myDate.getDate() // 获取当前日（1- 31）
         var weekend = myDate.getDay() //星期几
 
-        // this.setState({
-        //     days_per_month: new Array(31, 28 + this.isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-        // })
+        this.setState({
+            days_per_month: new Array(31, 28 + this.isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+        })
         let days_per_month = new Array(31, 28 + this.isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
         //从后台获取签到日期
         let signDate = [0,1,2,3,4,5,6,7,8,9,,18,19,23,24,25,26,27,28,29,30,31]; 
@@ -92,6 +92,7 @@ export default class SignIn extends Component {
         for(var i = 0; i < blank; i++) {
             blanks.push(i)
         }
+        console.log('blank',blank,blanks)
         let dateHtmlNull = blanks.map(item=>{
             return <li key={item}></li>
         })
@@ -99,34 +100,21 @@ export default class SignIn extends Component {
         for(var j = 1; j <= days_per_month[month - 1]; j++) {
             hehe.push(j)
         }
-        let hj = hehe.map(item=>{
-            return <p className={style.succe}>{item}</p>;
-            // return signDate.key(key=>{
+        let dateHtmlp = hehe.map(item=>{
+            return <li key={item}><p className={style.succe}>{item}</p></li>
+            // return signDate.map(key=>{
             //     if(item == key) {
-            //         return <p className={style.succe}>{item}</p>;
+            //         return <li key={item}><p className={style.succe}>{item}</p></li>;
             //     } else {
             //         if(item < signDate[signDate.length - 1]) {
-            //             return <p className={style.succe}>{item} <i></i></p>;
+            //             return <li key={item}><p className={style.succe}>{item} <i></i></p></li>
             //         } else {
-            //             return  <p>{j}<i></i></p>;
+            //             return  <li key={item}><p>{j}<i></i></p></li>
             //         }
             //     }
             // })
         })
-        let ulHtml = <ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>{dateHtmlNull}{hj}</ul>
-        console.log(hehe,hj)
-
-
-
-
-
-
-
-
-
-
-
-
+        let ulHtml = <ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>{dateHtmlNull}{dateHtmlp}</ul>
 
         return (<div className='content'>
             <NavBar
@@ -153,9 +141,10 @@ export default class SignIn extends Component {
             <div style={{display:'none'}} className={dialogIsShow ? style.mode : style.hide}></div>
             <p className={style.tody}>{year}年{month}月</p>
             <div className='calendars' style={{position:'relative'}}>
-                {/* <ul className={style.ulthml} dangerouslySetInnerHTML={{__html: dateHtml}}></ul> */}
                 {ulHtml}
             </div>
+            <button>签到领金币</button>
+
             
 
         </div>)
