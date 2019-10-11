@@ -1,22 +1,48 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
 import style from './index.less'
+import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
 const creatHistory = require("history").createHashHistory;
 const history = creatHistory();
 
 const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
 const IconFlow = require("../../images/invitefriends/1-2-3@2x.png");
 
+
 export default class InviteFriends extends Component {
     constructor(props) {
         super(props);
         this.state = {
             news: [],
+            manCount:0,
+            coin:0,
+            inviteCode:'',
+            url:'',
             clicked: 'none',
             clicked1: 'none',
             clicked2: 'none',
 
         };
+    }
+    componentDidMount() {
+        inviteRecordCount().then(res=>{
+            let {code,data} = res.data;
+            this.setState({
+                manCount:data.manCount,
+                coin:data.coin,
+            })
+        }).catch(error=>console.log(error))
+
+        getInviteCodeAndImg().then(res=>{
+            let {code,data} = res.data;
+//             inviteCode: 121
+// url: "https://ti
+            console.log(data)
+            this.setState({
+                inviteCode:data.inviteCode,
+                url:data.url
+            })
+        }).catch(error=>console.log(error))
     }
 
     
@@ -50,6 +76,7 @@ dataList = [
     
 
     render() {
+        let {manCount,coin,inviteCode} = this.state;
         return (
             <WingBlank className='content'>
             <NavBar
@@ -66,7 +93,7 @@ dataList = [
                 </div>
                 <div className={style.flow}>
                     <p className={style.p1}>我的邀请码为</p>
-                    <p className={style.p2}>{17874128}</p>
+                    <p className={style.p2}>{inviteCode}</p>
                     <p className={style.p3}>好友也可以在注册时直接填写邀请码</p>
                     <p className={style.p4}></p>
                     <div>
@@ -83,12 +110,12 @@ dataList = [
                 <div className={style.my_invite}>
                     <div className={style.my_invite_content}>
                         <p>成功邀请人数</p>
-                        <span>{12}</span>
+                        <span>{manCount}</span>
                     </div>
                     <div className={style.my_invite_bor}></div>
                     <div className={style.my_invite_content}>
                         <p>累计获得金币</p>
-                        <span>{12000}</span>
+                        <span>{coin}</span>
                     </div>
                 </div>
                 <div className={style.activity_rules}>

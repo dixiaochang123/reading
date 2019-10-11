@@ -30,12 +30,16 @@ const request = (url, method = 'get', data) => {
   const options = {
     method: method,   // HTTP请求方法，默认为GET
     headers: {        // HTTP的请求头，默认为{}
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M'
     },
     credentials: 'include' // 是否携带cookie，默认为omit,不携带; same-origi,同源携带; include,同源跨域都携带
   }
   if (method === 'get') {
-    url += '?' + parseQuery(data)
+    let w = "?";
+    if(!data) w = "";
+
+    url += w + parseQuery(data)
   } else {
     options.body = JSON.stringify(data)
   }

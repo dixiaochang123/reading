@@ -12,7 +12,7 @@ import IconYd from '../../images/read/yd2.png';
 import IconBt from '../../images/read/bt2.png';
 import IconSz from '../../images/read/sz2.png';
 
-import { query, chapter_list, chapter_text } from '../../services/example';
+import {  chapter_list, chapter_text } from '../../services/example';
 import { node } from 'prop-types';
 let http = require("http");
 console.log(http)
@@ -76,7 +76,7 @@ export default class Reader extends Component {
           name:this.state.catalog.name
         } 
       })
-    })
+    }).catch(error=>console.log(error))
     document.addEventListener("selectionchange", function(e) {
       console.log(e); 
     });
