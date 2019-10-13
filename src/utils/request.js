@@ -1,7 +1,7 @@
 import fetch from 'dva/fetch';
 
 function parseJSON(response) {
-  console.log(22,response);
+  console.log(response)
   response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M'
   
   return response.json();

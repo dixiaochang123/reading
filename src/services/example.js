@@ -6,9 +6,9 @@ const url1 = 'http://123.114.205.224:8848'
 export function query() {
   return request.get(`${url}/book`,{book_id:1000002});
 }
-//获取章节目录
-export function chapter_list(book_id) {
-  return request.get(`${url}/chapter`,{book_id:book_id});
+//获取章节目录 //bookId=1000001&chapterId=1
+export function chapter_list(data) {
+  return request.post(`${url1}/book/chapter`,{ bookId:data.bookId,chapterId:data.chapterId});
 }
 //获取章节内容
 export function chapter_text(text) {
@@ -27,5 +27,10 @@ export function getInviteCodeAndImg() {
 //我的金币
 export function getCoinLog() {
   return request.post(`${url1}/my/getCoinLog`);
+}
+
+//签到
+export function signed() {
+  return request.post(`${url1}/welfare/signed`);
 }
 

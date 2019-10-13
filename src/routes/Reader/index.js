@@ -62,8 +62,8 @@ export default class Reader extends Component {
     // query().then(res=>{
     //   console.log(res)
     // })
-    let book_id = 1000001;
-    chapter_list(book_id).then(res=>{
+    //bookId=1000001&chapterId=1
+    chapter_list({bookId:1000002,chapterId:5}).then(res=>{
       let {code,data} = res.data;
       // console.log(code,data)
       // content_url: "https://www.youkongkanshu.com/huagerr/chapter/1000002_387_48361.txt"

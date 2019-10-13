@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon,Calendar } from 'antd-mobile';
 import style from './index.less'
 import { relative } from 'path';
+import {signed} from '../../services/example'
 var dateHtmlp = "";
 export default class SignIn extends Component {
     constructor(props) {
@@ -77,6 +78,9 @@ export default class SignIn extends Component {
     }
 
     handleClickSign() {
+        signed().then(res=>{
+            console.log(11,res)
+        }).catch(error=>console.log(error))
         this.setState({
             dialogIsShow:true
         })
