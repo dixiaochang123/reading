@@ -9,7 +9,7 @@ export default class SignIn extends Component {
         this.state = {
             gold_coin:20,
             seventh_days:7,
-            dialogIsShow:true,
+            dialogIsShow:false,
             show: true,
             config:{
                 type: 'one',
@@ -19,6 +19,7 @@ export default class SignIn extends Component {
             dateHtml:''
 
         };
+        this.handleClickSign = this.handleClickSign.bind(this)
     }
 
     componentDidMount() {
@@ -73,6 +74,12 @@ export default class SignIn extends Component {
 
     isLeap = (year) => {
         return year % 4 == 0 ? (year % 100 != 0 ? 1 : (year % 400 == 0 ? 1 : 0)) : 0;
+    }
+
+    handleClickSign() {
+        this.setState({
+            dialogIsShow:true
+        })
     }
 
     render() {
@@ -133,17 +140,17 @@ export default class SignIn extends Component {
                 <p>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
             </div>
             {/* 弹框 */}
-            <div style={{display:'none'}} className={dialogIsShow ? style.dialog : style.hide}>
+            <div className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
                 <p className={style.dialog_nth2_p}><span>20</span>积分</p>
-                <button onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button>
+                <button className={style.btn} onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button>
             </div>
-            <div style={{display:'none'}} className={dialogIsShow ? style.mode : style.hide}></div>
+            <div className={dialogIsShow ? style.mode : style.hide}></div>
             <p className={style.tody}>{year}年{month}月</p>
             <div className='calendars' style={{position:'relative'}}>
                 {ulHtml}
             </div>
-            <button>签到领金币</button>
+            <button className={style.btn1} onClick={this.handleClickSign}>签到领金币</button>
 
             
 
