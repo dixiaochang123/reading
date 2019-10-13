@@ -8,7 +8,7 @@ export function query() {
 }
 //获取章节目录 //bookId=1000001&chapterId=1
 export function chapter_list(data) {
-  return request.post(`${url1}/book/chapter`,{ bookId:data.bookId,chapterId:data.chapterId});
+  return request.post(`${url1}/book/chapter`,{...data});
 }
 //获取章节内容
 export function chapter_text(text) {
