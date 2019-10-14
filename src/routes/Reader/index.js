@@ -69,6 +69,7 @@ export default class Reader extends Component {
       // content_url: "https://www.youkongkanshu.com/huagerr/chapter/1000002_387_48361.txt"
       // id: 1000057
       // title: "第1章 引子"
+      console.log(data)
       let catalog_list = data.map(item=>item.title)
       this.setState({
         catalog: {
@@ -139,6 +140,7 @@ export default class Reader extends Component {
       chapterIdex: parseInt(e.target.dataset.index)
     },function() {
       // fetch
+      console.log(e.target.dataset.url)
       chapter_text(e.target.dataset.url).then(res=>{
         let {code,data} = res.data;
         // console.log(data)
@@ -376,7 +378,7 @@ export default class Reader extends Component {
           {
             catalog.list.map((item,index)=>{
               return (
-                <p id={'chapter'+index} data-index={index} data-url={item.content_url} data-id={item.id} key={item.id} index={item.id} className={active==item.id ? style.active : ''}>{item.title}</p>
+                <p id={'chapter'+index} data-index={index} data-url={item.contentUrl} data-id={item.id} key={item.id} index={item.id} className={active==item.id ? style.active : ''}>{item.title}</p>
               )
             })
           }

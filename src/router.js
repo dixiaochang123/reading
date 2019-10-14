@@ -14,6 +14,7 @@ import InviteFriends from './routes/InviteFriends/index';//邀请好友
 import InviteCode from './routes/InviteCode/index';//邀请好友二维码
 import CashOut from './routes/CashOut/index';//提现
 import CashOutRecord from './routes/CashOutRecord/index';//提现记录
+import WelfareCentre from './routes/WelfareCentre/index';//福利中心
 
 const { ConnectedRouter } = routerRedux;
 
@@ -35,6 +36,7 @@ function RouterConfig({ history }) {
         <Route path="/invitecode" exact component={InviteCode} />
         <Route path="/cashout" exact component={CashOut} />
         <Route path="/cashoutrecord" exact component={CashOutRecord} />
+        <Route path="/welfarecentre" exact component={WelfareCentre} />
       </Switch>
     </ConnectedRouter>
   );

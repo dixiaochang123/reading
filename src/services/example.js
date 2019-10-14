@@ -4,11 +4,11 @@ const url = 'http://weizhiliang.top/ruilu'
 const url1 = 'http://123.114.205.224:8848'
 //
 export function query() {
-  return request.get(`${url}/book`,{book_id:1000002});
+  return request.get(`${url}/book`,{book_id:1000001});
 }
 //获取章节目录 //bookId=1000001&chapterId=1
 export function chapter_list(data) {
-  return request.post(`${url1}/book/chapter`,{...data});
+  return request.post(`${url1}/book/chapter?bookId=${data.bookId}&chapterId=${data.chapterId}`,{...data});
 }
 //获取章节内容
 export function chapter_text(text) {
