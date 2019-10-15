@@ -18,7 +18,7 @@ export default class WelfareCentre extends Component {
     
 
     render() {
-        return (<div className='content'>
+        return (<div className='content' className={style.content_max}>
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
