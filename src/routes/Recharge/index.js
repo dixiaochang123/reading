@@ -19,11 +19,11 @@ export default class Recharge extends Component {
     }
     
     componentWillMount() {
-        var u = navigator.userAgent, app = navigator.appVersion;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        alert('是否是Android：'+isAndroid);
-        alert('是否是iOS：'+isIOS);
+        // var u = navigator.userAgent, app = navigator.appVersion;
+        // var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        // var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        // alert('是否是Android：'+isAndroid);
+        // alert('是否是iOS：'+isIOS);
     }
 
     handleClickMonthListActive(id) {
