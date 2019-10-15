@@ -34,3 +34,8 @@ export function signed() {
   return request.post(`${url1}/welfare/signed`);
 }
 
+//签到信息获取
+export function signData() {
+  return request.post(`${url1}/welfare/signData`);
+}
+

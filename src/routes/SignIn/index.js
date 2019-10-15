@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { NavBar, Icon,Calendar } from 'antd-mobile';
 import style from './index.less'
 import { relative } from 'path';
-import {signed} from '../../services/example'
+import {signed,signData} from '../../services/example'
 var dateHtmlp = "";
 export default class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
             gold_coin:20,
-            seventh_days:7,
+            seventh_days:0,
+            seventh_days_10:0,
+            seventh_days_100:0,
+
             dialogIsShow:false,
             show: true,
             config:{
@@ -26,6 +29,22 @@ export default class SignIn extends Component {
     componentDidMount() {
         console.log('返回上一页')
         this.forceUpdate();//强制刷新
+        signData().then(res=>{
+            let {code,data} = res.data;
+            console.log(data)
+            console.log(typeof data.signedTimes)
+            let signedTimes = data.signedTimes.toString();
+            let seventh_days = signedTimes < 10 ? signedTimes : signedTimes.substr(signedTimes.length-1,1);
+            let seventh_days_10 = signedTimes >=10 ? signedTimes.substr(signedTimes.length-2,1) : 0;
+            let seventh_days_100 = signedTimes >=100 ? signedTimes.substr(0,1) : 0;
+            this.setState({
+                seventh_days:seventh_days,
+                seventh_days_10:seventh_days_10,
+                seventh_days_100:seventh_days_100
+            })
+        }).catch(error=>console.log(error))
+
+        
 
         //获取当前时间
         var myDate = new Date();
@@ -89,7 +108,7 @@ export default class SignIn extends Component {
     }
 
     render() {
-        let { dialogIsShow ,days_per_month} = this.state;
+        let { dialogIsShow ,days_per_month,seventh_days_10,seventh_days_100,signDate} = this.state;
         //获取当前时间
         let myDate = new Date();
         let year = myDate.getFullYear();//获取年
@@ -142,7 +161,7 @@ export default class SignIn extends Component {
             {/* 已连续签到 */}
             <div className={style.continuity}>
                 <p>已连续签到</p>
-                <p><span>0</span><span>0</span><span>{this.state.seventh_days}</span>天</p>
+                <p><span>{seventh_days_100}</span><span>{seventh_days_10}</span><span>{this.state.seventh_days}</span>天</p>
                 <p>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
             </div>
             {/* 弹框 */}
