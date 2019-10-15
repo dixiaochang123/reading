@@ -24,6 +24,8 @@ export default class SignIn extends Component {
     }
 
     componentDidMount() {
+        console.log('返回上一页')
+        this.forceUpdate();//强制刷新
 
         //获取当前时间
         var myDate = new Date();
