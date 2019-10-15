@@ -17,6 +17,14 @@ export default class Recharge extends Component {
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
         this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
     }
+    
+    componentWillMount() {
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        alert('是否是Android：'+isAndroid);
+        alert('是否是iOS：'+isIOS);
+    }
 
     handleClickMonthListActive(id) {
         console.log(id)

@@ -12,6 +12,7 @@ export default class SignIn extends Component {
             seventh_days:0,
             seventh_days_10:0,
             seventh_days_100:0,
+            signDatas:[],
 
             dialogIsShow:false,
             show: true,
@@ -19,20 +20,22 @@ export default class SignIn extends Component {
                 type: 'one',
                 // pickTime: false
             },
-            days_per_month:31,
-            dateHtml:''
+            dateHtml:'',
+            visibility:"hidden"
 
         };
         this.handleClickSign = this.handleClickSign.bind(this)
+        this.handleClickSignDay = this.handleClickSignDay.bind(this)
     }
 
     componentDidMount() {
         console.log('返回上一页')
         this.forceUpdate();//强制刷新
+        this.signData();     
+    }
+    signData() {
         signData().then(res=>{
             let {code,data} = res.data;
-            console.log(data)
-            console.log(typeof data.signedTimes)
             let signedTimes = data.signedTimes.toString();
             let seventh_days = signedTimes < 10 ? signedTimes : signedTimes.substr(signedTimes.length-1,1);
             let seventh_days_10 = signedTimes >=10 ? signedTimes.substr(signedTimes.length-2,1) : 0;
@@ -40,60 +43,12 @@ export default class SignIn extends Component {
             this.setState({
                 seventh_days:seventh_days,
                 seventh_days_10:seventh_days_10,
-                seventh_days_100:seventh_days_100
+                seventh_days_100:seventh_days_100,
+                signDatas:data.signDatas
             })
         }).catch(error=>console.log(error))
-
-        
-
-        //获取当前时间
-        var myDate = new Date();
-        var year = myDate.getFullYear();//获取年
-        var month = myDate.getMonth() + 1;//获取月，默认从0开始，所以要加一
-        var myDay = myDate.getDate() // 获取当前日（1- 31）
-        var weekend = myDate.getDay() //星期几
-
-        this.setState({
-            days_per_month: new Array(31, 28 + this.isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-        })
-        let days_per_month = new Array(31, 28 + this.isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
-        //从后台获取签到日期
-        let signDate = [0,1,2,3,4,5,6,7,8,9,,18,19,23,24,25,26,27,28,29,30,31]; 
-        let dateHtml = "<li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>";
-        let blank = weekend - (myDay % 7) + 1;
-        if(blank<0) blank = 7 + blank; 
-        console.log('blank',blank)
-        let blanks = []
-        for(var i = 0; i < blank; i++) {
-            blanks.push(i)
-            dateHtml += "<li></li>";
-        }
-        console.log('blanks',blanks)
-        var dateHtmlp = "";
-        for(var j = 1; j <= days_per_month[month - 1]; j++) {
-            for(var n = 1; n < signDate.length; n++) {
-                if(j == signDate[n]) {
-                    dateHtmlp = "<p class='succe'>" + j + "<i></i></p>";
-                    break
-                } else {
-                    if(j < signDate[signDate.length - 1]) {
-                        dateHtmlp = "<p class='failed'>" + j + "<i></i></p>";
-                    } else {
-                        dateHtmlp = "<p>" + j + "<i></i></p>";
-                    }
-                }
-            }
-            dateHtml += "<li>" + dateHtmlp + "</li>";
-        }
-        this.setState({
-            dateHtml:dateHtml
-        })
-        // console.log(document.getElementsByClassName('calendars')[0],urlHtml)
-        let calendars = document.getElementsByClassName('calendars')[0];
-        console.log(calendars)
-                
     }
-
+    // 判断是否闰年
     isLeap = (year) => {
         return year % 4 == 0 ? (year % 100 != 0 ? 1 : (year % 400 == 0 ? 1 : 0)) : 0;
     }
@@ -101,14 +56,30 @@ export default class SignIn extends Component {
     handleClickSign() {
         signed().then(res=>{
             console.log(11,res)
+            let {code,data,message} = res.data;
+            console.log(code,data,message)
+            if(code==200 || code==500) {
+                this.setState({
+                    visibility:'initial'
+                })
+            } else {
+                this.setState({
+                    visibility:'hidden'
+                })
+            }
         }).catch(error=>console.log(error))
         this.setState({
             dialogIsShow:true
         })
     }
 
+    handleClickSignDay(value) {
+        console.log(value)
+        if(value==1 || value==2) return;
+    }
+
     render() {
-        let { dialogIsShow ,days_per_month,seventh_days_10,seventh_days_100,signDate} = this.state;
+        let { dialogIsShow ,seventh_days_10,seventh_days_100,signDatas,visibility} = this.state;
         //获取当前时间
         let myDate = new Date();
         let year = myDate.getFullYear();//获取年
@@ -116,35 +87,18 @@ export default class SignIn extends Component {
         var myDay = myDate.getDate() // 获取当前日（1- 31）
         var weekend = myDate.getDay() //星期几
 
-        //从后台获取签到日期
-        var signDate = [0,1,2,3,4,5,6,7,8,9,,18,19,23,24,25,26,27,28,29,30,31];
         let blank = weekend - (myDay % 7) + 1;
         if(blank<0) blank = 7 + blank;
         let blanks = [];
         for(var i = 0; i < blank; i++) {
             blanks.push(i)
         }
-        console.log('blank',blank,blanks)
         let dateHtmlNull = blanks.map(item=>{
             return <li key={item}></li>
         })
-        let hehe = []
-        for(var j = 1; j <= days_per_month[month - 1]; j++) {
-            hehe.push(j)
-        }
-        let dateHtmlp = hehe.map(item=>{
-            return <li key={item}><p className={style.succe}>{item}</p></li>
-            // return signDate.map(key=>{
-            //     if(item == key) {
-            //         return <li key={item}><p className={style.succe}>{item}</p></li>;
-            //     } else {
-            //         if(item < signDate[signDate.length - 1]) {
-            //             return <li key={item}><p className={style.succe}>{item} <i></i></p></li>
-            //         } else {
-            //             return  <li key={item}><p>{j}<i></i></p></li>
-            //         }
-            //     }
-            // })
+
+        let dateHtmlp = signDatas.map(item=>{
+            return <li onClick={this.handleClickSignDay.bind(this,item.value)} name={item.value} key={item.key}><p className={style.succe}>{item.key}</p></li>
         })
         let ulHtml = <ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>{dateHtmlNull}{dateHtmlp}</ul>
 
@@ -162,7 +116,7 @@ export default class SignIn extends Component {
             <div className={style.continuity}>
                 <p>已连续签到</p>
                 <p><span>{seventh_days_100}</span><span>{seventh_days_10}</span><span>{this.state.seventh_days}</span>天</p>
-                <p>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
+                <p style={{visibility:visibility}}>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
             </div>
             {/* 弹框 */}
             <div className={dialogIsShow ? style.dialog : style.hide}>
