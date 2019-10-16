@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
-import {  getCoinLog } from '../../services/example';
+import {  Link } from 'dva/router';
+import {  getCoinLog,extractMoney } from '../../services/example';
 
 export default class GoldCoin extends Component {
     constructor(props) {
@@ -71,7 +72,7 @@ export default class GoldCoin extends Component {
 
                 </div>
                 <p className={style.tip}>金币详情只显示最近50条的记录</p>
-                <button className={style.btn}>金币提现</button>
+                <button className={style.btn}><Link to={'/cashout'}>金币提现</Link></button>
             </div>
 
 

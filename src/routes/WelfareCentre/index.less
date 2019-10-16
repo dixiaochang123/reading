@@ -48,7 +48,7 @@
     }
 }
 .flex {
-    padding: 0 .18rem;
+    // padding: 0 .18rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,14 +69,18 @@
 .goSigins {
     width: 100%;
     padding-bottom: .18rem;
-    // border:solid 1px red;
-}
+    border-radius:6px;
+    overflow: hidden;
+    
+} 
 .goSigin {
     width:100%;
     height:.88rem;
+    padding: 0 .18rem;
     background:rgba(255,255,255,1);
-    border-radius:6px;
-    .yd10 {
+    border-top:solid 1px rgba(240,240,240,1);
+    // border-radius:6px;
+    .yd10 { 
         padding-left: 55px;
         background: url(../../images/fulizhongxin/台历.png) no-repeat left center;
         background-size: 40px 35px;
@@ -98,10 +102,40 @@
             }
         }
     }
+    .ydrufz {
+        &:first-of-type {
+            background: url(../../images/fulizhongxin/形状13.png) no-repeat left center;
+            background-size: 31px 28px;
+        }
+        &:nth-of-type(2) {
+            background: url(../../images/fulizhongxin/阅读30.png) no-repeat left center;
+            background-size: 31px 28px;
+        }
+        &:first-of-type(3) {
+            background: url(../../images/fulizhongxin/阅读60.png) no-repeat left center;
+            background-size: 31px 28px;
+        }
+    }
+    .yqhy {
+        background: url(../../images/fulizhongxin/邀请好友.png) no-repeat left center;
+        background-size: 31px 28px;
+    }
+    .fbpl {
+        background: url(../../images/fulizhongxin/评论.png) no-repeat left center;
+        background-size: 31px 28px;
+    }
+    .jrsj {
+        background: url(../../images/fulizhongxin/加入书架.png) no-repeat left center;
+        background-size: 31px 28px;
+    }
+    .mrfx {
+        background: url(../../images/fulizhongxin/分享.png) no-repeat left center;
+        background-size: 31px 28px;
+    }
 }
 
 .btnq {
-    padding:9px 17px;
+    padding:7px 15px;
     font-size:14px;
     font-weight:500;
     color:rgba(255,255,255,1);
@@ -110,4 +144,26 @@
     a {
         color:rgba(255,255,255,1);
     }
+}
+.disabled {
+    background:rgba(255,255,255,1);
+    border:1px solid rgba(204,204,204,1);
+    border-radius:30px;
+    color: #CCCCCC;
+    a {
+        color:#CCCCCC;
+    }
+}
+.ydrw {
+    height: 50px;
+    line-height:50px;
+    p {
+        font-size:17px;
+        font-weight:bold;
+        color:rgba(25,25,25,1);
+
+    }
+}
+.goSiginsrius {
+    border-radius: 6px;
 }

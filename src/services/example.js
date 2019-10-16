@@ -29,6 +29,11 @@ export function getCoinLog() {
   return request.post(`${url1}/my/getCoinLog`);
 }
 
+//我的金币
+export function extractMoney(data) {
+  return request.post(`${url1}/coin/extractMoney?extractId=${data.extractId}&type=${data.type}`);
+}
+
 //签到
 export function signed() {
   return request.post(`${url1}/welfare/signed`);
@@ -41,6 +46,11 @@ export function signData() {
 
 //补签
 export function signResign(day) {
-  return request.post(`${url1}//welfare/resign?day=${day}`);
+  return request.post(`${url1}/welfare/resign?day=${day}`);
+}
+
+//福利中心
+export function getWelfareResult() {
+  return request.post(`${url1}/welfare/getWelfareResult`);
 }
 
