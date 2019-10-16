@@ -3,7 +3,7 @@
         .am-navbar-light {
             background:rgba(255,143,64,1);
             color:#fff;
-    
+            margin-bottom: -1px;
             .am-navbar-title {
                 color: #fff;
             }
@@ -55,21 +55,59 @@
     > div {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        // align-items: center;
         flex-direction: column;
     }
 
 }
-.goSigins {
-    width: 100%;
-    padding:0 .1rem;
+.goSiginsParse {
     position: absolute;
     top: 1.6rem;
-    border:solid 1px red;
+    width: 100%;
+    padding:0 .1rem;
+}
+.goSigins {
+    width: 100%;
+    padding-bottom: .18rem;
+    // border:solid 1px red;
 }
 .goSigin {
     width:100%;
     height:.88rem;
     background:rgba(255,255,255,1);
     border-radius:6px;
+    .yd10 {
+        padding-left: 55px;
+        background: url(../../images/fulizhongxin/台历.png) no-repeat left center;
+        background-size: 40px 35px;
+        .p1 {
+            font-size:15px;
+            font-weight:bold;
+            color:rgba(25,25,25,1);
+            padding-bottom: 5px;
+        }
+        .p2 {
+            font-size:12px;
+            font-weight:500;
+            color:rgba(176,176,176,1);
+            // padding-top: 2px;
+            :global{
+                .am-icon {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.btnq {
+    padding:9px 17px;
+    font-size:14px;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    background:linear-gradient(90deg,rgba(255,101,20,1),rgba(255,139,3,1));
+    border-radius:17px;
+    a {
+        color:rgba(255,255,255,1);
+    }
 }

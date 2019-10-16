@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { NavBar, Icon,Calendar } from 'antd-mobile';
+import {withRouter, Route, Link,routerRedux  } from 'dva/router';
+import { NavBar, Icon,Toast } from 'antd-mobile';
 import style from './index.less'
 import { relative } from 'path';
-import {signed,signData} from '../../services/example'
+import {signed,signData,signResign} from '../../services/example'
+import history from '../../utils/history';
+
 var dateHtmlp = "";
-export default class SignIn extends Component {
+class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,11 +24,12 @@ export default class SignIn extends Component {
                 // pickTime: false
             },
             dateHtml:'',
-            visibility:"hidden"
+            visibility:"hidden",
 
         };
         this.handleClickSign = this.handleClickSign.bind(this)
         this.handleClickSignDay = this.handleClickSignDay.bind(this)
+        this.zqgd = this.zqgd.bind(this)
     }
 
     componentDidMount() {
@@ -46,6 +50,14 @@ export default class SignIn extends Component {
                 seventh_days_100:seventh_days_100,
                 signDatas:data.signDatas
             })
+            let day2 = new Date();
+            let a = data.signDatas.find(item=>item.key==day2.getDate().toString());
+            if(a.value==1) {
+                this.setState({
+                    visibility:'initial'
+                })
+            }
+
         }).catch(error=>console.log(error))
     }
     // 判断是否闰年
@@ -60,22 +72,37 @@ export default class SignIn extends Component {
             console.log(code,data,message)
             if(code==200 || code==500) {
                 this.setState({
-                    visibility:'initial'
+                    visibility:'initial',
                 })
             } else {
                 this.setState({
                     visibility:'hidden'
                 })
             }
+            if(code==200) {
+                this.setState({
+                    dialogIsShow:true
+                })
+            }
+            if(code==500) {
+                Toast.info('您今日已签到', 1);
+            }
         }).catch(error=>console.log(error))
-        this.setState({
-            dialogIsShow:true
-        })
     }
 
-    handleClickSignDay(value) {
-        console.log(value)
-        if(value==1 || value==2) return;
+    handleClickSignDay(item) {
+        console.log(item)
+        if(item.value==1 || item.value==2) return;
+        signResign(item.key).then(res=>{
+            let {code,data} = res.data;
+            if(code==200) {
+                this.signData();
+            }
+        })
+    }
+    zqgd() {
+        this.setState({dialogIsShow:false})
+        this.props.history.push('/welfarecentre')
     }
 
     render() {
@@ -98,7 +125,7 @@ export default class SignIn extends Component {
         })
 
         let dateHtmlp = signDatas.map(item=>{
-            return <li onClick={this.handleClickSignDay.bind(this,item.value)} name={item.value} key={item.key}><p className={style.succe}>{item.key}</p></li>
+            return <li onClick={this.handleClickSignDay.bind(this,item)} name={item.value} key={item.key}><p className={style.succe}>{item.key}</p></li>
         })
         let ulHtml = <ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>{dateHtmlNull}{dateHtmlp}</ul>
 
@@ -106,6 +133,7 @@ export default class SignIn extends Component {
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
+                onLeftClick={()=>history.goBack()}
                 rightContent={"签到规则"}
                 className='navbar'
             >签到有礼</NavBar>
@@ -122,7 +150,8 @@ export default class SignIn extends Component {
             <div className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
                 <p className={style.dialog_nth2_p}><span>20</span>积分</p>
-                <button className={style.btn} onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button>
+                {/* <button className={style.btn} onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button> */}
+                <button className={style.btn} onClick={this.zqgd}>赚取更多积分</button>
             </div>
             <div className={dialogIsShow ? style.mode : style.hide}></div>
             <p className={style.tody}>{year}年{month}月</p>
@@ -130,9 +159,11 @@ export default class SignIn extends Component {
                 {ulHtml}
             </div>
             <button className={style.btn1} onClick={this.handleClickSign}>签到领金币</button>
-
+            {/* <Route path='/welfarecentre' component={WelfareCentre}/> */}
             
 
         </div>)
     }
 }
+
+export default withRouter(SignIn)

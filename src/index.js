@@ -1,8 +1,6 @@
 import dva from 'dva';
 import './index.css';
-// import { createBrowserHistory as createHistory } from 'history';
-const createHistory  = require('history').createBrowserHistory;
-
+import {createBrowserHistory as createHistory} from "history"
 // 1. Initialize
 // const app = dva();
 const app = dva({

@@ -1,7 +1,7 @@
 import request from '../utils/request';
 
 const url = 'http://weizhiliang.top/ruilu'
-const url1 = 'http://123.114.205.224:8848'
+const url1 = 'http://123.114.202.129:8848'
 //
 export function query() {
   return request.get(`${url}/book`,{book_id:1000001});
@@ -37,5 +37,10 @@ export function signed() {
 //签到信息获取
 export function signData() {
   return request.post(`${url1}/welfare/signData`);
+}
+
+//补签
+export function signResign(day) {
+  return request.post(`${url1}//welfare/resign?day=${day}`);
 }
 
