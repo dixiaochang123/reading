@@ -1,35 +1,47 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, Button } from 'antd-mobile';
 import style from './index.less'
-
 import IconZ62 from '../../images/recharge/z62.png'
 import IconSbjb2 from '../../images/recharge/sbjb2.png'
 import IconQdtq2 from '../../images/recharge/qdtq2.png'
 import IconZx2 from '../../images/recharge/zx2.png'
+import { getVipConfig,getPayOrder } from '../../services/example'
 
 export default class Recharge extends Component {
     constructor(props) {
         super(props);
         this.state = {
             monthListActive:1,
-            paymentType:1
+            paymentType:100,
+            datas:[],
+            gjsum:0
         };
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
         this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
     }
     
     componentWillMount() {
-        // var u = navigator.userAgent, app = navigator.appVersion;
-        // var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
-        // var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        // alert('是否是Android：'+isAndroid);
-        // alert('是否是iOS：'+isIOS);
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(!!isAndroid) this.setState({paymentType:100,platform:0});
+        if(!!isIOS) this.setState({paymentType:300,platform:1});
+        this.setState({paymentType:100,platform:2});
+
+        getVipConfig().then(res=>{
+            let {code,data} = res.data;
+            this.setState({
+                datas:data,
+                gjsum:data[0].discountMoney
+            })
+        }).catch(error=>console.log(error))
     }
 
     handleClickMonthListActive(id) {
         console.log(id)
         this.setState({
-            monthListActive:id
+            monthListActive:id,
+            gjsum:this.state.datas[id-1].discountMoney
         })
 
     }
@@ -39,9 +51,25 @@ export default class Recharge extends Component {
             paymentType:id
         })
     }
+    handleCkickZhifu = ()=>{
+        console.log('支付')
+        // id=1&platform=1&payType=100
+        let data = {
+            id: this.state.monthListActive, //vip配置的ID
+            platform:0,  //当前平台0:安卓 1:苹果 2:PC
+            payType:this.state.paymentType //100:微信支付 200:支付宝支付 300:苹果支付
+        }
+        getPayOrder(data).then(res=>{
+            let {code,data} = res.data;
+            if(code==200) {
+                console.log('支付成功')
+            }
+        }).catch(error=>{})
+    }
 
     render() {
-        let { monthListActive,paymentType } = this.state;
+        let { monthListActive,paymentType,datas,gjsum } = this.state;
+        console.log(datas)
         return (<div className='content'>
             <NavBar
                 mode="light"
@@ -61,28 +89,28 @@ export default class Recharge extends Component {
                 <div className={style.months}>
                     <div className={style.monthList +' '+ (monthListActive==1 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,1)}>
                         <p><span>1个月</span><span></span></p>
-                        <p>￥10</p>
-                        <p>原价￥12.8</p>
+                        <p>￥{!!datas && datas[0] &&datas[0].discountMoney}</p>
+                        <p>原价￥{!!datas && datas[0] && datas[0].originMoney}</p>
                     </div>
                     <div className={style.monthList +' '+ (monthListActive==2 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,2)}>
                         <p><span>3个月</span><span></span></p>
-                        <p>￥28</p>
-                        <p>原价￥58</p>
+                        <p>￥{!!datas && datas[1] && datas[1].discountMoney}</p>
+                        <p>原价￥{!!datas && datas[1] &&datas[1].originMoney}</p>
                     </div>
                     <div className={style.monthList +' '+ (monthListActive==3 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,3)}>
                         <p><span>6个月</span><span></span></p>
-                        <p>￥60</p>
-                        <p>原价￥78</p>
+                        <p>￥{!!datas && datas[2] &&datas[2].discountMoney}</p>
+                        <p>原价￥{!!datas && datas[2] &&datas[2].originMoney}</p>
                     </div>
                     <div className={style.monthList +' '+ (monthListActive==4 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,4)}>
                         <p><span>12个月</span><span></span></p>
-                        <p>￥168</p>
-                        <p>原价￥208</p>
+                        <p>￥{!!datas && datas[3] &&datas[3].discountMoney}</p>
+                        <p>原价￥{!!datas && datas[3] &&datas[3].originMoney}</p>
                     </div>
                 </div>
-                <h3>选择支付方式</h3>
-                <p className={style.p1} onClick={this.handleClickPaymentTypeActive.bind(this,1)}><span>微信支付</span><span className={paymentType==1 ? style.paymentType : ''}></span></p>
-                <p className={style.p2} onClick={this.handleClickPaymentTypeActive.bind(this,2)}><span>支付宝支付</span><span className={paymentType==2 ? style.paymentType : ''}></span></p>
+                <h3 className={paymentType!=300 ? '' : style.hide}>选择支付方式</h3>
+                <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p1} onClick={this.handleClickPaymentTypeActive.bind(this,100)}><span>微信支付</span><span className={paymentType==100 ? style.paymentType : ''}></span></p>
+                <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p2} onClick={this.handleClickPaymentTypeActive.bind(this,200)}><span>支付宝支付</span><span className={paymentType==200 ? style.paymentType : ''}></span></p>
             </div>
 
             <div className={style.privilege}>
@@ -120,8 +148,8 @@ export default class Recharge extends Component {
             <div style={{height:'0.7rem'}}></div>
             {/* 立即支付 */}
             <div className={style.payment}>
-                <div><span className={style.gj}>共计 </span><span> ￥{10}</span></div>
-                <Button className="btn" type="inline primary" size="large" inline>立即支付</Button>
+                <div><span className={style.gj}>共计 </span><span> ￥{gjsum}</span></div>
+                <Button onClick={this.handleCkickZhifu} className="btn" type="inline primary" size="large" inline>立即支付</Button>
             </div>
 
 

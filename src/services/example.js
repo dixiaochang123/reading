@@ -54,3 +54,12 @@ export function getWelfareResult() {
   return request.post(`${url1}/welfare/getWelfareResult`);
 }
 
+//获取充值页面信息
+export function getVipConfig() {
+  return request.post(`${url1}/pay/getVipConfig`);
+}
+//立即支付
+export function getPayOrder(data) {
+  return request.post(`${url1}/pay/getPayOrder?id=${data.id}&platform=${data.platform}&payType=${data.payType}`);
+}
+
