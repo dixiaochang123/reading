@@ -92,13 +92,13 @@ class SignIn extends Component {
 
     handleClickSignDay(item) {
         console.log(item)
-        if(item.value==1 || item.value==2) return;
-        signResign(item.key).then(res=>{
-            let {code,data} = res.data;
-            if(code==200) {
-                this.signData();
-            }
-        })
+        // if(item.value==1 || item.value==2) return;
+        // signResign(item.key).then(res=>{
+        //     let {code,data} = res.data;
+        //     if(code==200) {
+        //         this.signData();
+        //     }
+        // })
     }
     zqgd() {
         this.setState({dialogIsShow:false})

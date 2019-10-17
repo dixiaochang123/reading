@@ -13,7 +13,9 @@ export default class WelfareCentre extends Component {
         super(props);
         this.state = {
             news: [],
-            readAwardCoinResults:[]
+            readAwardCoinResults:[],
+            signedTimes:0,
+            coin:0
 
         };
     }
@@ -22,8 +24,12 @@ export default class WelfareCentre extends Component {
         getWelfareResult().then(res=>{
             let {code,data} = res.data;
             let readAwardCoinResults = data.readAwardCoinResults;
+            let signedTimes = !!data.signedTimes && data.signedTimes;
+            let simpleUserResult = !!data.simpleUserResult && data.simpleUserResult;
             this.setState({
-                readAwardCoinResults
+                readAwardCoinResults,
+                signedTimes,
+                coin:simpleUserResult.coin
             })
             console.log(222222,readAwardCoinResults)
         }).catch(error=>console.log(error))
@@ -32,7 +38,7 @@ export default class WelfareCentre extends Component {
     
 
     render() {
-        const {readAwardCoinResults} = this.state;
+        const {readAwardCoinResults,signedTimes,coin} = this.state;
         return (<div className='content' className={style.content_max}>
             <NavBar
                 mode="light"
@@ -41,7 +47,7 @@ export default class WelfareCentre extends Component {
             >福利中心</NavBar>
             <div className={style.content_text}>
                 <div className={style.content_text_bg}>
-                    <p>862</p>
+                    <p>{coin}</p>
                     <p>我的金币</p>
                 </div>
             </div>
@@ -49,7 +55,7 @@ export default class WelfareCentre extends Component {
                 <div className={style.goSigins + ' ' + style.goSiginsrius}>
                     <div className={style.goSigin + ' ' + style.flex}>
                         <div className={style.yd10}>
-                            <p className={style.p1}>你已累计签到3天</p>
+                            <p className={style.p1}>你已累计签到{signedTimes}天</p>
                             <p className={style.p2}>查看今日日签<Icon type={'right'} /></p>
                         </div>
                         {/* <div className={style.btnq}>去签到</div> */}
@@ -60,10 +66,10 @@ export default class WelfareCentre extends Component {
                     <div className={style.goSigin + ' ' + style.flex + ' ' +style.ydrw}>
                         <p>阅读任务</p>
                     </div>
-                    {readAwardCoinResults.map(item=>{
+                    {readAwardCoinResults.map((item,index)=>{
                         return (
-                            <div key={item.content} className={style.goSigin + ' ' + style.flex}>
-                                <div className={style.yd10 + ' '+ style.ydrufz}>
+                            <div key={item.content} className={style.goSigin + ' ' + style.flex　+ ' ' + style.ydrufzs}>
+                                <div name={index} className={style.yd10 + ' '+ style.ydrufz}>
                                     <p className={style.p1}>{item.content.split(",")[0]}</p>
                                     <p className={style.p2}>{item.content.split(",")[1]}</p>
                                 </div>
