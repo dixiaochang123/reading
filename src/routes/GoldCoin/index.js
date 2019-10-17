@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import {  Link } from 'dva/router';
-import {  getCoinLog,extractMoney } from '../../services/example';
+import {  getCoinLog } from '../../services/example';
 
 export default class GoldCoin extends Component {
     constructor(props) {

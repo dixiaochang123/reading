@@ -5,7 +5,7 @@ import IconZ62 from '../../images/recharge/z62.png'
 import IconSbjb2 from '../../images/recharge/sbjb2.png'
 import IconQdtq2 from '../../images/recharge/qdtq2.png'
 import IconZx2 from '../../images/recharge/zx2.png'
-import { getVipConfig,getPayOrder } from '../../services/example'
+import { getVipConfig,getPayOrder,my } from '../../services/example'
 
 export default class Recharge extends Component {
     constructor(props) {
@@ -14,13 +14,25 @@ export default class Recharge extends Component {
             monthListActive:1,
             paymentType:100,
             datas:[],
-            gjsum:0
+            gjsum:0,
+            nickName:'',
+            vip:false,
+            vipEndDate:''
         };
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
         this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
     }
     
     componentWillMount() {
+        my().then(res=>{
+            let {code,data} = res.data;
+            this.setState({
+                nickName:data.nickName,
+                vip:data.vip,
+                vipEndDate:data.vipEndDate
+            })
+
+        }).catch(error=>{})
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
         var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -68,7 +80,7 @@ export default class Recharge extends Component {
     }
 
     render() {
-        let { monthListActive,paymentType,datas,gjsum } = this.state;
+        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate } = this.state;
         console.log(datas)
         return (<div className='content'>
             <NavBar
@@ -80,8 +92,8 @@ export default class Recharge extends Component {
             <div className={style.notOpen}>
                 <div className={style.headPort}></div>
                 <div className={style.tip}>
-                    <span>用户名{12314}</span>
-                    <p>您还未开通会员</p>
+                    <span>用户名{nickName}</span>
+                    <p>{!vip ? "您还未开通会员" : `会员截止 `}<span style={{fontSize:"12px",fontWeight:"normal",color:"#3b3232"}}>{ vipEndDate}</span></p>
                 </div>
             </div>
             <div className={style.monthVip}>

@@ -30,9 +30,9 @@ export function getCoinLog() {
 }
 
 //我的金币
-export function extractMoney(data) {
-  return request.post(`${url1}/coin/extractMoney?extractId=${data.extractId}&type=${data.type}`);
-}
+// export function extractMoney(data) {
+//   return request.post(`${url1}/coin/extractMoney?extractId=${data.extractId}&type=${data.type}`);
+// }
 
 //签到
 export function signed() {
@@ -61,5 +61,20 @@ export function getVipConfig() {
 //立即支付
 export function getPayOrder(data) {
   return request.post(`${url1}/pay/getPayOrder?id=${data.id}&platform=${data.platform}&payType=${data.payType}`);
+}
+
+//我的信息
+export function my() {
+  return request.post(`${url1}/my`);
+}
+
+//提现配置
+export function extractConfig() {
+  return request.post(`${url1}/coin/extractConfig`);
+}
+
+//提现
+export function extractMoney(data) {
+  return request.post(`${url1}/coin/extractMoney?extractId=${data.extractId}&type=${data.type}`);
 }
 

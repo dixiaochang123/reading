@@ -1,30 +1,72 @@
 import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
-
+import { extractConfig,my,extractMoney} from '../../services/example'
 export default class CashOut extends Component {
     constructor(props) {
         super(props);
         this.state = {
             active:1,
-            dialogShow:false
+            dialogShow:false,
+            data:[],
+            coin:0,
+            active_money:0,
+            active_coin:0
 
         };
     }
 
-    handleClickCashOut= (id)=> {
+    componentDidMount() {
+        my().then(res=>{
+            let {code,data} = res.data;
+            this.setState({
+                coin:data.coin
+            })
+
+        }).catch(error=>{})
+
+        extractConfig().then(res=>{
+            let {code,data} = res.data;
+            console.log(data)
+            this.setState({
+                data,
+                active_money:data[0].money,
+                active_coin:data[0].coin
+            })
+        }).catch(error=>{})
+    }
+
+    handleClickCashOut= (id,money,coin)=> {
         this.setState({
-            active:id
+            active:id,
+            active_money:money,
+            active_coin:coin
         })
 
     }
     
     handleClickGotx= ()=> {
-        this.setState({
-            dialogShow:true
-        },function() {
-
-        })
+        if(this.state.coin < this.state.active_coin) {
+            this.setState({
+                dialogShow:true
+            })
+        } else {
+            this.setState({
+                dialogShow:false
+            },function() {
+                // extractId=1&type=1
+                let data = {
+                    extractId:this.state.active,
+                    type:0 //
+                }
+                extractMoney(data).then(res=>{
+                    let {code,data} = res.data;
+                    if(code==200) {
+                        console.log('提现成功')
+                    }
+                }).catch(error=>{})
+            })
+        }
     }
 
     handleClose = ()=>{
@@ -38,7 +80,7 @@ export default class CashOut extends Component {
     }
 
     render() {
-        let { active,dialogShow } = this.state;
+        let { active,dialogShow,data,coin,active_money,active_coin } = this.state;
         return (<div className='content1'>
             <NavBar
                 mode="light"
@@ -49,28 +91,23 @@ export default class CashOut extends Component {
             <div className={style.contentsub}>
                 <div className={style.cashout_sub}>
                     <p>可提现金币</p>
-                    <p>{862}</p>
+                    <p>{coin}</p>
                 </div>
                 <div className={style.jbtx}>
                     <p>金币提现</p>
                     <p>提现规则:1000金币等于1元，每日阅读30分钟偶可开启提现功能</p>
                     <div className={style.txjes}>
-                        <div className={active == 1 ? style.active : ''} onClick={this.handleClickCashOut.bind(this,1)}>
-                            <p>提现1元</p>
-                            <p>需1000金币</p>
-                        </div>
-                        <div className={active == 10 ? style.active : ''} onClick={this.handleClickCashOut.bind(this,10)}>
-                            <p>提现10元</p>
-                            <p>需10000金币</p>
-                        </div>
-                        <div className={active == 50 ? style.active : ''} onClick={this.handleClickCashOut.bind(this,50)}>
-                            <p>提现50元</p>
-                            <p>需50000金币</p>
-                        </div>
-                        <div className={active == 100 ? style.active : ''} onClick={this.handleClickCashOut.bind(this,100)}>
-                            <p>提现100元</p>
-                            <p>需100000金币</p>
-                        </div>
+                        {
+                            data.map(item=>{
+                                return(
+                                    <div key={item.id} className={active == item.id ? style.active : ''} onClick={this.handleClickCashOut.bind(this,item.id,item.money,item.coin)}>
+                                        <p>提现{item.money}元</p>
+                                        <p>需{item.coin}金币</p>
+                                    </div>
+                                )
+                            })
+                        }
+
                     </div>
                     <p onClick={()=>this.props.history.push('/cashoutrecord')}>提现记录<Icon type={'right'}/></p>
 
@@ -91,7 +128,7 @@ export default class CashOut extends Component {
             <div className={dialogShow ? style.dialog : style.hide}>
                 <div className={style.div1}>
                     <p className={style.p1}>金币不足</p>
-                    <p className={style.p2}>提现1元，需要1000金币，</p>
+                    <p className={style.p2}>提现{active_money}元，需要{active_coin}金币，</p>
                     <p className={style.p2}>您的金币余额不足,快去做任务赚金币吧！</p>
                 </div>
                 <div className={style.div2}>
