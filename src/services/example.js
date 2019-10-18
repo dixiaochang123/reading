@@ -78,3 +78,9 @@ export function extractMoney(data) {
   return request.post(`${url1}/coin/extractMoney?extractId=${data.extractId}&type=${data.type}`);
 }
 
+
+//提现记录
+export function extractMoneyLog(data) {
+  return request.post(`${url1}/coin/extractMoneyLog?page=${data.page}&pageSize=${data.pageSize}`);
+}
+

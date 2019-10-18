@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import history from '../../utils/history';
-console.log(style)
 
 export default class SignRule extends Component {
     constructor(props) {
