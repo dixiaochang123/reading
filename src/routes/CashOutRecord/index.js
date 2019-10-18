@@ -18,7 +18,7 @@ export default class CashOut extends Component {
     componentDidMount() {
         let data = {
             page:1,
-            pageSize:15
+            pageSize:50
         }
         extractMoneyLog(data).then(res=>{
             let {code,data} = res.data;
