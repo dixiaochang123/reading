@@ -6,6 +6,7 @@ import IconSbjb2 from '../../images/recharge/sbjb2.png'
 import IconQdtq2 from '../../images/recharge/qdtq2.png'
 import IconZx2 from '../../images/recharge/zx2.png'
 import { getVipConfig,getPayOrder,my } from '../../services/example'
+import {goBack} from '../../utils/andohistoy'
 
 export default class Recharge extends Component {
     constructor(props) {
@@ -79,6 +80,10 @@ export default class Recharge extends Component {
         }).catch(error=>{})
     }
 
+    goBack = () => {
+        goBack()
+    }
+
     render() {
         let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate } = this.state;
         console.log(datas)
@@ -87,6 +92,7 @@ export default class Recharge extends Component {
                 mode="light"
                 icon={<Icon type="left" />}
                 className='navbar'
+                onLeftClick={this.goBack}
             >会员充值</NavBar>
             {/* 会员充值 */}
             <div className={style.notOpen}>

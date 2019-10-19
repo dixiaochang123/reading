@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import history from '../../utils/history';
+import {goBack} from '../../utils/andohistoy'
 
 export default class SignRule extends Component {
     constructor(props) {
@@ -11,6 +12,9 @@ export default class SignRule extends Component {
 
         };
     }
+    goBack = ()=> {
+        goBack()
+    }
 
     
 
@@ -19,7 +23,7 @@ export default class SignRule extends Component {
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
+                onLeftClick={this.goBack}
             >规则说明</NavBar>
             <div className={style.content_text}>
                 <h1 className={style.signIn_rule}>签到规则</h1>

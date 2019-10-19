@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
 import style from './index.less'
 import {  getInviteCodeAndImg } from '../../services/example';
+import {goBack} from '../../utils/andohistoy'
 
 
 
@@ -35,6 +36,10 @@ export default class Inviteode extends Component {
         }).catch(error=>console.log(error))
     }
 
+    goBack = () => {
+        goBack()
+    }
+
 
     
 
@@ -42,11 +47,11 @@ export default class Inviteode extends Component {
         let {inviteCode,url} = this.state;
         return (
             <div className='content'>
-            {/* <NavBar
+            <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
-            >邀请好友</NavBar> */}
+                onLeftClick={this.goBack}
+            >邀请好友</NavBar>
             <div className={style.content_all}>
                 <div className={style.content_placeholder}></div>
                 <div className={style.content_text}>

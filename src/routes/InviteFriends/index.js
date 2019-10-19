@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
 import style from './index.less'
 import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
+import {goBack} from '../../utils/andohistoy'
 const creatHistory = require("history").createHashHistory;
 const history = creatHistory();
 
@@ -73,6 +74,10 @@ dataList = [
     });
   }
 
+  goBack = () => {
+    goBack()
+}
+
     
 
     render() {
@@ -82,7 +87,7 @@ dataList = [
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
+                onLeftClick={this.goBack}
             >邀请好友</NavBar>
             <div className={style.content_text}></div>
             <div className={style.content_text_parent}>

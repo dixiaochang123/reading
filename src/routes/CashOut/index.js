@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import { extractConfig,my,extractMoney} from '../../services/example'
+import {goBack} from '../../utils/andohistoy'
+
 export default class CashOut extends Component {
     constructor(props) {
         super(props);
@@ -79,6 +81,10 @@ export default class CashOut extends Component {
 
     }
 
+    goBack = () => {
+        goBack()
+    }
+
     render() {
         let { active,dialogShow,data,coin,active_money,active_coin } = this.state;
         return (<div className='content1'>
@@ -86,6 +92,7 @@ export default class CashOut extends Component {
                 mode="light"
                 icon={<Icon type="left" />}
                 className='navbar'
+                onLeftClick={this.goBack}
             >金币提现</NavBar>
             {/* 金币金额 */}
             <div className={style.contentsub}>

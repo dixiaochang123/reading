@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, Carousel } from 'antd-mobile';
+import {goBack} from '../../utils/andohistoy'
 // import './index.less'
 // import style from './index.less'
 // const style = require('./index.less')
@@ -24,13 +25,17 @@ export default class Reader extends Component {
         }, 100);
     }
 
+    goBack = () => {
+        goBack()
+    }
+
 
     render() {
         return (<div>
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={() => console.log('onLeftClick')}
+                onLeftClick={this.goBack}
             >奥运精神</NavBar>
             {/* 轮播 */}
             <Carousel

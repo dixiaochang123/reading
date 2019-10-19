@@ -3,6 +3,7 @@ import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import {  Link } from 'dva/router';
 import {  getCoinLog } from '../../services/example';
+import {goBack} from '../../utils/andohistoy'
 
 export default class GoldCoin extends Component {
     constructor(props) {
@@ -29,6 +30,10 @@ export default class GoldCoin extends Component {
         }).catch(error=>console.log(error))
     }
 
+    goBack = () => {
+        goBack()
+    }
+
     render() {
         let { simpleUserResult,coinLogs } = this.state;
         return (<div className='content'>
@@ -36,6 +41,7 @@ export default class GoldCoin extends Component {
                 mode="light"
                 icon={<Icon type="left" />}
                 className='navbar'
+                onLeftClick={this.goBack}
             >我的金币</NavBar>
             {/* 金币金额 */}
             <div className={style.contentsub}>

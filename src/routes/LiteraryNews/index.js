@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import creatHistory from 'history/createHashHistory'
+import {goBack} from '../../utils/andohistoy'
 const history = creatHistory();
 console.log(style)
 
@@ -38,6 +39,10 @@ export default class Reader extends Component {
         };
         // this.onLeftClick = this.onLeftClick.bind(this)
     }
+
+    goBack = () => {
+        goBack()
+    }
     
 
     render() {
@@ -45,7 +50,7 @@ export default class Reader extends Component {
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
+                onLeftClick={this.goBack}
             >文学新闻</NavBar>
             <div className='footer'>
                 {

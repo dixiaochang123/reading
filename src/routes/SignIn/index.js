@@ -4,7 +4,7 @@ import { NavBar, Icon,Toast } from 'antd-mobile';
 import style from './index.less'
 import { relative } from 'path';
 import {signed,signData,signResign} from '../../services/example'
-import history from '../../utils/history';
+import {goBack} from '../../utils/andohistoy'
 
 var dateHtmlp = "";
 class SignIn extends Component {
@@ -33,8 +33,7 @@ class SignIn extends Component {
     }
 
     componentDidMount() {
-        console.log('返回上一页')
-        this.forceUpdate();//强制刷新
+        // this.forceUpdate();//强制刷新
         this.signData();     
     }
     signData() {
@@ -105,6 +104,10 @@ class SignIn extends Component {
         this.props.history.push('/welfarecentre')
     }
 
+    goBack = ()=> {
+        goBack()
+    }
+
     render() {
         let { dialogIsShow ,seventh_days_10,seventh_days_100,signDatas,visibility} = this.state;
         //获取当前时间
@@ -133,7 +136,7 @@ class SignIn extends Component {
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
+                onLeftClick={this.goBack}
                 rightContent={"签到规则"}
                 className='navbar'
             >签到有礼</NavBar>

@@ -3,6 +3,7 @@ import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import { extractMoneyLog } from '../../services/example'
 import Item from 'antd/lib/list/Item';
+import {goBack} from '../../utils/andohistoy'
 const creatHistory = require("history").createHashHistory;
 const history = creatHistory();
 
@@ -30,13 +31,17 @@ export default class CashOut extends Component {
         }).catch(error=>{})
     }
 
+    goBack = () => {
+        goBack()
+    }
+
     render() {
         let { data } = this.state;
         return (<div className='content1'>
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
-                onLeftClick={()=>history.goBack()}
+                onLeftClick={this.goBack}
                 className='navbar'
             >提现记录</NavBar>
             <div className={style.content}>

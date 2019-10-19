@@ -1,4 +1,6 @@
 .content_max {
+    width:100vw;
+    min-height:100vh;
     :global {
         .am-navbar-light {
             background:rgba(255,143,64,1);
@@ -9,6 +11,7 @@
             }
         }
     }
+    position: relative;
 
 }
 // :global(.content) {
@@ -22,11 +25,12 @@
     position: relative;
     overflow-x: hidden;
     .content_text_bg {
-        height: 1.75rem;
-        width: 200%;
+        // height: 1.75rem;
+        height: 175px;
+        width: 200vw;
         position: relative;
         background-color: rgba(255,143,64,1);
-        border-radius:0 0 200% 200%;
+        border-radius:0 0 200vw 200vw;
         position: absolute;
         left: 50%;
         margin-left:-100%;
@@ -62,8 +66,9 @@
 }
 .goSiginsParse {
     position: absolute;
-    top: 1.6rem;
-    width: 100%;
+    // top: 1.6rem;
+    top:160px;
+    width: 100vw;
     padding:0 .1rem;
 }
 .goSigins {
