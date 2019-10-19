@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LiteraryNews from '../LiteraryNews/index';
 import { NavBar, Icon, Picker,List } from 'antd-mobile';
 import {goBack} from '../../utils/andohistoy'
+import {setCookie,getCookie} from '../../utils/cookie'
 // import {
 //   Route,
 //   Link
@@ -60,6 +61,11 @@ export default class Reader extends Component {
   }
 
   componentDidMount() {
+    // this.forceUpdate();//强制刷新
+    let token = getCookie('token')//获取cookie
+    console.log(111111111,getCookie('token'))
+    alert(getCookie('token'))
+    setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
     // query().then(res=>{
     //   console.log(res)
     // })

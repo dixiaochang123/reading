@@ -5,6 +5,7 @@ import style from './index.less'
 import { relative } from 'path';
 import {signed,signData,signResign} from '../../services/example'
 import {goBack} from '../../utils/andohistoy'
+import {setCookie,getCookie} from '../../utils/cookie'
 
 var dateHtmlp = "";
 class SignIn extends Component {
@@ -34,6 +35,11 @@ class SignIn extends Component {
 
     componentDidMount() {
         // this.forceUpdate();//强制刷新
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
+        
         this.signData();     
     }
     signData() {

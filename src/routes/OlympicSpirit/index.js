@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavBar, Icon, Carousel } from 'antd-mobile';
 import {goBack} from '../../utils/andohistoy'
+import {setCookie,getCookie} from '../../utils/cookie'
 // import './index.less'
 // import style from './index.less'
 // const style = require('./index.less')
@@ -17,6 +18,10 @@ export default class Reader extends Component {
     }
 
     componentDidMount() {
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
         // simulate img loading
         setTimeout(() => {
             this.setState({

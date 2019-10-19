@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
 import style from './index.less'
 import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
-import {goBack} from '../../utils/andohistoy'
-const creatHistory = require("history").createHashHistory;
-const history = creatHistory();
+import {goBack,toShareDaily} from '../../utils/andohistoy'
+import {setCookie,getCookie} from '../../utils/cookie'
 
 const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
 const IconFlow = require("../../images/invitefriends/1-2-3@2x.png");
@@ -22,10 +21,17 @@ export default class InviteFriends extends Component {
             clicked: 'none',
             clicked1: 'none',
             clicked2: 'none',
+            text:'fyuesagurkguighureigire',
+            dialog:false
 
         };
+        this.close = this.close.bind(this)
     }
     componentDidMount() {
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
         inviteRecordCount().then(res=>{
             let {code,data} = res.data;
             this.setState({
@@ -59,29 +65,57 @@ dataList = [
   }));
 
   showShareActionSheet = () => {
-    ActionSheet.showShareActionSheetWithOptions({
-      options: this.dataList,
-      // title: 'title',
-      message: '分享到',
-    },
-    (buttonIndex) => {
-      this.setState({ clicked1: buttonIndex > -1 ? this.dataList[buttonIndex].title : 'cancel' });
-      // also support Promise
-      return new Promise((resolve) => {
-        // Toast.info('closed after 1000ms');
-        setTimeout(resolve, 1000);
-      });
-    });
+      this.setState({
+        dialog:true
+      })
+    // ActionSheet.showShareActionSheetWithOptions({
+    //   options: this.dataList,
+    //   // title: 'title',
+    //   message: '分享到',
+    // },
+    // (buttonIndex) => {
+    //   this.setState({ clicked1: buttonIndex > -1 ? this.dataList[buttonIndex].title : 'cancel' });
+    //   // also support Promise
+    //   return new Promise((resolve) => {
+    //     // Toast.info('closed after 1000ms');
+    //     setTimeout(resolve, 1000);
+    //   });
+    // });
   }
 
   goBack = () => {
     goBack()
 }
+handleClickCopy=()=> {
+
+    let params = {
+        action: "toShareDaily",
+        actionDetail: {
+            showType: "3", //1:图文模式，2：大图模式，3：文本模式
+            data:{
+                title: "",
+                imageUrl: "",
+                jumpUrl: "",
+                content: this.state.text
+            }
+        }
+    }
+    toShareDaily(params)
+    this.setState({
+        dialog:false
+    })
+}
+
+    close(){
+        this.setState({
+            dialog:false
+        })
+    }
 
     
 
     render() {
-        let {manCount,coin,inviteCode} = this.state;
+        let {manCount,coin,inviteCode,text,dialog} = this.state;
         return (
             <WingBlank className='content'>
             <NavBar
@@ -131,6 +165,17 @@ dataList = [
                     </div>
                 </div>
             </div>
+            <div className={dialog ?  style.dialog : style.hide}>
+                <span onClick={this.close}><Icon  type={'cross'} /></span>
+                <p className={style.p1}>您的口令已生成</p>
+                <p className={style.p2}>已帮你自动复制，选择好友粘贴给他吧</p>
+                <div>
+                    {text}
+                </div>
+                <button onClick={this.handleClickCopy}>去粘贴</button>
+
+            </div>
+            <div className={dialog ?  style.mode : style.hide}></div>
 
             </WingBlank>)
     }

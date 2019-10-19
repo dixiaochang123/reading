@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import { extractMoneyLog } from '../../services/example'
-import Item from 'antd/lib/list/Item';
 import {goBack} from '../../utils/andohistoy'
-const creatHistory = require("history").createHashHistory;
-const history = creatHistory();
+import {setCookie,getCookie} from '../../utils/cookie'
 
 export default class CashOut extends Component {
     constructor(props) {
@@ -17,6 +15,10 @@ export default class CashOut extends Component {
     }
 
     componentDidMount() {
+        let token = getCookie('token')//获取cookie
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
+
         let data = {
             page:1,
             pageSize:50

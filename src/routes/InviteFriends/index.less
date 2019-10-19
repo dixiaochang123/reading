@@ -219,3 +219,80 @@
         }
     }
 }
+.dialog {
+    width:3rem;
+    height:3.85rem;
+    background:rgba(255,255,255,1);
+    border-radius:6px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+    text-align:center;
+    span {
+        position: absolute;
+        right: 10px;
+        top:10px;
+        z-index: 3;
+    }
+    // :global{
+    //     .am-icon {
+    //         position: absolute;
+    //         right: 10px;
+    //         top:10px;
+    //     }
+    // }
+    .p1 {
+        font-size:18px;
+        font-weight:400;
+        color:rgba(25,25,25,1);
+        padding:28px 0 10px;
+        text-align:center;
+    }
+    .p2 {
+        font-size:14px;
+        font-weight:400;
+        color:rgba(176,176,176,1);
+        text-align:center;
+        padding-bottom: 25px;
+
+    }
+    div {
+        width:90%;
+        height:2rem;
+        margin:0 auto;
+        background:rgba(255,255,255,1);
+        border:0.5px solid rgba(176,176,176,1);
+        border-radius:4px;
+        padding: 25px 8px;
+        text-align:left;
+    }
+    button {
+        width:165px;
+        height:40px;
+        background:rgba(255,101,20,1);
+        border:none;
+        border-radius:20px;
+        font-size:18px;
+        font-weight:bold;
+        color:rgba(255,255,255,1);
+        margin:25px auto;
+    }
+
+}
+.mode {
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    
+}
+.hide {
+    display: none;
+}

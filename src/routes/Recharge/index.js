@@ -6,7 +6,8 @@ import IconSbjb2 from '../../images/recharge/sbjb2.png'
 import IconQdtq2 from '../../images/recharge/qdtq2.png'
 import IconZx2 from '../../images/recharge/zx2.png'
 import { getVipConfig,getPayOrder,my } from '../../services/example'
-import {goBack} from '../../utils/andohistoy'
+import {goBack,toRecharge} from '../../utils/andohistoy'
+import {setCookie,getCookie} from '../../utils/cookie'
 
 export default class Recharge extends Component {
     constructor(props) {
@@ -25,6 +26,11 @@ export default class Recharge extends Component {
     }
     
     componentWillMount() {
+        // this.forceUpdate();//强制刷新
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
         my().then(res=>{
             let {code,data} = res.data;
             this.setState({
@@ -72,12 +78,15 @@ export default class Recharge extends Component {
             platform:0,  //当前平台0:安卓 1:苹果 2:PC
             payType:this.state.paymentType //100:微信支付 200:支付宝支付 300:苹果支付
         }
-        getPayOrder(data).then(res=>{
-            let {code,data} = res.data;
-            if(code==200) {
-                console.log('支付成功')
+        
+        let paras = {
+            action: "toRecharge",
+            actionDetail: {
+                id:this.state.monthListActive,
+                payType: 100
             }
-        }).catch(error=>{})
+        }
+        toRecharge(paras)
     }
 
     goBack = () => {
@@ -128,7 +137,7 @@ export default class Recharge extends Component {
                 </div>
                 <h3 className={paymentType!=300 ? '' : style.hide}>选择支付方式</h3>
                 <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p1} onClick={this.handleClickPaymentTypeActive.bind(this,100)}><span>微信支付</span><span className={paymentType==100 ? style.paymentType : ''}></span></p>
-                <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p2} onClick={this.handleClickPaymentTypeActive.bind(this,200)}><span>支付宝支付</span><span className={paymentType==200 ? style.paymentType : ''}></span></p>
+                {/* <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p2} onClick={this.handleClickPaymentTypeActive.bind(this,200)}><span>支付宝支付</span><span className={paymentType==200 ? style.paymentType : ''}></span></p> */}
             </div>
 
             <div className={style.privilege}>

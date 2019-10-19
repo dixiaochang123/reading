@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
-import history from '../../utils/history';
+import {setCookie,getCookie} from '../../utils/cookie'
 import {goBack} from '../../utils/andohistoy'
 
 export default class SignRule extends Component {
@@ -12,6 +12,15 @@ export default class SignRule extends Component {
 
         };
     }
+
+    componentDidMount() {
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
+
+    }
+
     goBack = ()=> {
         goBack()
     }

@@ -4,6 +4,7 @@ import style from './index.less'
 import {  Link } from 'dva/router';
 import {  getCoinLog } from '../../services/example';
 import {goBack} from '../../utils/andohistoy'
+import {setCookie,getCookie} from '../../utils/cookie'
 
 export default class GoldCoin extends Component {
     constructor(props) {
@@ -20,6 +21,11 @@ export default class GoldCoin extends Component {
         };
     }
     componentDidMount() {
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
+        
         getCoinLog().then(res=>{
             let {code,data} = res.data;
             console.log(data)

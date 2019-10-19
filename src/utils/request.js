@@ -1,8 +1,15 @@
 import fetch from 'dva/fetch';
+import {setCookie,getCookie} from './cookie'
+import {login} from './andohistoy'
 
 function parseJSON(response) {
   console.log(response)
-  response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M'
+  let token = getCookie('token');
+  if(token) {
+    response.headers.token = token
+  } else {
+    login()
+  }
   
   return response.json();
 }

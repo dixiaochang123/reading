@@ -1,6 +1,6 @@
+let isIOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod')
+let isAndroid = navigator.userAgent.match('Android');
 export  function goBack() {
-    let isIOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod')
-    let isAndroid = navigator.userAgent.match('Android');
     if (isIOS) {
         // window.webkit.messageHandlers.jsCall.postMessage({
         //   "action": "toLoginIn",
@@ -11,8 +11,6 @@ export  function goBack() {
       }
 }
 export  function toShareDaily(params) {
-    let isIOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod')
-    let isAndroid = navigator.userAgent.match('Android');
     if (isIOS) {
         // window.webkit.messageHandlers.jsCall.postMessage({
         //   "action": "toLoginIn",
@@ -32,5 +30,32 @@ export  function toShareDaily(params) {
             }
 
         }))
+      }
+}
+export  function toRecharge(data) {
+    if (isIOS) {
+        // window.webkit.messageHandlers.jsCall.postMessage({
+        //   "action": "toLoginIn",
+        //   "data": {}
+        // })
+      } else if (isAndroid) {
+        window.jsCall.toRecharge(JSON.stringify({
+                action: "toRecharge",
+                actionDetail: {
+                    showType:data.actionDetail.showType,
+                    id:data.actionDetail.id,
+                    payType:data.actionDetail.payType
+                }
+            }))
+      }
+}
+export  function login(data) {
+    if (isIOS) {
+        // window.webkit.messageHandlers.jsCall.postMessage({
+        //   "action": "toLoginIn",
+        //   "data": {}
+        // })
+      } else if (isAndroid) {
+        window.jsCall.login()
       }
 }

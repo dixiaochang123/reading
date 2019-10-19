@@ -4,9 +4,9 @@ import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import {getWelfareResult} from '../../services/example'
 import {goBack,toShareDaily} from '../../utils/andohistoy'
-// import creatHistory from 'history/createHashHistory'  getWelfareResult
-const creatHistory = require("history").createHashHistory;
-const history = creatHistory();
+import {setCookie,getCookie} from '../../utils/cookie'
+import VConsole from 'vconsole/dist/vconsole.min.js' //import vconsole
+let vConsole = new VConsole() // 初始化
 console.log(style)
 
 export default class WelfareCentre extends Component {
@@ -25,6 +25,15 @@ export default class WelfareCentre extends Component {
     }
 
     componentDidMount() {
+
+        let token = getCookie('token')//获取cookie
+        console.log(111111111,getCookie('token'))
+        alert(getCookie('token'))
+        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
+
+
+
+
         getWelfareResult().then(res=>{
             let {code,data} = res.data;
             let readAwardCoinResults = data.readAwardCoinResults;
