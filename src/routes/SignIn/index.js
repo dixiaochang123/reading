@@ -34,12 +34,9 @@ class SignIn extends Component {
     }
 
     componentDidMount() {
-        // this.forceUpdate();//强制刷新
         let token = getCookie('token')//获取cookie
-        console.log(111111111,getCookie('token'))
-        alert(getCookie('token'))
         setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
-        
+
         this.signData();     
     }
     signData() {
@@ -134,6 +131,10 @@ class SignIn extends Component {
         })
 
         let dateHtmlp = signDatas.map(item=>{
+            if(item.secValue!=0) {
+                item.value = item.secValue
+                // item.value = 12
+            }
             return <li onClick={this.handleClickSignDay.bind(this,item)} name={item.value} key={item.key}><p className={style.succe}>{item.key}</p></li>
         })
         let ulHtml = <ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>{dateHtmlNull}{dateHtmlp}</ul>

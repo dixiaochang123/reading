@@ -16,7 +16,6 @@ export default class CashOut extends Component {
 
     componentDidMount() {
         let token = getCookie('token')//获取cookie
-        alert(getCookie('token'))
         setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
 
         let data = {

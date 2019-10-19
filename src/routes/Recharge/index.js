@@ -29,7 +29,6 @@ export default class Recharge extends Component {
         // this.forceUpdate();//强制刷新
         let token = getCookie('token')//获取cookie
         console.log(111111111,getCookie('token'))
-        alert(getCookie('token'))
         setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
         my().then(res=>{
             let {code,data} = res.data;

@@ -3,9 +3,8 @@ import {setCookie,getCookie} from './cookie'
 import {login} from './andohistoy'
 
 function parseJSON(response) {
-  console.log(response)
   let token = getCookie('token');
-  if(token) {
+  if(token!="undefined" && token!=null && token!='null' && token!=undefined) {
     response.headers.token = token
   } else {
     login()
