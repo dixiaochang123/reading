@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import {setCookie,getCookie} from '../../utils/cookie'
-import {goBack} from '../../utils/andohistoy'
+// import {goBack} from '../../utils/andohistoy'
+const creatHistory = require("history").createHashHistory;
+const history = creatHistory();
 
 export default class SignRule extends Component {
     constructor(props) {
@@ -21,7 +23,8 @@ export default class SignRule extends Component {
     }
 
     goBack = ()=> {
-        goBack()
+        // goBack()
+        history.goBack();
     }
 
     
