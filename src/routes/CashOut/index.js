@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavBar, Icon } from 'antd-mobile';
+import { NavBar, Icon, Button } from 'antd-mobile';
 import style from './index.less'
 import { extractConfig,my,extractMoney} from '../../services/example'
-import {goBack,toBookCity} from '../../utils/andohistoy'
+import {goBack,toBookCity,toBindPhoneNumber} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 const creatHistory = require("history").createHashHistory;
 const history = creatHistory();
@@ -54,13 +54,6 @@ export default class CashOut extends Component {
     }
     
     handleClickGotx= ()=> {
-        console.log('提现')
-        prompt(
-            'Password',
-            'Password Message',
-             password => console.log(`password: ${password}`),
-            'secure-text',
-        )
         if(this.state.coin < this.state.active_coin) {
             this.setState({
                 dialogShow:true
@@ -86,19 +79,13 @@ export default class CashOut extends Component {
                         })
                     }
                     if(code==4) {//请进行微信或支付宝授权
-                        prompt(
-                            'Password',
-                            'Password Message',
-                             password => console.log(`password: ${password}`),
-                            'secure-text',
-                        )
+                        toBindPhoneNumber()
                         
                     }
 
-                    // if(code==200) {
-                    //     console.log('提现成功')
-                    //     this.props.history.push('/cashoutrecord');
-                    // }
+                    if(code==200) {
+                        this.props.history.push('/cashoutrecord');
+                    }
                 }).catch(error=>{})
             })
         }
@@ -116,7 +103,8 @@ export default class CashOut extends Component {
     }
 
     goBack = () => {
-        goBack()
+        // goBack()
+        history.goBack()
     }
 
     render() {

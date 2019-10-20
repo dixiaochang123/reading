@@ -90,3 +90,16 @@ export  function toBookCity(data) {
         window.jsCall.toBookCity()
       }
 }
+// toBindPhoneNumber  绑定手机号  
+export  function toBindPhoneNumber(data) {
+    if (isIOS) {
+        // {
+        //     "action": "toSharePassword",
+        //     "actionDetail": {
+        //      "content": "1",
+        //     }
+        //    }
+      } else if (isAndroid) {
+        window.jsCall.toBindPhoneNumber()
+      }
+}
