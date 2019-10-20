@@ -122,6 +122,7 @@ export default class CashOut extends Component {
                     <p>可提现金币</p>
                     <p>{coin}</p>
                 </div>
+                <div style={{height:"8px",backgroundColor:"#F8F8F8"}}></div>
                 <div className={style.jbtx}>
                     <p>金币提现</p>
                     <p>提现规则:1000金币等于1元，每日阅读30分钟偶可开启提现功能</p>
@@ -141,6 +142,7 @@ export default class CashOut extends Component {
                     <p onClick={()=>this.props.history.push('/cashoutrecord')}>提现记录<Icon type={'right'}/></p>
 
                 </div>
+                <div style={{height:"8px",backgroundColor:"#F8F8F8"}}></div>
                 <div className={style.reminder}>
                     <p className={style.p1}>温馨提示</p>
                     <p className={style.p2}>1.提现申请将在1-3个工作日内完成审核，请耐心等待。</p>
