@@ -132,8 +132,8 @@ class SignIn extends Component {
 
         let dateHtmlp = signDatas.map(item=>{
             if(item.secValue!=0) {
-                item.value = item.secValue
-                // item.value = 12
+                // item.value = item.secValue
+                item.value = 12
             }
             return <li onClick={this.handleClickSignDay.bind(this,item)} name={item.value} key={item.key}><p className={style.succe}>{item.key}</p></li>
         })
