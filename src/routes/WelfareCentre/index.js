@@ -73,7 +73,7 @@ export default class WelfareCentre extends Component {
         let params = {
             action: "toShareDaily",
             actionDetail: {
-                showType: "1", //1:图文模式，2：大图模式，3：文本模式
+                showType: "100", //100:每日分享
                 data:{
                     title: "标题",
                     imageUrl: "图片链接",

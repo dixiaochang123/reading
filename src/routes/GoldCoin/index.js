@@ -52,15 +52,15 @@ export default class GoldCoin extends Component {
             <div className={style.contentsub}>
                 <div className={style.mygold}>
                     <p className={style.jbye}>金币余额</p>
-                    <h1>{simpleUserResult.coin}</h1>
+                    <h1>{simpleUserResult.coin ||0}</h1>
                     <div className={style.todyAndAll}>
                         <div>
                             <span>今日金币</span>
-                            <p>{simpleUserResult.todayCoin}</p>
+                            <p>{simpleUserResult.todayCoin || 0}</p>
                         </div>
                         <div>
                             <span>累计获得</span>
-                            <p>{simpleUserResult.totalCoin}</p>
+                            <p>{simpleUserResult.totalCoin || 0}</p>
                         </div>
                     </div>
                 </div>

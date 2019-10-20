@@ -72,8 +72,21 @@ export  function toSharePassword(data) {
         window.jsCall.toSharePassword(JSON.stringify({
             action:data.action,
             actionDetail:{
-                content:data.content
+                content:data.actionDetail.content
             }
         }))
+      }
+}
+
+export  function toBookCity(data) {
+    if (isIOS) {
+        // {
+        //     "action": "toSharePassword",
+        //     "actionDetail": {
+        //      "content": "1",
+        //     }
+        //    }
+      } else if (isAndroid) {
+        window.jsCall.toBookCity()
       }
 }

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import { extractConfig,my,extractMoney} from '../../services/example'
-import {goBack} from '../../utils/andohistoy'
+import {goBack,toBookCity} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
+const creatHistory = require("history").createHashHistory;
+const history = creatHistory();
 
 export default class CashOut extends Component {
     constructor(props) {
@@ -52,6 +54,13 @@ export default class CashOut extends Component {
     }
     
     handleClickGotx= ()=> {
+        console.log('提现')
+        prompt(
+            'Password',
+            'Password Message',
+             password => console.log(`password: ${password}`),
+            'secure-text',
+        )
         if(this.state.coin < this.state.active_coin) {
             this.setState({
                 dialogShow:true
@@ -67,9 +76,29 @@ export default class CashOut extends Component {
                 }
                 extractMoney(data).then(res=>{
                     let {code,data} = res.data;
-                    if(code==200) {
-                        console.log('提现成功')
+                    console.log('提现成功',code,data)
+                    if(code==2) {// "请绑定手机号"
+                        
                     }
+                    if(code==3) {//金币余额不足
+                        this.setState({
+                            dialogShow:true
+                        })
+                    }
+                    if(code==4) {//请进行微信或支付宝授权
+                        prompt(
+                            'Password',
+                            'Password Message',
+                             password => console.log(`password: ${password}`),
+                            'secure-text',
+                        )
+                        
+                    }
+
+                    // if(code==200) {
+                    //     console.log('提现成功')
+                    //     this.props.history.push('/cashoutrecord');
+                    // }
                 }).catch(error=>{})
             })
         }
@@ -82,6 +111,7 @@ export default class CashOut extends Component {
     }
 
     goTask = ()=> {
+        window.jsCall.toBookCity()
 
     }
 
@@ -112,7 +142,7 @@ export default class CashOut extends Component {
                             data.map(item=>{
                                 return(
                                     <div key={item.id} className={active == item.id ? style.active : ''} onClick={this.handleClickCashOut.bind(this,item.id,item.money,item.coin)}>
-                                        <p>提现{item.money}元</p>
+                                        <p>提现{item.money/100}元</p>
                                         <p>需{item.coin}金币</p>
                                     </div>
                                 )

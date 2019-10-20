@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import { extractMoneyLog } from '../../services/example'
-import {goBack} from '../../utils/andohistoy'
+// import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
+const creatHistory = require("history").createHashHistory;
+const history = creatHistory();
 
 export default class CashOut extends Component {
     constructor(props) {
@@ -33,7 +35,8 @@ export default class CashOut extends Component {
     }
 
     goBack = () => {
-        goBack()
+        // goBack()
+        history.goBack()
     }
 
     render() {
@@ -47,7 +50,7 @@ export default class CashOut extends Component {
             >提现记录</NavBar>
             <div className={style.content}>
                 {
-                    data.map((item,index)=>{
+                    !!data && data.map((item,index)=>{
                         return(
                             <div key={index} className={style.list}>
                                 <div className={style.left}>

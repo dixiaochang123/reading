@@ -178,7 +178,7 @@ export default class Recharge extends Component {
             <div style={{height:'70px'}}></div>
             {/* 立即支付 */}
             <div className={style.payment}>
-                <div><span className={style.gj}>共计 </span><span> ￥{gjsum}</span></div>
+                <div><span className={style.gj}>共计 </span><span> ￥{gjsum/100}</span></div>
                 <Button onClick={this.handleCkickZhifu} className="btn" type="inline primary" size="large" inline>立即支付</Button>
             </div>
 
