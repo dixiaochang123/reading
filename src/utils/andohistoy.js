@@ -59,3 +59,21 @@ export  function login(data) {
         window.jsCall.login()
       }
 }
+
+export  function toSharePassword(data) {
+    if (isIOS) {
+        // {
+        //     "action": "toSharePassword",
+        //     "actionDetail": {
+        //      "content": "1",
+        //     }
+        //    }
+      } else if (isAndroid) {
+        window.jsCall.toSharePassword(JSON.stringify({
+            action:data.action,
+            actionDetail:{
+                content:data.content
+            }
+        }))
+      }
+}

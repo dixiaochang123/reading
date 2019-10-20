@@ -19,7 +19,8 @@ export default class Recharge extends Component {
             gjsum:0,
             nickName:'',
             vip:false,
-            vipEndDate:''
+            vipEndDate:'',
+            headImg:'',
         };
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
         this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
@@ -28,14 +29,15 @@ export default class Recharge extends Component {
     componentWillMount() {
         // this.forceUpdate();//强制刷新
         let token = getCookie('token')//获取cookie
-        console.log(111111111,getCookie('token'))
+        console.log('充值页面获取token',getCookie('token'))
         setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
         my().then(res=>{
             let {code,data} = res.data;
             this.setState({
                 nickName:data.nickName,
                 vip:data.vip,
-                vipEndDate:data.vipEndDate
+                vipEndDate:data.vipEndDate,
+                headImg:data.sysImg
             })
 
         }).catch(error=>{})
@@ -93,7 +95,7 @@ export default class Recharge extends Component {
     }
 
     render() {
-        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate } = this.state;
+        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate,headImg } = this.state;
         console.log(datas)
         return (<div className='content'>
             <NavBar
@@ -104,7 +106,9 @@ export default class Recharge extends Component {
             >会员充值</NavBar>
             {/* 会员充值 */}
             <div className={style.notOpen}>
-                <div className={style.headPort}></div>
+                <div className={style.headPort}>
+                    <img src={headImg} alt=""/>
+                </div>
                 <div className={style.tip}>
                     <span>用户名{nickName}</span>
                     <p>{!vip ? "您还未开通会员" : `会员截止 `}<span style={{fontSize:"12px",fontWeight:"normal",color:"#3b3232"}}>{ vipEndDate}</span></p>
@@ -115,23 +119,23 @@ export default class Recharge extends Component {
                 <div className={style.months}>
                     <div className={style.monthList +' '+ (monthListActive==1 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,1)}>
                         <p><span>1个月</span><span></span></p>
-                        <p>￥{!!datas && datas[0] &&datas[0].discountMoney}</p>
-                        <p>原价￥{!!datas && datas[0] && datas[0].originMoney}</p>
+                        <p>￥{!!datas && datas[0] &&datas[0].discountMoney/100}</p>
+                        <p>原价￥{!!datas && datas[0] && datas[0].originMoney/1500}</p>
                     </div>
                     <div className={style.monthList +' '+ (monthListActive==2 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,2)}>
                         <p><span>3个月</span><span></span></p>
-                        <p>￥{!!datas && datas[1] && datas[1].discountMoney}</p>
-                        <p>原价￥{!!datas && datas[1] &&datas[1].originMoney}</p>
+                        <p>￥{!!datas && datas[1] && datas[1].discountMoney/100}</p>
+                        <p>原价￥{!!datas && datas[1] &&datas[1].originMoney/1500}</p>
                     </div>
                     <div className={style.monthList +' '+ (monthListActive==3 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,3)}>
                         <p><span>6个月</span><span></span></p>
-                        <p>￥{!!datas && datas[2] &&datas[2].discountMoney}</p>
-                        <p>原价￥{!!datas && datas[2] &&datas[2].originMoney}</p>
+                        <p>￥{!!datas && datas[2] &&datas[2].discountMoney/100}</p>
+                        <p>原价￥{!!datas && datas[2] &&datas[2].originMoney/1500}</p>
                     </div>
                     <div className={style.monthList +' '+ (monthListActive==4 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,4)}>
                         <p><span>12个月</span><span></span></p>
-                        <p>￥{!!datas && datas[3] &&datas[3].discountMoney}</p>
-                        <p>原价￥{!!datas && datas[3] &&datas[3].originMoney}</p>
+                        <p>￥{!!datas && datas[3] &&datas[3].discountMoney/100}</p>
+                        <p>原价￥{!!datas && datas[3] &&datas[3].originMoney/1500}</p>
                     </div>
                 </div>
                 <h3 className={paymentType!=300 ? '' : style.hide}>选择支付方式</h3>
@@ -171,7 +175,7 @@ export default class Recharge extends Component {
                 <p>2.支付完成后，服务在2小时内生效。</p>
                 <p>3.其他内容待完善。</p>
             </div>
-            <div style={{height:'0.7rem'}}></div>
+            <div style={{height:'70px'}}></div>
             {/* 立即支付 */}
             <div className={style.payment}>
                 <div><span className={style.gj}>共计 </span><span> ￥{gjsum}</span></div>

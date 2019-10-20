@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
 import style from './index.less'
 import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
-import {goBack,toShareDaily} from '../../utils/andohistoy'
+import {goBack,toShareDaily,toSharePassword} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
 const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
@@ -87,19 +87,26 @@ dataList = [
 }
 handleClickCopy=()=> {
 
-    let params = {
-        action: "toShareDaily",
+    // let params = {
+    //     action: "toShareDaily",
+    //     actionDetail: {
+    //         showType: "3", //1:图文模式，2：大图模式，3：文本模式
+    //         data:{
+    //             title: "",
+    //             imageUrl: "",
+    //             jumpUrl: "",
+    //             content: this.state.text
+    //         }
+    //     }
+    // }
+    // toShareDaily(params)
+    let data = {
+      action: "toSharePassword",
         actionDetail: {
-            showType: "3", //1:图文模式，2：大图模式，3：文本模式
-            data:{
-                title: "",
-                imageUrl: "",
-                jumpUrl: "",
-                content: this.state.text
-            }
+            content: this.state.text,
         }
-    }
-    toShareDaily(params)
+       }
+    toSharePassword(data)
     this.setState({
         dialog:false
     })

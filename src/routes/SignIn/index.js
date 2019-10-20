@@ -26,6 +26,7 @@ class SignIn extends Component {
             },
             dateHtml:'',
             visibility:"hidden",
+            nub:0
 
         };
         this.handleClickSign = this.handleClickSign.bind(this)
@@ -83,7 +84,8 @@ class SignIn extends Component {
             }
             if(code==200) {
                 this.setState({
-                    dialogIsShow:true
+                    dialogIsShow:true,
+                    nub:data.data
                 })
             }
             if(code==500) {
@@ -112,7 +114,7 @@ class SignIn extends Component {
     }
 
     render() {
-        let { dialogIsShow ,seventh_days_10,seventh_days_100,signDatas,visibility} = this.state;
+        let { dialogIsShow ,seventh_days_10,seventh_days_100,signDatas,visibility,nub} = this.state;
         //获取当前时间
         let myDate = new Date();
         let year = myDate.getFullYear();//获取年
@@ -159,7 +161,7 @@ class SignIn extends Component {
             {/* 弹框 */}
             <div className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
-                <p className={style.dialog_nth2_p}><span>20</span>积分</p>
+                <p className={style.dialog_nth2_p}><span>{nub}</span>积分</p>
                 {/* <button className={style.btn} onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button> */}
                 <button className={style.btn} onClick={this.zqgd}>赚取更多积分</button>
             </div>

@@ -69,13 +69,14 @@
     left:0;
     background:rgba(0,0,0,0.6);
     opacity:0.6;
+    z-index: 1;
 }
 .hide {
     display: none;
 }
 .dialog {
-    width:2.56rem;
-    height:2.2rem;
+    width:256px;
+    height:220px;
     text-align: center;
     background:rgba(255,255,255,1);
     border-radius:16px;
@@ -85,16 +86,16 @@
     top:0;
     bottom:0;
     margin:auto;
-    z-index: 1;
+    z-index: 2;
     &::before {
         content: "";
-        width:2.25rem;
-        height:1.25rem;
+        width:225px;
+        height:125px;
         background:rgba(255,255,255,0.27);
         background: url(../../images/moar_max.png) no-repeat center center;
         background-size: 100% 100%;
         position: absolute;
-        top: -.75rem;
+        top: -75px;
         left:0;
         right:0;
         margin:auto;
@@ -104,14 +105,14 @@
         font-size:16px;
         font-weight:bold;
         color:rgba(25,25,25,1);
-        line-height:.14rem;
-        padding-top: 0.5rem;
+        line-height:14px;
+        padding-top: 50px;
         margin:0;
     }
     .dialog_nth2_p {
         font-size:16px;
         font-family:"PingFang SC";
-        line-height: .7rem;
+        line-height: 70px;
         color:rgba(255,101,20,1);
         margin:0;
         span {
