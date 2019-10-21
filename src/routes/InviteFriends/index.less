@@ -4,16 +4,35 @@
         height: 100%;
         width: 100vw;
         // background-color: #4C38D8;
+        // position: relative;
     }
     .am-wingblank.am-wingblank-lg,.am-wingblank {
         margin:0;
         background-color: #4C38D8;
+        position: relative;
     }
+    .am-navbar{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        // height: 0.9rem;
+        // background-color: #717176;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        width: 100%;
+        // color: #fff;
+      }
 }
 .content_text_parent {
     width: 100%;
     padding:0 .16rem;
     background-color: #4C38D8;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;   /*这句是为了滑动更顺畅*/
 }
 .content_text {
     // padding:0 32px;
@@ -269,6 +288,7 @@
         border-radius:4px;
         padding: 25px 8px;
         text-align:left;
+        line-height: 22px;
     }
     button {
         width:165px;

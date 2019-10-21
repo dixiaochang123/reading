@@ -23,8 +23,8 @@ function RouterConfig({ history }) {
     <ConnectedRouter history={history}>
       <Switch>
         {/* <Route path="/" exact component={IndexPage} /> */}
-        <Route path="/" exact component={Reader} />
-        <Route path="/reader" exact component={Reader} />
+        <Route path="/" exact component={SignIn} />
+        {/* <Route path="/reader" exact component={Reader} /> */}
         <Route path="/olympicspirit" exact component={OlympicSpirit} />
         <Route path="/literarynews" exact component={LiteraryNews} />
         <Route path="/products" exact component={Products} />

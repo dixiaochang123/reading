@@ -21,7 +21,7 @@ export default class InviteFriends extends Component {
             clicked: 'none',
             clicked1: 'none',
             clicked2: 'none',
-            text:'fyuesagurkguighureigire',
+            text:'[红包]下载【有空看书】\n[红包]免费阅读赚零花钱填我邀请码【……】！邀请人可得【1元】红包红包累计5元可提现复制此消息可自动填邀请码',
             dialog:false
 
         };
@@ -118,8 +118,6 @@ handleClickCopy=()=> {
         })
     }
 
-    
-
     render() {
         let {manCount,coin,inviteCode,text,dialog} = this.state;
         return (
@@ -129,6 +127,7 @@ handleClickCopy=()=> {
                 icon={<Icon type="left" />}
                 onLeftClick={this.goBack}
             >邀请好友</NavBar>
+            <div style={{height:"45px"}}></div>
             <div className={style.content_text}></div>
             <div className={style.content_text_parent}>
                 <div className={style.noticeBar}>
@@ -176,7 +175,12 @@ handleClickCopy=()=> {
                 <p className={style.p1}>您的口令已生成</p>
                 <p className={style.p2}>已帮你自动复制，选择好友粘贴给他吧</p>
                 <div>
-                    {text}
+                    [红包]下载【有空看书】<br />
+                    [红包]免费阅读赚零花钱<br />
+                    [红包]填我邀请码【……】！<br />
+                    [红包]邀请人可得【1元】红包<br />
+                    [红包]红包累计5元可提现<br />
+                    [红包]复制此消息可自动填邀请码
                 </div>
                 <button onClick={this.handleClickCopy}>去粘贴</button>
 
