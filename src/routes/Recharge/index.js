@@ -104,6 +104,7 @@ export default class Recharge extends Component {
                 className='navbar'
                 onLeftClick={this.goBack}
             >会员充值</NavBar>
+            <div style={{height:"45px"}}></div>
             {/* 会员充值 */}
             <div className={style.notOpen}>
                 <div className={style.headPort}>

@@ -48,6 +48,7 @@ export default class CashOut extends Component {
                 onLeftClick={this.goBack}
                 className='navbar'
             >提现记录</NavBar>
+            <div style={{height:"45px"}}></div>
             <div className={style.content}>
                 {
                     !!data && data.map((item,index)=>{

@@ -36,6 +36,7 @@ export default class SignRule extends Component {
                 icon={<Icon type="left" />}
                 onLeftClick={this.goBack}
             >规则说明</NavBar>
+            <div style={{height:"45px"}}></div>
             <div className={style.content_text}>
                 <h1 className={style.signIn_rule}>签到规则</h1>
                 <p className={style.signIn_rule_text}>参与签到的用户均需登录“有空看书”账户，根据连续 签到或累计签到的天数可获得奖励</p>

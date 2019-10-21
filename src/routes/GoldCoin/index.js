@@ -48,6 +48,7 @@ export default class GoldCoin extends Component {
                 className='navbar'
                 onLeftClick={this.goBack}
             >我的金币</NavBar>
+            <div style={{height:"45px"}}></div>
             {/* 金币金额 */}
             <div className={style.contentsub}>
                 <div className={style.mygold}>

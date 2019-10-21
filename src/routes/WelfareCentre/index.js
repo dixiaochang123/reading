@@ -14,7 +14,8 @@ export default class WelfareCentre extends Component {
             readAwardCoinResults:[],
             signedTimes:0,
             coin:0,
-            status:false
+            status:false,
+            dayShareUrl:''
 
         };
         this.handleClickGoback = this.handleClickGoback.bind(this)
@@ -24,7 +25,6 @@ export default class WelfareCentre extends Component {
     componentDidMount() {
 
         let token = getCookie('token')//获取cookie
-        console.log(111111111,getCookie('token'))
         setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
 
         getWelfareResult().then(res=>{
@@ -32,10 +32,12 @@ export default class WelfareCentre extends Component {
             let readAwardCoinResults = data.readAwardCoinResults;
             let signedTimes = !!data.signedTimes && data.signedTimes;
             let simpleUserResult = !!data.simpleUserResult && data.simpleUserResult;
+            let dayShareUrl = !!data.commonTaskResult && !!data.commonTaskResult && data.commonTaskResult.dayShareUrl;
             this.setState({
                 readAwardCoinResults,
                 signedTimes,
-                coin:simpleUserResult.coin
+                coin:simpleUserResult.coin,
+                dayShareUrl
             })
             console.log(222222,readAwardCoinResults)
         }).catch(error=>console.log(error))
@@ -72,10 +74,10 @@ export default class WelfareCentre extends Component {
             actionDetail: {
                 showType: "100", //100:每日分享
                 data:{
-                    title: "标题",
-                    imageUrl: "图片链接",
-                    jumpUrl: "跳转链接",
-                    content: "内容"
+                    title: "海量小说免费看！",
+                    imageUrl: "",
+                    jumpUrl: this.dayShareUrl,
+                    content: "看小说赚零花钱！5元就可微信提现！就在有空看书"
                 }
             }
         }
@@ -92,6 +94,7 @@ export default class WelfareCentre extends Component {
                 icon={<Icon type="left" />}
                 onLeftClick={this.goBack}
             >福利中心</NavBar>
+            <div style={{height:"45px"}}></div>
             <div className={style.content_text}>
                 <div className={style.content_text_bg}>
                     <p>{coin}</p>

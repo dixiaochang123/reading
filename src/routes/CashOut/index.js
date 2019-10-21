@@ -124,6 +124,7 @@ export default class CashOut extends Component {
                 className='navbar'
                 onLeftClick={this.goBack}
             >金币提现</NavBar>
+            <div style={{height:"45px"}}></div>
             {/* 金币金额 */}
             <div className={style.contentsub}>
                 <div className={style.cashout_sub}>
