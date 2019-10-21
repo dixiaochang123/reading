@@ -1,7 +1,8 @@
 import request from '../utils/request';
 
 const url = 'http://weizhiliang.top/ruilu'
-const url1 = 'http://123.114.202.129:8848'
+// const url1 = 'http://123.114.202.129:8848'
+const url1 = 'http://api.readalot.com.cn:80'
 //
 export function query() {
   return request.get(`${url}/book`,{book_id:1000001});
