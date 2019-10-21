@@ -5,7 +5,7 @@ import IconZ62 from '../../images/recharge/z62.png'
 import IconSbjb2 from '../../images/recharge/sbjb2.png'
 import IconQdtq2 from '../../images/recharge/qdtq2.png'
 import IconZx2 from '../../images/recharge/zx2.png'
-import { getVipConfig,getPayOrder,my } from '../../services/example'
+import { getVipConfig,my } from '../../services/example'
 import {goBack,toRecharge} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {withRouter, Route, Link,routerRedux  } from 'dva/router';
+import {withRouter } from 'dva/router';
 import { NavBar, Icon,Toast } from 'antd-mobile';
 import style from './index.less'
-import { relative } from 'path';
-import {signed,signData,signResign} from '../../services/example'
+import {signed,signData} from '../../services/example'
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace,WingBlank,Button} from 'antd-mobile';
 import style from './index.less'
 import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
-import {goBack,toShareDaily,toSharePassword} from '../../utils/andohistoy'
+import {goBack,toSharePassword} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
 const IconLest = require("../../images/invitefriends/椭圆3@2x.png");

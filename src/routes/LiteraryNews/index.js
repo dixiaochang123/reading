@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
-import creatHistory from 'history/createHashHistory'
+// import creatHistory from 'history/createHashHistory'
 import {goBack} from '../../utils/andohistoy'
-import {setCookie,getCookie} from '../../utils/cookie'
+// import {setCookie,getCookie} from '../../utils/cookie'
 
 export default class Reader extends Component {
     constructor(props) {

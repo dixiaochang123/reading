@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace,WingBlank, ActionSheet,Toast,Button} from 'antd-mobile';
+import { NavBar, Icon} from 'antd-mobile';
 import style from './index.less'
 import {  getInviteCodeAndImg } from '../../services/example';
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
-const creatHistory = require("history").createHashHistory;
-const history = creatHistory();
+// const creatHistory = require("history").createHashHistory;
+// const history = creatHistory();
 
-const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
-const IconFlow = require("../../images/invitefriends/1-2-3@2x.png");
+// const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
+// const IconFlow = require("../../images/invitefriends/1-2-3@2x.png");
 
 export default class Inviteode extends Component {
     constructor(props) {

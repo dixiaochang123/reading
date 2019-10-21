@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, Button } from 'antd-mobile';
+import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import { extractConfig,my,extractMoney} from '../../services/example'
-import {goBack,toBookCity,toBindPhoneNumber} from '../../utils/andohistoy'
+import {toBindPhoneNumber} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 const creatHistory = require("history").createHashHistory;
 const history = creatHistory();

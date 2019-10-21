@@ -5,9 +5,6 @@ import style from './index.less'
 import {getWelfareResult} from '../../services/example'
 import {goBack,toShareDaily} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
-import VConsole from 'vconsole/dist/vconsole.min.js' //import vconsole
-let vConsole = new VConsole() // 初始化
-console.log(style)
 
 export default class WelfareCentre extends Component {
     constructor(props) {

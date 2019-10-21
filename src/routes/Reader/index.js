@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LiteraryNews from '../LiteraryNews/index';
-import { NavBar, Icon, Picker,List } from 'antd-mobile';
+// import LiteraryNews from '../LiteraryNews/index';
+// import { NavBar, Icon, Picker,List } from 'antd-mobile';
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 // import {
