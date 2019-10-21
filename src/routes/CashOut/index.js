@@ -71,6 +71,14 @@ export default class CashOut extends Component {
                     let {code,data} = res.data;
                     console.log('提现成功',code,data)
                     if(code==2) {// "请绑定手机号"
+                    let params = {
+                        action:"toBindPhoneNumber",
+                        actionDetail:{
+                            extractId:this.state.active,
+                            type:0
+                        }
+                    }
+                    toBindPhoneNumber(params)
                         
                     }
                     if(code==3) {//金币余额不足
@@ -79,7 +87,7 @@ export default class CashOut extends Component {
                         })
                     }
                     if(code==4) {//请进行微信或支付宝授权
-                        toBindPhoneNumber()
+                        
                         
                     }
 

@@ -93,13 +93,14 @@ export  function toBookCity(data) {
 // toBindPhoneNumber  绑定手机号  
 export  function toBindPhoneNumber(data) {
     if (isIOS) {
-        // {
-        //     "action": "toSharePassword",
-        //     "actionDetail": {
-        //      "content": "1",
-        //     }
-        //    }
+
       } else if (isAndroid) {
-        window.jsCall.toBindPhoneNumber()
+        window.jsCall.toBindPhoneNumber(JSON.stringify({
+          action:data.action,
+          actionDetail: {
+            extractId:data.actionDetail.extractId,
+            type:data.actionDetail.type
+          }
+        }))
       }
 }
