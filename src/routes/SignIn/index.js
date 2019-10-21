@@ -150,7 +150,7 @@ class SignIn extends Component {
             >签到有礼</NavBar>
             {/* 签到规则跳转覆盖 */}
             <div className={style.onRightClick} onClick={()=>this.props.history.push('/signrule') }></div>
-            <div style={{height:".36rem"}}></div>
+            <div style={{height:"63px"}}></div>
             {/* 已连续签到 */}
             <div className={style.continuity}>
                 <p>已连续签到</p>
