@@ -80,6 +80,7 @@ handleClickCopy=()=> {
 
     render() {
         let {manCount,coin,inviteCode,dialog,successInviteInfo} = this.state;
+        console.log(successInviteInfo)
         return (
             <WingBlank className='content'>
             <NavBar
@@ -92,7 +93,17 @@ handleClickCopy=()=> {
             <div className={style.content_text_parent}>
                 <div className={style.noticeBar}>
                     <img src={IconLest} alt=""/>
-                    <span>188****2234获得1000金币邀请奖励</span>
+                    {/* <span>188****2234获得1000金币邀请奖励</span> */}
+                    <p>
+                        {
+                            !!successInviteInfo && successInviteInfo.map(item=>{
+                                return (
+                                    <span key={item.key}>{item.key}获得{item.value}金币邀请奖励</span>
+                                )
+                            })
+                        }
+
+                    </p>
 
                     <img src={IconLest} alt=""/>
                 </div>

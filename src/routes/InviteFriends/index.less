@@ -61,10 +61,29 @@
         width:34px;
         height:10px;
     }
-    span {
+    p {
         font-size: 12px;
         font-weight:500;
         color:rgba(228,224,255,1);
+        height: 100%;
+        line-height: 100%;
+        overflow: hidden;
+        span {
+            display: block;
+            height: 100%;
+            line-height: 300%;
+            position:relative;
+            animation: myfirst 1s;
+            -webkit-animation:myfirst 4s infinite linear; /* Safari and Chrome */
+        }
+        @keyframes myfirst{
+            from {
+                top:0px;
+            }
+            to {
+                top:-41px;
+            }
+        }
     }
 }
 .flow {
