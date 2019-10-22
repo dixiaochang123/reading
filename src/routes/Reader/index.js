@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 // import { NavBar, Icon, Picker,List } from 'antd-mobile';
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
-// import {
-//   Route,
-//   Link
-// } from 'react-router-dom';
 import style from './index.less'
 
 import IconMl from '../../images/read/ml2.png';
@@ -14,7 +10,7 @@ import IconYd from '../../images/read/yd2.png';
 import IconBt from '../../images/read/bt2.png';
 import IconSz from '../../images/read/sz2.png';
 
-import {  chapter_list, chapter_text } from '../../services/example';
+import {  chapter_list, chapter_text,chapter_text1 } from '../../services/example';
 import { node } from 'prop-types';
 let http = require("http");
 console.log(http)
@@ -61,7 +57,18 @@ export default class Reader extends Component {
   }
 
   componentDidMount() {
-    // this.forceUpdate();//强制刷新
+
+    chapter_text1().then(res=>{
+      console.log(res)
+      let {code,data} = res.data;
+      this.setState({
+        content_text:data
+      })
+    })
+    
+
+
+
     let token = getCookie('token')//获取cookie
     setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
     // query().then(res=>{
@@ -344,8 +351,11 @@ export default class Reader extends Component {
         className='navbar'
       ></NavBar> */}
       <div className={style.content_text} style={dayAndNightStyle} onClick={this.handleClick}>
-        <p style={{fontSize:content_textFontSize+'px',lineHeight: '25px',textIndent:'1em'}} dangerouslySetInnerHTML={{ __html: content_text}}></p>
-        {/* {content_text} */}
+        {/* <p style={{fontSize:content_textFontSize+'px',lineHeight: '25px',textIndent:'1em'}} dangerouslySetInnerHTML={{ __html: content_text}}></p> */}
+        <p style={{fontSize:content_textFontSize+'px',lineHeight: '25px',textIndent:'1em'}}>
+
+        {content_text}
+        </p>
       </div>
 
       {/*  */}
