@@ -154,14 +154,14 @@ export default class Recharge extends Component {
                         <img src={IconZ62} alt=""/>
                         <p>全场免广告</p>
                     </div>
-                    <div>
+                    {/* <div>
                         <img src={IconSbjb2} alt=""/>
                         <p>双倍金币</p>
                     </div>
                     <div>
                         <img src={IconQdtq2} alt=""/>
                         <p>签到特权</p>
-                    </div>
+                    </div> */}
                     <div>
                         <img src={IconZx2} alt=""/>
                         <p>尊享图标</p>

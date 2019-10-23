@@ -3,14 +3,14 @@ import {setCookie,getCookie} from './cookie'
 import {login} from './andohistoy'
 
 function parseJSON(response) {
-  // let token = getCookie('token');
-  // if(token!="undefined" && token!=null && token!='null' && token!=undefined) {
-  //   response.headers.token = token
-  //   console.log('token222',token)
-  // } else {
-  //   login()
-  // }
-  response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M';
+  let token = getCookie('token');
+  if(token!="undefined" && token!=null && token!='null' && token!=undefined) {
+    response.headers.token = token
+    console.log('token222',token)
+  } else {
+    login()
+  }
+  // response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M';
   
   return response.json();
 }
@@ -35,16 +35,16 @@ const parseQuery = (obj) => {
 }
 
 const request = (url, method = 'get', data) => {
-  // let token = getCookie('token');
-  // if(token=="undefined" && token==null && token=='null' && token==undefined) {
-  //   login()
-  // }
+  let token = getCookie('token');
+  if(token=="undefined" && token==null && token=='null' && token==undefined) {
+    login()
+  }
   const options = {
     method: method,   // HTTP请求方法，默认为GET
     headers: {        // HTTP的请求头，默认为{}
       'Content-Type': 'application/json',
-      // 'token':token
-      'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M'
+      'token':token
+      // 'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE1NjkzNjU4MTN9.P-Q8ASvhbivH36Lgq7Qg2nBqANVPXRjwFa4jItJM97M'
     },
     credentials: 'include' // 是否携带cookie，默认为omit,不携带; same-origi,同源携带; include,同源跨域都携带
   }
