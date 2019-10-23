@@ -6,7 +6,6 @@ import {signed,signData} from '../../services/example'
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
-var dateHtmlp = "";
 class SignIn extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +40,7 @@ class SignIn extends Component {
     }
     signData() {
         signData().then(res=>{
-            let {code,data} = res.data;
+            let {data} = res.data;
             let signedTimes = data.signedTimes.toString();
             let seventh_days = signedTimes < 10 ? signedTimes : signedTimes.substr(signedTimes.length-1,1);
             let seventh_days_10 = signedTimes >=10 ? signedTimes.substr(signedTimes.length-2,1) : 0;
@@ -70,7 +69,7 @@ class SignIn extends Component {
     handleClickSign() {
         signed().then(res=>{
             console.log(11,res)
-            let {code,data,message} = res.data;
+            let {code,data} = res.data;
             if(code==200) {
                 this.setState({
                     visibility:'initial',
