@@ -106,7 +106,7 @@ export default class WelfareCentre extends Component {
                     <div className={style.goSigin + ' ' + style.flex}>
                         <div className={style.yd10}>
                             <p className={style.p1}>你已累计签到{signedTimes}天</p>
-                            <p className={style.p2}>查看今日日签<Icon type={'right'} /></p>
+                            <p className={style.p3} style={{padding:"none !important"}}><Link to={'/signin'}>查看今日日签<Icon type={'right'} /></Link></p>
                         </div>
                         {/* <div className={style.btnq}>去签到</div> */}
                         <div className={style.btnq}><Link to={'/signin'}>去签到</Link></div>

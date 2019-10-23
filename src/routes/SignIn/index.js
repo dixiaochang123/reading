@@ -71,24 +71,21 @@ class SignIn extends Component {
         signed().then(res=>{
             console.log(11,res)
             let {code,data,message} = res.data;
-            console.log(code,data,message)
-            if(code==200 || code==500) {
+            if(code==200) {
+                this.setState({
+                    visibility:'initial',
+                    dialogIsShow:true,
+                    nub:data.data
+                })
+            }else if(code==500) {
                 this.setState({
                     visibility:'initial',
                 })
+                Toast.info('您今日已签到', 1);
             } else {
                 this.setState({
                     visibility:'hidden'
                 })
-            }
-            if(code==200) {
-                this.setState({
-                    dialogIsShow:true,
-                    nub:data.data
-                })
-            }
-            if(code==500) {
-                Toast.info('您今日已签到', 1);
             }
         }).catch(error=>console.log(error))
     }

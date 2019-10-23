@@ -80,7 +80,6 @@ handleClickCopy=()=> {
 
     render() {
         let {manCount,coin,inviteCode,dialog,successInviteInfo} = this.state;
-        console.log(successInviteInfo)
         return (
             <WingBlank className='content'>
             <NavBar
