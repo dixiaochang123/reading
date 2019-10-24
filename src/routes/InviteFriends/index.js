@@ -81,7 +81,10 @@ handleClickCopy=()=> {
     render() {
         let {manCount,coin,inviteCode,dialog,successInviteInfo} = this.state;
         return (
-            <WingBlank className='content'>
+            // <WingBlank className={style.content}>
+            <div className={style.content}>
+
+            
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
@@ -157,7 +160,7 @@ handleClickCopy=()=> {
 
             </div>
             <div className={dialog ?  style.mode : style.hide}></div>
-
-            </WingBlank>)
+            </div>
+            )
     }
 }

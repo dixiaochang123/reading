@@ -1,37 +1,30 @@
-:global {
-    :global(.content) {
-
-        height: 100%;
-        width: 100vw;
-        // background-color: #4C38D8;
-        // position: relative;
+.content {
+    height: 100%;
+        // width: 100vw;
+    width: 100%;
+    :global {
+        .am-navbar{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            // height: 0.9rem;
+            // background-color: #717176;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            width: 100%;
+            // color: #fff;
+        }
     }
-    .am-wingblank.am-wingblank-lg,.am-wingblank {
-        margin:0;
-        background-color: #4C38D8;
-        position: relative;
-    }
-    .am-navbar{
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-        // height: 0.9rem;
-        // background-color: #717176;
-        position: fixed;
-        z-index: 9999;
-        top: 0;
-        width: 100%;
-        // color: #fff;
-      }
 }
 .content_text_parent {
     width: 100%;
-    padding:0 .16rem;
+    // padding:0 .16rem;
     background-color: #4C38D8;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     -webkit-overflow-scrolling: touch;   /*这句是为了滑动更顺畅*/
 }
 .content_text {
@@ -44,7 +37,7 @@
  
 }
 .noticeBar {
-    width:100%;
+    width:92%;
     height:45px;
     background:rgba(89,0,214,1);
     border:2px solid rgba(179, 125, 255, 1);
@@ -87,7 +80,7 @@
     }
 }
 .flow {
-    width:100%;
+    width:92%;
     height:345px;
     background:rgba(255,255,255,1);
     box-shadow:0px 6px 23px 0px rgba(64,45,184,0.39);
@@ -175,7 +168,7 @@
     
 }
 .my_invite {
-    width:100%;
+    width:92%;
     height:143px;
     background:rgba(255,255,255,1);
     box-shadow:0px 6px 23px 0px rgba(64,45,184,0.39);
@@ -220,7 +213,7 @@
     }
 }
 .activity_rules {
-    width:100%;
+    width:92%;
     // height:1.43rem;
     background:rgba(89,0,214,1);
     box-shadow:0px 6px 23px 0px rgba(64,45,184,0.39);
@@ -229,7 +222,7 @@
     display: flex;
     justify-content: space-around;
     position: relative;
-    padding: .1rem;
+    // padding: .1rem;
     &::before {
         content: "";
         width:193px;
@@ -300,7 +293,7 @@
     }
     div {
         width:90%;
-        height:200px;
+        height:145px;
         margin:0 auto;
         background:rgba(255,255,255,1);
         border:0.5px solid rgba(176,176,176,1);
