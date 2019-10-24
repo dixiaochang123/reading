@@ -36,7 +36,7 @@ export default class WelfareCentre extends Component {
             this.setState({
                 readAwardCoinResults,
                 signedTimes,
-                coin:simpleUserResult.coin,
+                coin:simpleUserResult.coin || 0,
                 dayShareUrl
             })
             console.log(222222,readAwardCoinResults)
@@ -114,7 +114,7 @@ export default class WelfareCentre extends Component {
                 </div>
                 <div className={style.goSigins + ' ' + style.goSiginsrius}>
                     <div className={style.goSigin + ' ' + style.flex + ' ' +style.ydrw}>
-                        <p>阅读任务</p>
+                        <p style={{paddingLeft:"20px"}}>阅读任务</p>
                     </div>
                     {readAwardCoinResults.map((item,index)=>{
                         return (
@@ -130,7 +130,7 @@ export default class WelfareCentre extends Component {
                 </div>
                 <div className={style.goSigins + ' ' + style.goSiginsrius}>
                     <div className={style.goSigin + ' ' + style.flex + ' ' +style.ydrw}>
-                        <p className={style.ydrw}>日常任务</p>
+                        <p className={style.ydrw} style={{paddingLeft:"20px"}}>日常任务</p>
                     </div>
                     <div style={{display:'none'}} className={style.goSigin + ' ' + style.flex}>
                         <div className={style.yd10}>

@@ -151,7 +151,8 @@ class SignIn extends Component {
             <div className={style.continuity}>
                 <p>已连续签到</p>
                 <p><span>{seventh_days_100}</span><span>{seventh_days_10}</span><span>{this.state.seventh_days}</span>天</p>
-                <p style={{visibility:visibility}}>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p>
+                {/* <p style={{visibility:visibility}}>今日签到已获得{this.state.gold_coin}金币，连续签到{this.state.seventh_days}天金币翻倍</p> */}
+                <p style={{visibility:visibility}}></p>
             </div>
             {/* 弹框 */}
             <div className={dialogIsShow ? style.dialog : style.hide}>
