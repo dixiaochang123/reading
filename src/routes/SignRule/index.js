@@ -38,15 +38,13 @@ export default class SignRule extends Component {
             <div style={{height:"45px"}}></div>
             <div className={style.content_text}>
                 <h1 className={style.signIn_rule}>签到规则</h1>
-                <p className={style.signIn_rule_text}>参与签到的用户均需登录“有空看书”账户，根据连续 签到或累计签到的天数可获得奖励</p>
+                <p className={style.signIn_rule_text}>用户登录“有空看书”APP账户后，根据个人需求酌情完成签到，累积获得相应规定天数的金币奖励，金币奖励达到规定数额可兑换提现。</p>
                 <div className={style.signIn_rule_list}>
                     <h3>一、签到周期统计</h3>
-                    <p>1.连续签到：此规则待定</p>
-                </div>
-                <div className={style.signIn_rule_list}>
-                    <h3>一、签到周期统计</h3>
-                    <p>1.每日签到可获得金币作为“基础奖励”。</p>
-                    <p>2.连续签到满足条件是，可在“基础奖励”基础上叠加 获得“连续签到奖励”，奖励内容会。</p>
+                    <p>1.连续签到7天，第7天签到金币翻2倍。</p>
+                    <p>2.连续签到满一个月，本月最后一天签到金币翻10倍。</p>
+                    <p>3.签到奖励以自然月为准，跨月不累积翻倍。</p>
+                    <p>4.满足连续签到条件后，金币奖励会按照签到规则予以发放。</p>
                 </div>
             </div>
 
