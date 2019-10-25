@@ -68,13 +68,13 @@ class SignIn extends Component {
 
     handleClickSign() {
         signed().then(res=>{
-            console.log(11,res)
             let {code,data} = res.data;
+            console.log('签到积分',data)
             if(code==200) {
                 this.setState({
                     visibility:'initial',
                     dialogIsShow:true,
-                    nub:data.data
+                    nub:data
                 })
             }else if(code==500) {
                 this.setState({
