@@ -117,7 +117,7 @@ export default class CashOut extends Component {
 
     render() {
         let { active,dialogShow,data,coin,active_money,active_coin } = this.state;
-        return (<div className='content1'>
+        return (<div className={style.content}>
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}

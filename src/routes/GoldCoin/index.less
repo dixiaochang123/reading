@@ -5,10 +5,32 @@
 :global(.content),:global(p)  {
     position: relative;
 }
+:global(.content) {
+
+    :global{
+    
+        .am-navbar{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            // height: 0.9rem;
+            // background-color: #717176;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            width: 100%;
+            // color: #fff;
+        }
+    }
+}
 .contentsub {
     position: relative;
     height:154px;
     padding:0 .16rem;
+    margin-top: 10px;
 }
 .mygold {
     // width:3.6rem;
