@@ -74,9 +74,9 @@ export default class GoldCoin extends Component {
                             return (<div className={style.coinLogs}>
                                 <div>
                                     <span className={style.coinLogsName}>{item.method}</span>
-                                    <p className={style.coinLogsdate}>{item.fromDate}</p>
+                                    <p className={style.coinLogsdate}>{item.createTime}</p>
                                 </div>
-                                <div className={style.coinLogsgold}>+{item.coin}</div>
+                                <div className={style.coinLogsgold}>{item.type == 0 ? '-': '+' }{item.coin}</div>
                             </div>)
                         })
                     }
