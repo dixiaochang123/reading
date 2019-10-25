@@ -4,6 +4,8 @@ import style from './index.less'
 import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
 import {goBack,toSharePassword} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
+const creatHistory = require("history").createHashHistory;
+const history = creatHistory();
 
 const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
 const IconFlow = require("../../images/invitefriends/1-2-3@2x.png");
@@ -55,7 +57,8 @@ export default class InviteFriends extends Component {
   }
 
   goBack = () => {
-    goBack()
+    // goBack()
+    history.goBack();
 }
 handleClickCopy=()=> {
     let text = `[红包]下载【有空看书】\n[红包]免费阅读赚零花钱填我邀请码【${this.state.inviteCode}】！\n[红包]邀请人可得【1元】红包\n[红包]红包累计5元可提现\n[红包]复制此消息可自动填邀请码`

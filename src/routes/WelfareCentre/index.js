@@ -20,6 +20,7 @@ export default class WelfareCentre extends Component {
         };
         this.handleClickGoback = this.handleClickGoback.bind(this)
         this.handleClickGoback1 = this.handleClickGoback1.bind(this)
+        this.handleClickGoback2 = this.handleClickGoback2.bind(this)
     }
 
     componentDidMount() {
@@ -84,6 +85,10 @@ export default class WelfareCentre extends Component {
         toShareDaily(params)
     }
 
+    handleClickGoback2() {
+        this.props.history.push('/invitefriends')
+    }
+
     
 
     render() {
@@ -144,7 +149,7 @@ export default class WelfareCentre extends Component {
                             <p className={style.p1}>邀请好友</p>
                             <p className={style.p2}>1人/100金币</p>
                         </div>
-                        <div className={style.btnq} onClick={this.handleClickGoback1}>去邀请</div>
+                        <div className={style.btnq} onClick={this.handleClickGoback2}>去邀请</div>
                     </div>
                     <div className={style.goSigin + ' ' + style.flex}>
                         <div className={style.yd10 + ' ' + style.fbpl}>
