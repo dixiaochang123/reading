@@ -25,10 +25,10 @@ export default class CashOut extends Component {
             pageSize:50
         }
         extractMoneyLog(data).then(res=>{
-            let {code,data} = res.data;
+            let {data} = res.data;
             console.log(data)
             this.setState({
-                data
+                data:data
             })
 
         }).catch(error=>{})
