@@ -3,14 +3,14 @@ import {setCookie,getCookie} from './cookie'
 import {login} from './andohistoy'
 
 function parseJSON(response) {
-  // let token = getCookie('token');
-  // if(token!="undefined" && token!=null && token!='null' && token!=undefined) {
-  //   response.headers.token = token
-  //   console.log('token222',token)
-  // } else {
-  //   login()
-  // }
-  response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k';
+  let token = getCookie('token');
+  if(token!="undefined" && token!=null && token!='null' && token!=undefined) {
+    response.headers.token = token
+    console.log('token222',token)
+  } else {
+    login()
+  }
+  // response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k';
   
   return response.json();
 }
@@ -43,8 +43,8 @@ const request = (url, method = 'get', data) => {
     method: method,   // HTTP请求方法，默认为GET
     headers: {        // HTTP的请求头，默认为{}
       'Content-Type': 'application/json',
-      // 'token':token
-      'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k'
+      'token':token
+      // 'token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k'
     },
     credentials: 'include' // 是否携带cookie，默认为omit,不携带; same-origi,同源携带; include,同源跨域都携带
   }
