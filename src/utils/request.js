@@ -1,10 +1,10 @@
 import fetch from 'dva/fetch';
-import {setCookie,getCookie} from './cookie'
+import {getCookie} from './cookie'
 import {login} from './andohistoy'
 
 function parseJSON(response) {
   let token = getCookie('token');
-  if(token!="undefined" && token!=null && token!='null' && token!=undefined) {
+  if(token!="undefined" && token!=null && token!='null' && token!=undefined && token!="") {
     response.headers.token = token
     console.log('token222',token)
   } else {

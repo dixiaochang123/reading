@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavBar, Icon, WhiteSpace,WingBlank,Button} from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace,Carousel,Button} from 'antd-mobile';
 import style from './index.less'
 import { inviteRecordCount, getInviteCodeAndImg } from '../../services/example';
 import {goBack,toSharePassword} from '../../utils/andohistoy'
@@ -24,22 +24,28 @@ export default class InviteFriends extends Component {
             clicked1: 'none',
             clicked2: 'none',
             text:"",
-            dialog:false
+            dialog:false,
+            flag:false
 
         };
         this.close = this.close.bind(this)
     }
+    
     componentDidMount() {
-        let token = getCookie('token')//获取cookie
-        setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
         inviteRecordCount().then(res=>{
-            let {code,data} = res.data;
+            let {data} = res.data;
             this.setState({
                 manCount:data.manCount,
                 coin:data.coin,
                 successInviteInfo:data.successInviteInfo
+            },()=>{
+                this.setState({
+                    flag:true
+                })
             })
         }).catch(error=>console.log(error))
+        let token = getCookie('token')//获取cookie
+        setCookie('token',token,10000000000)//设置cookie 
 
         getInviteCodeAndImg().then(res=>{
             let {code,data} = res.data;
@@ -82,12 +88,25 @@ handleClickCopy=()=> {
     }
 
     render() {
-        let {manCount,coin,inviteCode,dialog,successInviteInfo} = this.state;
+        let {manCount,coin,inviteCode,dialog,successInviteInfo,flag} = this.state;
+        let divs = <Carousel className="my-carousel"
+        vertical
+        dots={false}
+        dragging={false}
+        swiping={false}
+        autoplay
+        infinite
+        >
+        {
+            !!successInviteInfo && successInviteInfo.map(item=>{
+                return (
+                    <div className="v-item" key={item.key}>{item.key}获得{item.value}金币邀请奖励</div>
+                )
+            })
+        }
+    </Carousel>
         return (
-            // <WingBlank className={style.content}>
             <div className={style.content}>
-
-            
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
@@ -98,17 +117,22 @@ handleClickCopy=()=> {
             <div className={style.content_text_parent}>
                 <div className={style.noticeBar}>
                     <img src={IconLest} alt=""/>
-                    {/* <span>188****2234获得1000金币邀请奖励</span> */}
-                    <p>
+                    <Carousel className="my-carousel"
+                        vertical
+                        dots={false}
+                        dragging={false}
+                        swiping={false}
+                        autoplay={flag}
+                        infinite
+                        >
                         {
                             !!successInviteInfo && successInviteInfo.map(item=>{
                                 return (
-                                    <span key={item.key}>{item.key}获得{item.value}金币邀请奖励</span>
+                                    <div className="v-item" key={item.key}>{item.key}获得{item.value}金币邀请奖励</div>
                                 )
                             })
                         }
-
-                    </p>
+                    </Carousel>
 
                     <img src={IconLest} alt=""/>
                 </div>

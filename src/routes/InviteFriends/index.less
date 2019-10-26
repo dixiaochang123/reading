@@ -42,10 +42,6 @@
     background:rgba(89,0,214,1);
     border:2px solid rgba(179, 125, 255, 1);
     border-radius:4px;
-    // position: absolute;
-    // top: 4.2rem;
-    // left: 0;
-    // right: 0;
     margin:0 auto;
     display: flex;
     justify-content: space-around;
@@ -53,7 +49,22 @@
     img {
         width:34px;
         height:10px;
+        padding-left: 10px;
+        &:nth-of-type(2) {
+            padding-right: 10px;
+        }
     }
+    :global{
+        .my-carousel .v-item {
+            height: 36px;
+            line-height: 36px;
+            // padding-left: 10px;
+            color:rgba(228,224,255,1);
+            font-size: 12px;
+            font-weight:500;
+          }
+    }
+    
     p {
         font-size: 12px;
         font-weight:500;
@@ -63,18 +74,31 @@
         overflow: hidden;
         span {
             display: block;
-            height: 25px;
-            line-height: 25px;
+            height: 40px;
+            line-height: 40px;
             position:relative;
             animation: myfirst 5s infinite linear;
             -webkit-animation:myfirst 5s infinite linear; /* Safari and Chrome */
         }
         @keyframes myfirst{
-            from {
-                top:10px;
+            0% {
+                // top:10px;
+                transform:translate3d(0px, 0px, 0px);
             }
-            to {
-                top:-45px;
+            25% {
+                transform:translate3d(0px, -18px, 0px);
+            }
+            50% {
+                // top:-45px;
+                transform:translate3d(0px, -36px, 0px);
+            }
+            75% {
+                // top:-45px;
+                transform:translate3d(0px, -54px, 0px);
+            }
+            100% {
+                // top:-45px;
+                transform:translate3d(0px, -72px, 0px);
             }
         }
     }
