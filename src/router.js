@@ -15,6 +15,7 @@ import InviteCode from './routes/InviteCode/index';//邀请好友二维码
 import CashOut from './routes/CashOut/index';//提现
 import CashOutRecord from './routes/CashOutRecord/index';//提现记录
 import WelfareCentre from './routes/WelfareCentre/index';//福利中心
+import Turn from './routes/Turn/index';//翻页
 
 const { ConnectedRouter } = routerRedux;
 
@@ -23,7 +24,7 @@ function RouterConfig({ history }) {
     <ConnectedRouter history={history}>
       <Switch>
         {/* <Route path="/" exact component={IndexPage} /> */}
-        <Route path="/" exact component={SignIn} />
+        <Route path="/" exact component={Turn} />
         {/* <Route path="/reader" exact component={Reader} /> */}
         <Route path="/olympicspirit" exact component={OlympicSpirit} />
         <Route path="/literarynews" exact component={LiteraryNews} />
@@ -37,6 +38,7 @@ function RouterConfig({ history }) {
         <Route path="/cashout" exact component={CashOut} />
         <Route path="/cashoutrecord" exact component={CashOutRecord} />
         <Route path="/welfarecentre" exact component={WelfareCentre} />
+        <Route path="/turn" exact component={Turn} />
       </Switch>
     </ConnectedRouter>
   );
