@@ -3,7 +3,7 @@ import { routerRedux, Route, Switch } from 'dva/router';
 // import IndexPage from './routes/IndexPage';//首页
 import Products from './routes/Products';//新建页
 
-// import Reader from './routes/Reader/index';//阅读器
+import Reader from './routes/Reader/index';//阅读器
 import OlympicSpirit from './routes/OlympicSpirit/index';//奥运
 import LiteraryNews from './routes/LiteraryNews/index';//文学
 import SignIn from './routes/SignIn/index';//签到
@@ -25,7 +25,7 @@ function RouterConfig({ history }) {
       <Switch>
         {/* <Route path="/" exact component={IndexPage} /> */}
         <Route path="/" exact component={Turn} />
-        {/* <Route path="/reader" exact component={Reader} /> */}
+        <Route path="/reader" exact component={Reader} />
         <Route path="/olympicspirit" exact component={OlympicSpirit} />
         <Route path="/literarynews" exact component={LiteraryNews} />
         <Route path="/products" exact component={Products} />

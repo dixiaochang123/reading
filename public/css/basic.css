@@ -1,7 +1,7 @@
 /* Basic sample */
 
 body{
-	overflow:hidden;
+	/* overflow:hidden; */
 	background-color: #ffffff;
 	width:100%;
 	height:100%;
@@ -10,7 +10,7 @@ body{
 }
 
 .flipbook-viewport{
-	overflow:hidden;
+	/* overflow:hidden; */
 	width:100%;
 	height:100%;
 }
