@@ -129,7 +129,6 @@ function loading() {
                         autoCenter: true,
                         when: {
                             turning: function (e, page, view) {
-                                console.log(1111111111,e)
                                 if (page == 1) {
                                     $(".btnImg").css("display", "none");
                                     $(".mark").css("display", "block");

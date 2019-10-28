@@ -69,10 +69,6 @@ class SignIn extends Component {
     }
 
     handleClickSign() {
-        this.setState({
-            visibility:'initial',
-                    dialogIsShow:true,
-        })
         signed().then(res=>{
             let {code,data} = res.data;
             console.log('签到积分',data)
