@@ -6,6 +6,8 @@ import {signed,signData} from '../../services/example'
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
+const coin = require("../../images/签到成功页面_关闭按钮@2x.png")
+
 class SignIn extends Component {
     constructor(props) {
         super(props);
@@ -67,6 +69,10 @@ class SignIn extends Component {
     }
 
     handleClickSign() {
+        this.setState({
+            visibility:'initial',
+                    dialogIsShow:true,
+        })
         signed().then(res=>{
             let {code,data} = res.data;
             console.log('签到积分',data)
@@ -102,6 +108,11 @@ class SignIn extends Component {
     zqgd() {
         this.setState({dialogIsShow:false})
         this.props.history.push('/welfarecentre')
+    }
+    close = ()=>{
+        this.setState({
+            dialogIsShow:false
+        })
     }
 
     goBack = ()=> {
@@ -157,9 +168,10 @@ class SignIn extends Component {
             {/* 弹框 */}
             <div className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
-                <p className={style.dialog_nth2_p}><span>{nub}</span>金币</p>
+                <p className={style.dialog_nth2_p}><span>{nub}</span>积分</p>
                 {/* <button className={style.btn} onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button> */}
                 <button className={style.btn} onClick={this.zqgd}>赚取更多积分</button>
+                <p className={style.closep}><img className={style.closeDialog} src={coin} onClick={this.close} /></p>
             </div>
             <div className={dialogIsShow ? style.mode : style.hide}></div>
             <p className={style.tody}>{year}年{month}月</p>
