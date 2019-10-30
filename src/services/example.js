@@ -4,9 +4,9 @@ import request from '../utils/request';
 const url_text = 'http://39.108.92.68/youkong/book/getContent?bookId=1000585&chapterId=1163535'
 
 const url = 'http://weizhiliang.top/ruilu'
-const url1 = 'http://192.168.3.100:8080'
+// const url1 = 'http://192.168.3.100:8080'
 // const url1 = 'http://api.readalot.com.cn:80'
-// const url1 = 'http://39.108.92.68/youkong'
+const url1 = 'http://39.108.92.68/youkong'
 //
 export function query() {
   return request.get(`${url}/book`,{book_id:1000001});

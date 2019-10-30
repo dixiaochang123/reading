@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import LiteraryNews from '../LiteraryNews/index';
-// import { NavBar, Icon, Picker,List } from 'antd-mobile';
+import { Carousel } from 'antd-mobile';
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 import style from './index.less'
@@ -38,6 +38,7 @@ export default class Reader extends Component {
       FyActive:"1",
       errtypeShow:false,
       wrongFont:false,//错别字纠正弹框
+      autoplay:false
 
     };
     this.handleClick = this.handleClick.bind(this);
@@ -63,19 +64,23 @@ export default class Reader extends Component {
 
     chapter_text1().then(res=>{
       console.log(res)
-      let {code,data} = res.data;
+      let {data} = res.data;
       // let data1 = data.replace(/\r/g,"\n")
       let text = data.split('');
       // console.log(data1)
-      let text1 = text.map(item=>{
+      let text1 = text.map((item,index)=>{
         return(
-          <span>{item}</span>
+          <span key={index}>{item}</span>
         )
       })
       
 
       this.setState({
         content_text:text1
+      },()=>{
+        this.setState({
+          autoplay:true
+        })
       })
     })
     
@@ -355,7 +360,7 @@ export default class Reader extends Component {
 
 
   render() {
-    let { content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive,errtypeShow,wrongFont } = this.state;
+    let { autoplay,content_text,footer_show, catalog, catalog_show,active,dayAndNight,dayAndNightStyle,sitting_show,content_textFontSize, bgActive,FyActive,errtypeShow,wrongFont } = this.state;
 
     return (<div className="content">
       {/* <NavBar
@@ -365,7 +370,7 @@ export default class Reader extends Component {
       ></NavBar> */}
       <div className={style.content_text} style={dayAndNightStyle} onClick={this.handleClick}>
         {/* <p style={{fontSize:content_textFontSize+'px',lineHeight: '25px',textIndent:'1em'}} dangerouslySetInnerHTML={{ __html: content_text}}></p> */}
-        <p style={{fontSize:content_textFontSize+'px',lineHeight: '30px',textIndent:'1em',...dayAndNightStyle}} >
+        {/* <p style={{fontSize:content_textFontSize+'px',lineHeight: '30px',textIndent:'1em',...dayAndNightStyle}} >
 
         {content_text}
         </p>
@@ -376,7 +381,24 @@ export default class Reader extends Component {
         <p style={{fontSize:content_textFontSize+'px',lineHeight: '30px',textIndent:'1em',...dayAndNightStyle}}>
 
         {content_text}
-        </p>
+        </p> */}
+        <Carousel
+          autoplay={autoplay}
+          dots={false}
+          infinite={false}
+          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          afterChange={index => console.log('slide to', index)}
+        >
+         <p style={{fontSize:content_textFontSize+'px',lineHeight: '30px',textIndent:'1em',...dayAndNightStyle}}>
+          {content_text}
+          </p> 
+         <p style={{fontSize:content_textFontSize+'px',lineHeight: '30px',textIndent:'1em',...dayAndNightStyle}}>
+          {content_text}
+          </p> 
+         <p style={{fontSize:content_textFontSize+'px',lineHeight: '30px',textIndent:'1em',...dayAndNightStyle}}>
+          {content_text}
+          </p> 
+        </Carousel>
       </div>
 
       {/*  */}
