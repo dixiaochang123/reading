@@ -164,9 +164,9 @@ class SignIn extends Component {
             {/* 弹框 */}
             <div className={dialogIsShow ? style.dialog : style.hide}>
                 <p className={style.dialog_first_p}>签到成功！恭喜你获得</p>
-                <p className={style.dialog_nth2_p}><span>{nub}</span>积分</p>
+                <p className={style.dialog_nth2_p}><span>{nub}</span>金币</p>
                 {/* <button className={style.btn} onClick={()=>this.setState({dialogIsShow:false})}>赚取更多积分</button> */}
-                <button className={style.btn} onClick={this.zqgd}>赚取更多积分</button>
+                <button className={style.btn} onClick={this.zqgd}>赚取更多金币</button>
                 <p className={style.closep}><img className={style.closeDialog} src={coin} onClick={this.close} /></p>
             </div>
             <div className={dialogIsShow ? style.mode : style.hide}></div>
