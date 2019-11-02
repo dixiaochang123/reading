@@ -52,14 +52,15 @@ export default class WelfareCentre extends Component {
         let isIOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod')
         let isAndroid = navigator.userAgent.match('Android');
         if(!status) {
-            if (isIOS) {
-                // window.webkit.messageHandlers.jsCall.postMessage({
-                //   "action": "toLoginIn",
-                //   "data": {}
-                // })
-            } else if (isAndroid) {
-                window.jsCall.toBookCity()
-            }
+            window.jsCall.toBookCity()
+            // if (isIOS) {
+            //     // window.webkit.messageHandlers.jsCall.postMessage({
+            //     //   "action": "toLoginIn",
+            //     //   "data": {}
+            //     // })
+            // } else if (isAndroid) {
+            //     window.jsCall.toBookCity()
+            // }
 
         }
 

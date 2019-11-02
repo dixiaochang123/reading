@@ -63,8 +63,8 @@ export default class InviteFriends extends Component {
   }
 
   goBack = () => {
-    // goBack()
-    history.goBack();
+    goBack()
+    // history.goBack();
 }
 handleClickCopy=()=> {
     let text = `[红包]下载【有空看书】\n[红包]免费阅读赚零花钱填我邀请码【${this.state.inviteCode}】！\n[红包]邀请人可得【1元】红包\n[红包]红包累计5元可提现\n[红包]复制此消息可自动填邀请码`
