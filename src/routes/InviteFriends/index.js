@@ -89,22 +89,6 @@ handleClickCopy=()=> {
 
     render() {
         let {manCount,coin,inviteCode,dialog,successInviteInfo,flag} = this.state;
-        let divs = <Carousel className="my-carousel"
-        vertical
-        dots={false}
-        dragging={false}
-        swiping={false}
-        autoplay
-        infinite
-        >
-        {
-            !!successInviteInfo && successInviteInfo.map(item=>{
-                return (
-                    <div className="v-item" key={item.key}>{item.key}获得{item.value}金币邀请奖励</div>
-                )
-            })
-        }
-    </Carousel>
         return (
             <div className={style.content}>
             <NavBar
