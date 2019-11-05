@@ -9,6 +9,9 @@ import { getVipConfig,my } from '../../services/example'
 import {goBack,toRecharge} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
+let isIOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod')
+
+
 export default class Recharge extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +24,7 @@ export default class Recharge extends Component {
             vip:false,
             vipEndDate:'',
             headImg:'',
+            isIOS:isIOS
         };
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
         this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
@@ -93,7 +97,7 @@ export default class Recharge extends Component {
     }
 
     render() {
-        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate,headImg } = this.state;
+        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate,headImg,isIOS } = this.state;
 
         return (<div className='content'>
             <NavBar
@@ -137,8 +141,8 @@ export default class Recharge extends Component {
                         <p className={!!datas[3] && !!datas[3].showOrigin ? '' : style.hide}>原价￥{!!datas && datas[3] &&datas[3].originMoney/100}</p>
                     </div>
                 </div>
-                <h3 className={paymentType!=300 ? '' : style.hide}>选择支付方式</h3>
-                <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p1} onClick={this.handleClickPaymentTypeActive.bind(this,100)}><span>微信支付</span><span className={paymentType==100 ? style.paymentType : ''}></span></p>
+                <h3 className={(paymentType!=300 || !isIOS) ? '' : style.hide}>选择支付方式</h3>
+                <p style={{display:(paymentType==300 || !isIOS)  ? 'none' : 'block'}} className={style.p1} onClick={this.handleClickPaymentTypeActive.bind(this,100)}><span>微信支付</span><span className={paymentType==100 ? style.paymentType : ''}></span></p>
                 {/* <p style={{display:paymentType==300 ? 'none' : 'block'}} className={style.p2} onClick={this.handleClickPaymentTypeActive.bind(this,200)}><span>支付宝支付</span><span className={paymentType==200 ? style.paymentType : ''}></span></p> */}
             </div>
 
