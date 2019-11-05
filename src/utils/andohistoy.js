@@ -94,7 +94,7 @@ export  function toSharePassword(data) {
 export  function toBookCity(data) {
     if (isIOS) {
         window.webkit.messageHandlers.jsCall.postMessage(JSON.stringify({
-            action:'toBookCity',
+            action:"toBookCity",
             data:{}
         }))
       } else if (isAndroid) {
