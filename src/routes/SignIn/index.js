@@ -143,7 +143,7 @@ class SignIn extends Component {
         })
         let ulHtml = <ul><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>{dateHtmlNull}{dateHtmlp}</ul>
 
-        return (<div className='content'>
+        return (<div className={style.content}>
             <NavBar
                 mode="light"
                 icon={<Icon type="left" />}
