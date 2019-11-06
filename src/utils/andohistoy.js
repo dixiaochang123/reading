@@ -91,7 +91,7 @@ export  function toSharePassword(data) {
     }
 }
 //去阅读
-export  function toBookCity(data) {
+export  function toBookCity() {
     if (isIOS) {
         window.webkit.messageHandlers.jsCall.postMessage(JSON.stringify({
             action:"toBookCity",
