@@ -93,10 +93,10 @@ export  function toSharePassword(data) {
 //去阅读
 export  function toBookCity() {
     if (isIOS) {
-        window.webkit.messageHandlers.jsCall.postMessage(JSON.stringify({
-            action:"toBookCity",
-            data:{}
-        }))
+        window.webkit.messageHandlers.jsCall.postMessage({
+            "action": "toBookCity",
+            "data": {}
+        })
       } else if (isAndroid) {
         window.jsCall.toBookCity()
       }
