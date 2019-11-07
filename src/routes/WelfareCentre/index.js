@@ -3,7 +3,7 @@ import {  Link } from 'dva/router';
 import { NavBar, Icon } from 'antd-mobile';
 import style from './index.less'
 import {getWelfareResult} from '../../services/example'
-import {goBack,toShareDaily} from '../../utils/andohistoy'
+import {goBack,toShareDaily,toBookCity} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
 export default class WelfareCentre extends Component {
@@ -49,18 +49,8 @@ export default class WelfareCentre extends Component {
     }
 
     handleClickGoback(status){
-        let isIOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod')
-        let isAndroid = navigator.userAgent.match('Android');
         if(!status) {
-            window.jsCall.toBookCity()
-            // if (isIOS) {
-            //     // window.webkit.messageHandlers.jsCall.postMessage({
-            //     //   "action": "toLoginIn",
-            //     //   "data": {}
-            //     // })
-            // } else if (isAndroid) {
-            //     window.jsCall.toBookCity()
-            // }
+            toBookCity()
 
         }
 
