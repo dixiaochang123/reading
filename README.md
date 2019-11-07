@@ -1,6 +1,6 @@
 # reading
 
-> 项目使用dva antd-mobile
+> 项目使用dva antd-mobile less
 
 
 ## 环境的切换 
