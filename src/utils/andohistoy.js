@@ -62,7 +62,7 @@ export  function toRecharge(data) {
             }))
       }
 }
-export  function login(data) {
+export  function login() {
     if (isIOS) {
         window.webkit.messageHandlers.jsCall.postMessage({
             "action": "login",
@@ -93,11 +93,13 @@ export  function toSharePassword(data) {
 //去阅读
 export  function toBookCity() {
     if (isIOS) {
+        alert(ios)
         window.webkit.messageHandlers.jsCall.postMessage({
             "action": "toBookCity",
             "data": {}
         })
       } else if (isAndroid) {
+        alert(android)
         window.jsCall.toBookCity()
       }
 }
