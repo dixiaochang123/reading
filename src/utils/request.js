@@ -3,14 +3,14 @@ import {getCookie} from './cookie'
 import {login} from './andohistoy'
 
 function parseJSON(response) {
-  // let token = getCookie('token');
-  // if(token!="undefined" && token!=null && token!='null' && token!=undefined && token!="") {
-  //   response.headers.token = token
-  //   console.log('token222',token)
-  // } else {
-  //   login()
-  // }
-  // response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k';
+  let token = getCookie('token');
+  if(token!="undefined" && token!=null && token!='null' && token!=undefined && token!="") {
+    response.headers.token = token
+    console.log('token222',token)
+  } else {
+    login()
+  }
+  response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k';
   
   return response.json();
 }
@@ -36,9 +36,9 @@ const parseQuery = (obj) => {
 
 const request = (url, method = 'get', data) => {
   let token = getCookie('token');
-  if(token=="undefined" && token==null && token=='null' && token==undefined) {
-    login()
-  }
+  // if(token=="undefined" && token==null && token=='null' && token==undefined) {
+  //   login()
+  // }
   const options = {
     method: method,   // HTTP请求方法，默认为GET
     headers: {        // HTTP的请求头，默认为{}
