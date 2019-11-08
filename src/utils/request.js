@@ -6,7 +6,6 @@ function parseJSON(response) {
   let token = getCookie('token');
   if(token!="undefined" && token!=null && token!='null' && token!=undefined && token!="") {
     response.headers.token = token
-    console.log('token222',token)
   } else {
     login()
   }
