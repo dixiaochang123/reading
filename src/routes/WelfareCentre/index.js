@@ -29,7 +29,7 @@ export default class WelfareCentre extends Component {
         setCookie('token',token,10000000000)//设置cookie   setCookie('sex','男', 10);
 
         getWelfareResult().then(res=>{
-            let {code,data} = res.data;
+            let {data} = res.data;
             let readAwardCoinResults = data.readAwardCoinResults;
             let signedTimes = !!data.signedTimes && data.signedTimes;
             let simpleUserResult = !!data.simpleUserResult && data.simpleUserResult;
@@ -68,11 +68,13 @@ export default class WelfareCentre extends Component {
                 data:{
                     title: "海量小说免费看！",
                     imageUrl: "",
-                    jumpUrl: this.dayShareUrl,
+                    jumpUrl: this.state.dayShareUrl,
                     content: "看小说赚零花钱！5元就可微信提现！就在有空看书"
                 }
             }
         }
+        console.log(params)
+        return;
         toShareDaily(params)
     }
 
