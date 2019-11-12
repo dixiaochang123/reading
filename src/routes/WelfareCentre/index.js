@@ -73,8 +73,6 @@ export default class WelfareCentre extends Component {
                 }
             }
         }
-        console.log(params)
-        return;
         toShareDaily(params)
     }
 
