@@ -5,12 +5,6 @@ import {  getInviteCodeAndImg } from '../../services/example';
 import {goBack} from '../../utils/andohistoy'
 import {setCookie,getCookie} from '../../utils/cookie'
 
-// const creatHistory = require("history").createHashHistory;
-// const history = creatHistory();
-
-// const IconLest = require("../../images/invitefriends/椭圆3@2x.png");
-// const IconFlow = require("../../images/invitefriends/1-2-3@2x.png");
-
 export default class Inviteode extends Component {
     constructor(props) {
         super(props);
@@ -28,9 +22,6 @@ export default class Inviteode extends Component {
 
         getInviteCodeAndImg().then(res=>{
             let {code,data} = res.data;
-//             inviteCode: 121
-// url: "https://ti
-            console.log(data)
             this.setState({
                 inviteCode:data.inviteCode,
                 url:data.url
@@ -41,9 +32,6 @@ export default class Inviteode extends Component {
     goBack = () => {
         goBack()
     }
-
-
-    
 
     render() {
         let {inviteCode,url} = this.state;
