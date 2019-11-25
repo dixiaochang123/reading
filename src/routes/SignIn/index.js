@@ -77,6 +77,8 @@ class SignIn extends Component {
                     visibility:'initial',
                     dialogIsShow:true,
                     nub:data
+                },()=> {
+                    this.signData();
                 })
             }else if(code==500) {
                 this.setState({
