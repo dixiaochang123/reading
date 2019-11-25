@@ -149,7 +149,7 @@ handleClickCopy=()=> {
                 </div>
                 <div className={style.activity_rules}>
                     <div className={style.activity_rules_content}>
-                        <p>1. 分享给好友，让好友通过你的分享下载注册，每邀请 一位好友，奖励1000金币</p>
+                        <p>1. 分享给好友，让好友通过你的分享下载注册，每邀请 一位好友，奖励100金币</p>
                         <p>2.好友（新用户）通过二维码进入活动页输入邀请码，下 载app并登录，你的本次邀请奖励即可到账。</p>
                         <p>3. 邀请好友数量无上限，邀请越多奖励越多。</p>
                     </div>
