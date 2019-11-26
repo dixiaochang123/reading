@@ -4,7 +4,7 @@ import request from '../utils/request';
 const url_text = 'http://39.108.92.68/youkong/book/getContent?bookId=1000585&chapterId=1163535'
 
 const url = 'http://weizhiliang.top/ruilu'
-const url1 = 'http://123.114.207.175:8849' //测试环境
+const url1 = 'http://123.114.207.175:8848' //测试环境
 // const url1 = 'http://api.readalot.com.cn:80'
 // const url1 = 'http://39.108.92.68/youkong' //生产环境
 //
