@@ -103,7 +103,7 @@ export default class Recharge extends Component {
     }
 
     render() {
-        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate,headImg,isIOS } = this.state;
+        let { monthListActive,paymentType,datas,gjsum,nickName,vip,vipEndDate,headImg,isIOS,active } = this.state;
 
         return (<div className='content'>
             <NavBar
