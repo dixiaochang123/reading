@@ -24,7 +24,8 @@ export default class Recharge extends Component {
             vip:false,
             vipEndDate:'',
             headImg:'',
-            isIOS:isIOS
+            isIOS:isIOS,
+            active:1
         };
         this.handleClickMonthListActive = this.handleClickMonthListActive.bind(this);
         this.handleClickPaymentTypeActive = this.handleClickPaymentTypeActive.bind(this);
@@ -63,10 +64,12 @@ export default class Recharge extends Component {
     }
 
     handleClickMonthListActive(id) {
+
         let paramas = this.state.datas.find((item,index)=>index==id);
         this.setState({
             monthListActive:paramas.id,
-            gjsum:paramas.discountMoney
+            gjsum:paramas.discountMoney,
+            active:id+1
         })
 
     }
@@ -123,22 +126,22 @@ export default class Recharge extends Component {
             <div className={style.monthVip}>
                 <h3>付费开通</h3>
                 <div className={style.months}>
-                    <div className={style.monthList +' '+ (monthListActive==1 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,0)}>
+                    <div className={style.monthList +' '+ (active==1 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,0)}>
                         <p><span>1个月</span><span></span></p>
                         <p>￥{!!datas && datas[0] &&datas[0].discountMoney/100}</p>
                         <p className={!!datas[0] && !!datas[0].showOrigin ?'' : style.hide}>原价￥{!!datas && datas[0] && datas[0].originMoney/100}</p>
                     </div>
-                    <div className={style.monthList +' '+ (monthListActive==2 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,1)}>
+                    <div className={style.monthList +' '+ (active==2 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,1)}>
                         <p><span>3个月</span><span></span></p>
                         <p>￥{!!datas && datas[1] && datas[1].discountMoney/100}</p>
                         <p className={!!datas[1] && !!datas[1].showOrigin ?'' : style.hide}>原价￥{!!datas && datas[1] &&datas[1].originMoney/100}</p>
                     </div>
-                    <div className={style.monthList +' '+ (monthListActive==3 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,2)}>
+                    <div className={style.monthList +' '+ (active==3 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,2)}>
                         <p><span>6个月</span><span></span></p>
                         <p>￥{!!datas && datas[2] &&datas[2].discountMoney/100}</p>
                         <p className={!!datas[2] && !!datas[2].showOrigin ?'' : style.hide}>原价￥{!!datas && datas[2] &&datas[2].originMoney/100}</p>
                     </div>
-                    <div className={style.monthList +' '+ (monthListActive==4 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,3)}>
+                    <div className={style.monthList +' '+ (active==4 ? style.monthListActive : '')} onClick={this.handleClickMonthListActive.bind(this,3)}>
                         <p><span>12个月</span><span></span></p>
                         <p>￥{!!datas && datas[3] &&datas[3].discountMoney/100}</p>
                         <p className={!!datas[3] && !!datas[3].showOrigin ? '' : style.hide}>原价￥{!!datas && datas[3] &&datas[3].originMoney/100}</p>
