@@ -98,8 +98,8 @@ export default class GoldCoin extends Component {
 
                 </div>
                 <p className={style.tip}>金币详情只显示最近50条的记录</p>
-                {/* <button className={style.btn}><Link to={'/cashout'}>金币提现</Link></button> */}
-                <button className={style.btn} onClick={this.goldGoout}>金币提现</button>
+                <button className={style.btn}><Link to={'/cashout'}>金币提现</Link></button>
+                {/* <button className={style.btn} onClick={this.goldGoout}>金币提现</button> */}
             </div>
 
             <div className={dialogShow ? style.dialog : style.hide}>
