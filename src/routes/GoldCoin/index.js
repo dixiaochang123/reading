@@ -47,9 +47,9 @@ export default class GoldCoin extends Component {
     }
 
     goldGoout = () => {
-        this.setState({
-            dialogShow:true
-        })
+        // this.setState({
+        //     dialogShow:true
+        // })
 
     }
 
