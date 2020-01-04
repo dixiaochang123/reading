@@ -2,12 +2,19 @@ import fetch from 'dva/fetch';
 import {getCookie} from './cookie'
 import {login} from './andohistoy'
 
+let pathname = window.location.pathname || '';
 function parseJSON(response) {
   let token = getCookie('token');
   if(token!="undefined" && token!=null && token!='null' && token!=undefined && token!="") {
     response.headers.token = token
+    console.log(1111,token)
   } else {
-    login()
+    if(pathname=="/recharge") {
+      // console.log(222,window.location.pathname)
+    } else {
+      login()
+    }
+    // console.log(1111,history,response)
   }
   // response.headers.token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjEiLCJleHAiOjE2MDE2MDQ2MDN9.ifSBbRKyHjZK5Dv5QUJP5tkzZTgy4Z48JrYRYwewc9k';
   
